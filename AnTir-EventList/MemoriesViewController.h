@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  MemoriesViewController.h
 //  AnTir-EventList
 //
 //  Created by Shae Klusman on 10/29/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface MemoriesViewController : UIViewController
 
 @end

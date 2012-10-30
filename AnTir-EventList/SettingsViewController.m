@@ -1,33 +1,33 @@
 //
-//  FirstViewController.m
+//  SettingsViewController.m
 //  AnTir-EventList
 //
 //  Created by Shae Klusman on 10/29/12.
 //  Copyright (c) 2012 Shae Klusman. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "SettingsViewController.h"
 
-@interface FirstViewController ()
+@interface SettingsViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation SettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"First", @"First");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.title = NSLocalizedString(@"Settings", @"Settings");
+        self.tabBarItem.image = [UIImage imageNamed:@"settings"];
     }
     return self;
 }
-							
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,13 +10,37 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
+    __weak NSString *defaultArea;
+    __strong NSMutableArray *eventArray;
+    
+    BOOL autoUpdate;
     float tabBarStartCoords;
+    
+    NSMutableArray *favEvents;
+    NSString *askAgain;
+    NSURLRequest *request;
+    NSURL *url;
+    NSURLConnection *connection;
+    NSData *myData;
+    NSMutableData *requestedData;
+    NSInteger numItems;
+    NSDictionary *eventObject;
+    NSMutableArray *stuff;
     UITabBarController *tabBarController;
+    __weak NSString *singleChoice;
 
 }
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) UINavigationController *navControl;
+@property (strong, nonatomic) UIViewController *viewController;
+@property (weak, nonatomic) NSString *defaultArea;
+@property (weak, nonatomic) NSString *singleChoice;
+@property (strong, nonatomic) NSMutableArray *eventArray;
+@property (strong, nonatomic) NSMutableArray *eventClassObjArray;
+@property (nonatomic) BOOL autoUpdate;
 
+-(void)buildEventData;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;
 

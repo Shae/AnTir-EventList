@@ -16,14 +16,10 @@
 		BFEF6221163EFE6D0054F566 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6220163EFE6D0054F566 /* Default.png */; };
 		BFEF6223163EFE6D0054F566 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6222163EFE6D0054F566 /* Default@2x.png */; };
 		BFEF6225163EFE6D0054F566 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6224163EFE6D0054F566 /* Default-568h@2x.png */; };
-		BFEF6228163EFE6D0054F566 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6227163EFE6D0054F566 /* FirstViewController.m */; };
 		BFEF622A163EFE6D0054F566 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6229163EFE6D0054F566 /* first.png */; };
 		BFEF622C163EFE6D0054F566 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF622B163EFE6D0054F566 /* first@2x.png */; };
-		BFEF622F163EFE6D0054F566 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF622E163EFE6D0054F566 /* SecondViewController.m */; };
 		BFEF6231163EFE6D0054F566 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6230163EFE6D0054F566 /* second.png */; };
 		BFEF6233163EFE6D0054F566 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6232163EFE6D0054F566 /* second@2x.png */; };
-		BFEF6236163EFE6D0054F566 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6234163EFE6D0054F566 /* FirstViewController.xib */; };
-		BFEF6239163EFE6D0054F566 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6237163EFE6D0054F566 /* SecondViewController.xib */; };
 		BFEF6243163F00840054F566 /* HomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6241163F00840054F566 /* HomepageViewController.m */; };
 		BFEF6244163F00840054F566 /* HomepageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6242163F00840054F566 /* HomepageViewController.xib */; };
 		BFEF6247163F00E50054F566 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6246163F00E50054F566 /* list.png */; };
@@ -33,6 +29,29 @@
 		BFEF624F163F00FB0054F566 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF624E163F00FB0054F566 /* map.png */; };
 		BFEF6251163F01000054F566 /* SCA-LRG-Image.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6250163F01000054F566 /* SCA-LRG-Image.png */; };
 		BFEF6253163F0C9C0054F566 /* NewANTIRlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6252163F0C9C0054F566 /* NewANTIRlogo.png */; };
+		BFEF626C163F2B540054F566 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF626A163F2B540054F566 /* EventsViewController.m */; };
+		BFEF626D163F2B540054F566 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF626B163F2B540054F566 /* EventsViewController.xib */; };
+		BFEF6276163F2E140054F566 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6274163F2E140054F566 /* SettingsViewController.m */; };
+		BFEF6277163F2E140054F566 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6275163F2E140054F566 /* SettingsViewController.xib */; };
+		BFEF627B163F2E2F0054F566 /* MemoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6279163F2E2F0054F566 /* MemoriesViewController.m */; };
+		BFEF627C163F2E2F0054F566 /* MemoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF627A163F2E2F0054F566 /* MemoriesViewController.xib */; };
+		BFEF627E163F2ED00054F566 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF627D163F2ED00054F566 /* settings.png */; };
+		BFEF6290163F3BC70054F566 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6285163F3BC70054F566 /* NSObject+SBJSON.m */; };
+		BFEF6291163F3BC70054F566 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6287163F3BC70054F566 /* NSString+SBJSON.m */; };
+		BFEF6292163F3BC70054F566 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6289163F3BC70054F566 /* SBJSON.m */; };
+		BFEF6293163F3BC70054F566 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF628B163F3BC70054F566 /* SBJsonBase.m */; };
+		BFEF6294163F3BC70054F566 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF628D163F3BC70054F566 /* SBJsonParser.m */; };
+		BFEF6295163F3BC70054F566 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF628F163F3BC70054F566 /* SBJsonWriter.m */; };
+		BFEF629F163F3DEC0054F566 /* eventClass.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF6298163F3DEC0054F566 /* eventClass.m */; };
+		BFEF62A0163F3DEC0054F566 /* eventFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF629A163F3DEC0054F566 /* eventFactory.m */; };
+		BFEF62A1163F3DEC0054F566 /* normEventLVL.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF629C163F3DEC0054F566 /* normEventLVL.m */; };
+		BFEF62A2163F3DEC0054F566 /* kingEventLVL.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF629E163F3DEC0054F566 /* kingEventLVL.m */; };
+		BFEF62A4163F3EFA0054F566 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62A3163F3EFA0054F566 /* data.plist */; };
+		BFEF62B1163F49F40054F566 /* baronyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62B0163F49F30054F566 /* baronyCell.m */; };
+		BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62B2163F4A1C0054F566 /* baronyCell.xib */; };
+		BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62BC163F97400054F566 /* AreaListViewController.m */; };
+		BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62BD163F97400054F566 /* AreaListViewController.xib */; };
+		BFEF62C5163FA1020054F566 /* BaronyViewController in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62C4163FA1020054F566 /* BaronyViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,16 +68,10 @@
 		BFEF6220163EFE6D0054F566 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BFEF6222163EFE6D0054F566 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BFEF6224163EFE6D0054F566 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		BFEF6226163EFE6D0054F566 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		BFEF6227163EFE6D0054F566 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		BFEF6229163EFE6D0054F566 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		BFEF622B163EFE6D0054F566 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		BFEF622D163EFE6D0054F566 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		BFEF622E163EFE6D0054F566 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		BFEF6230163EFE6D0054F566 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		BFEF6232163EFE6D0054F566 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		BFEF6235163EFE6D0054F566 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		BFEF6238163EFE6D0054F566 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		BFEF6240163F00840054F566 /* HomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomepageViewController.h; path = ../HomepageViewController.h; sourceTree = "<group>"; };
 		BFEF6241163F00840054F566 /* HomepageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomepageViewController.m; path = ../HomepageViewController.m; sourceTree = "<group>"; };
 		BFEF6242163F00840054F566 /* HomepageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomepageViewController.xib; path = ../HomepageViewController.xib; sourceTree = "<group>"; };
@@ -69,6 +82,48 @@
 		BFEF624E163F00FB0054F566 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		BFEF6250163F01000054F566 /* SCA-LRG-Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SCA-LRG-Image.png"; sourceTree = "<group>"; };
 		BFEF6252163F0C9C0054F566 /* NewANTIRlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewANTIRlogo.png; sourceTree = "<group>"; };
+		BFEF6269163F2B540054F566 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
+		BFEF626A163F2B540054F566 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
+		BFEF626B163F2B540054F566 /* EventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		BFEF6273163F2E140054F566 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		BFEF6274163F2E140054F566 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		BFEF6275163F2E140054F566 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		BFEF6278163F2E2F0054F566 /* MemoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoriesViewController.h; sourceTree = "<group>"; };
+		BFEF6279163F2E2F0054F566 /* MemoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoriesViewController.m; sourceTree = "<group>"; };
+		BFEF627A163F2E2F0054F566 /* MemoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoriesViewController.xib; sourceTree = "<group>"; };
+		BFEF627D163F2ED00054F566 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		BFEF627F163F3AC10054F566 /* EventCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		BFEF6280163F3AC10054F566 /* EventCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		BFEF6281163F3AC10054F566 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		BFEF6283163F3BC70054F566 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		BFEF6284163F3BC70054F566 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		BFEF6285163F3BC70054F566 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		BFEF6286163F3BC70054F566 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		BFEF6287163F3BC70054F566 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		BFEF6288163F3BC70054F566 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		BFEF6289163F3BC70054F566 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		BFEF628A163F3BC70054F566 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		BFEF628B163F3BC70054F566 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		BFEF628C163F3BC70054F566 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		BFEF628D163F3BC70054F566 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		BFEF628E163F3BC70054F566 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		BFEF628F163F3BC70054F566 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		BFEF6297163F3DEC0054F566 /* eventClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eventClass.h; sourceTree = "<group>"; };
+		BFEF6298163F3DEC0054F566 /* eventClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eventClass.m; sourceTree = "<group>"; };
+		BFEF6299163F3DEC0054F566 /* eventFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eventFactory.h; sourceTree = "<group>"; };
+		BFEF629A163F3DEC0054F566 /* eventFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eventFactory.m; sourceTree = "<group>"; };
+		BFEF629B163F3DEC0054F566 /* normEventLVL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = normEventLVL.h; sourceTree = "<group>"; };
+		BFEF629C163F3DEC0054F566 /* normEventLVL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = normEventLVL.m; sourceTree = "<group>"; };
+		BFEF629D163F3DEC0054F566 /* kingEventLVL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kingEventLVL.h; sourceTree = "<group>"; };
+		BFEF629E163F3DEC0054F566 /* kingEventLVL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kingEventLVL.m; sourceTree = "<group>"; };
+		BFEF62A3163F3EFA0054F566 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		BFEF62AF163F49F30054F566 /* baronyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baronyCell.h; sourceTree = "<group>"; };
+		BFEF62B0163F49F30054F566 /* baronyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baronyCell.m; sourceTree = "<group>"; };
+		BFEF62B2163F4A1C0054F566 /* baronyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = baronyCell.xib; sourceTree = "<group>"; };
+		BFEF62BB163F973F0054F566 /* AreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaListViewController.h; sourceTree = "<group>"; };
+		BFEF62BC163F97400054F566 /* AreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaListViewController.m; sourceTree = "<group>"; };
+		BFEF62BD163F97400054F566 /* AreaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaListViewController.xib; sourceTree = "<group>"; };
+		BFEF62C4163FA1020054F566 /* BaronyViewController */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaronyViewController; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +170,32 @@
 		BFEF6214163EFE6D0054F566 /* AnTir-EventList */ = {
 			isa = PBXGroup;
 			children = (
+				BFEF6296163F3DCC0054F566 /* Class */,
 				BFEF621D163EFE6D0054F566 /* AppDelegate.h */,
 				BFEF621E163EFE6D0054F566 /* AppDelegate.m */,
 				BFEF6240163F00840054F566 /* HomepageViewController.h */,
 				BFEF6241163F00840054F566 /* HomepageViewController.m */,
 				BFEF6242163F00840054F566 /* HomepageViewController.xib */,
+				BFEF62BB163F973F0054F566 /* AreaListViewController.h */,
+				BFEF62BC163F97400054F566 /* AreaListViewController.m */,
+				BFEF62BD163F97400054F566 /* AreaListViewController.xib */,
+				BFEF6269163F2B540054F566 /* EventsViewController.h */,
+				BFEF626A163F2B540054F566 /* EventsViewController.m */,
+				BFEF626B163F2B540054F566 /* EventsViewController.xib */,
+				BFEF62C4163FA1020054F566 /* BaronyViewController */,
+				BFEF627F163F3AC10054F566 /* EventCell.h */,
+				BFEF6280163F3AC10054F566 /* EventCell.m */,
+				BFEF6281163F3AC10054F566 /* EventCell.xib */,
+				BFEF6273163F2E140054F566 /* SettingsViewController.h */,
+				BFEF6274163F2E140054F566 /* SettingsViewController.m */,
+				BFEF6275163F2E140054F566 /* SettingsViewController.xib */,
+				BFEF6278163F2E2F0054F566 /* MemoriesViewController.h */,
+				BFEF6279163F2E2F0054F566 /* MemoriesViewController.m */,
+				BFEF627A163F2E2F0054F566 /* MemoriesViewController.xib */,
+				BFEF62AF163F49F30054F566 /* baronyCell.h */,
+				BFEF62B0163F49F30054F566 /* baronyCell.m */,
+				BFEF62B2163F4A1C0054F566 /* baronyCell.xib */,
+				BFEF6282163F3BAC0054F566 /* SBJSON */,
 				BFEF6245163F00D10054F566 /* Images */,
 				BFEF623F163F00480054F566 /* OldFiles */,
 				BFEF6215163EFE6D0054F566 /* Supporting Files */,
@@ -130,6 +206,7 @@
 		BFEF6215163EFE6D0054F566 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFEF62A3163F3EFA0054F566 /* data.plist */,
 				BFEF6216163EFE6D0054F566 /* AnTir-EventList-Info.plist */,
 				BFEF6217163EFE6D0054F566 /* InfoPlist.strings */,
 				BFEF621A163EFE6D0054F566 /* main.m */,
@@ -144,16 +221,6 @@
 		BFEF623F163F00480054F566 /* OldFiles */ = {
 			isa = PBXGroup;
 			children = (
-				BFEF6226163EFE6D0054F566 /* FirstViewController.h */,
-				BFEF6227163EFE6D0054F566 /* FirstViewController.m */,
-				BFEF6229163EFE6D0054F566 /* first.png */,
-				BFEF622B163EFE6D0054F566 /* first@2x.png */,
-				BFEF622D163EFE6D0054F566 /* SecondViewController.h */,
-				BFEF622E163EFE6D0054F566 /* SecondViewController.m */,
-				BFEF6230163EFE6D0054F566 /* second.png */,
-				BFEF6232163EFE6D0054F566 /* second@2x.png */,
-				BFEF6234163EFE6D0054F566 /* FirstViewController.xib */,
-				BFEF6237163EFE6D0054F566 /* SecondViewController.xib */,
 			);
 			name = OldFiles;
 			sourceTree = "<group>";
@@ -167,9 +234,49 @@
 				BFEF624C163F00F70054F566 /* SCA-WaterMark.png */,
 				BFEF624A163F00F20054F566 /* star.png */,
 				BFEF6248163F00ED0054F566 /* house.png */,
+				BFEF627D163F2ED00054F566 /* settings.png */,
 				BFEF6246163F00E50054F566 /* list.png */,
+				BFEF6229163EFE6D0054F566 /* first.png */,
+				BFEF622B163EFE6D0054F566 /* first@2x.png */,
+				BFEF6230163EFE6D0054F566 /* second.png */,
+				BFEF6232163EFE6D0054F566 /* second@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		BFEF6282163F3BAC0054F566 /* SBJSON */ = {
+			isa = PBXGroup;
+			children = (
+				BFEF6283163F3BC70054F566 /* JSON.h */,
+				BFEF6284163F3BC70054F566 /* NSObject+SBJSON.h */,
+				BFEF6285163F3BC70054F566 /* NSObject+SBJSON.m */,
+				BFEF6286163F3BC70054F566 /* NSString+SBJSON.h */,
+				BFEF6287163F3BC70054F566 /* NSString+SBJSON.m */,
+				BFEF6288163F3BC70054F566 /* SBJSON.h */,
+				BFEF6289163F3BC70054F566 /* SBJSON.m */,
+				BFEF628A163F3BC70054F566 /* SBJsonBase.h */,
+				BFEF628B163F3BC70054F566 /* SBJsonBase.m */,
+				BFEF628C163F3BC70054F566 /* SBJsonParser.h */,
+				BFEF628D163F3BC70054F566 /* SBJsonParser.m */,
+				BFEF628E163F3BC70054F566 /* SBJsonWriter.h */,
+				BFEF628F163F3BC70054F566 /* SBJsonWriter.m */,
+			);
+			name = SBJSON;
+			sourceTree = "<group>";
+		};
+		BFEF6296163F3DCC0054F566 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				BFEF6297163F3DEC0054F566 /* eventClass.h */,
+				BFEF6298163F3DEC0054F566 /* eventClass.m */,
+				BFEF6299163F3DEC0054F566 /* eventFactory.h */,
+				BFEF629A163F3DEC0054F566 /* eventFactory.m */,
+				BFEF629B163F3DEC0054F566 /* normEventLVL.h */,
+				BFEF629C163F3DEC0054F566 /* normEventLVL.m */,
+				BFEF629D163F3DEC0054F566 /* kingEventLVL.h */,
+				BFEF629E163F3DEC0054F566 /* kingEventLVL.m */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +338,6 @@
 				BFEF622C163EFE6D0054F566 /* first@2x.png in Resources */,
 				BFEF6231163EFE6D0054F566 /* second.png in Resources */,
 				BFEF6233163EFE6D0054F566 /* second@2x.png in Resources */,
-				BFEF6236163EFE6D0054F566 /* FirstViewController.xib in Resources */,
-				BFEF6239163EFE6D0054F566 /* SecondViewController.xib in Resources */,
 				BFEF6244163F00840054F566 /* HomepageViewController.xib in Resources */,
 				BFEF6247163F00E50054F566 /* list.png in Resources */,
 				BFEF6249163F00ED0054F566 /* house.png in Resources */,
@@ -241,6 +346,13 @@
 				BFEF624F163F00FB0054F566 /* map.png in Resources */,
 				BFEF6251163F01000054F566 /* SCA-LRG-Image.png in Resources */,
 				BFEF6253163F0C9C0054F566 /* NewANTIRlogo.png in Resources */,
+				BFEF626D163F2B540054F566 /* EventsViewController.xib in Resources */,
+				BFEF6277163F2E140054F566 /* SettingsViewController.xib in Resources */,
+				BFEF627C163F2E2F0054F566 /* MemoriesViewController.xib in Resources */,
+				BFEF627E163F2ED00054F566 /* settings.png in Resources */,
+				BFEF62A4163F3EFA0054F566 /* data.plist in Resources */,
+				BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */,
+				BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,9 +365,23 @@
 			files = (
 				BFEF621B163EFE6D0054F566 /* main.m in Sources */,
 				BFEF621F163EFE6D0054F566 /* AppDelegate.m in Sources */,
-				BFEF6228163EFE6D0054F566 /* FirstViewController.m in Sources */,
-				BFEF622F163EFE6D0054F566 /* SecondViewController.m in Sources */,
 				BFEF6243163F00840054F566 /* HomepageViewController.m in Sources */,
+				BFEF626C163F2B540054F566 /* EventsViewController.m in Sources */,
+				BFEF6276163F2E140054F566 /* SettingsViewController.m in Sources */,
+				BFEF627B163F2E2F0054F566 /* MemoriesViewController.m in Sources */,
+				BFEF6290163F3BC70054F566 /* NSObject+SBJSON.m in Sources */,
+				BFEF6291163F3BC70054F566 /* NSString+SBJSON.m in Sources */,
+				BFEF6292163F3BC70054F566 /* SBJSON.m in Sources */,
+				BFEF6293163F3BC70054F566 /* SBJsonBase.m in Sources */,
+				BFEF6294163F3BC70054F566 /* SBJsonParser.m in Sources */,
+				BFEF6295163F3BC70054F566 /* SBJsonWriter.m in Sources */,
+				BFEF629F163F3DEC0054F566 /* eventClass.m in Sources */,
+				BFEF62A0163F3DEC0054F566 /* eventFactory.m in Sources */,
+				BFEF62A1163F3DEC0054F566 /* normEventLVL.m in Sources */,
+				BFEF62A2163F3DEC0054F566 /* kingEventLVL.m in Sources */,
+				BFEF62B1163F49F40054F566 /* baronyCell.m in Sources */,
+				BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */,
+				BFEF62C5163FA1020054F566 /* BaronyViewController in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,22 +394,6 @@
 				BFEF6218163EFE6D0054F566 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BFEF6234163EFE6D0054F566 /* FirstViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFEF6235163EFE6D0054F566 /* en */,
-			);
-			name = FirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		BFEF6237163EFE6D0054F566 /* SecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFEF6238163EFE6D0054F566 /* en */,
-			);
-			name = SecondViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

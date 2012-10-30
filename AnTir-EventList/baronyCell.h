@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  baronyCell.h
 //  AnTir-EventList
 //
 //  Created by Shae Klusman on 10/29/12.
@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
-
+@interface baronyCell : UITableViewCell
+{
+    __weak IBOutlet UILabel *baronyLabel;
+    
+}
+@property (weak, nonatomic) UILabel *baronyLabel;
 @end

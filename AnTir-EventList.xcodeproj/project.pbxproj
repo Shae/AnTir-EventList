@@ -168,7 +168,6 @@
 		BFEF6214163EFE6D0054F566 /* AnTir-EventList */ = {
 			isa = PBXGroup;
 			children = (
-				BFEF6296163F3DCC0054F566 /* Class */,
 				BFEF621D163EFE6D0054F566 /* AppDelegate.h */,
 				BFEF621E163EFE6D0054F566 /* AppDelegate.m */,
 				BFEF6240163F00840054F566 /* HomepageViewController.h */,
@@ -192,6 +191,7 @@
 				BFEF62AF163F49F30054F566 /* baronyCell.h */,
 				BFEF62B0163F49F30054F566 /* baronyCell.m */,
 				BFEF62B2163F4A1C0054F566 /* baronyCell.xib */,
+				BFEF6296163F3DCC0054F566 /* Class */,
 				BFEF6282163F3BAC0054F566 /* SBJSON */,
 				BFEF6245163F00D10054F566 /* Images */,
 				BFEF623F163F00480054F566 /* OldFiles */,

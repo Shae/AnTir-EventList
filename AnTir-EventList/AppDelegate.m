@@ -134,7 +134,7 @@
     // - FILTER  AREA  URL's  HERE  LATER - //
     
    // if (singleChoice != nil) {
-        url = [[NSURL alloc] initWithString:/*@"http://scalac.herokuapp.com/Location/Tir%20Righ/Lions%20Gate"*/ @"http://scalac.herokuapp.com"]; //url for all events
+        url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com"]; //url for all events
         request = [[NSURLRequest alloc] initWithURL:url];
         
         if (request != nil)
@@ -154,7 +154,7 @@
         eventObject = [[NSDictionary alloc] init]; // setup holding area for Event Objects
     
     if (jsonString != nil) {
-         NSLog(@"Successful jsonString pull. Starting Parse!");
+         NSLog(@"Successful jsonString pull. STARTING PARSE");
         eventObject = [parser objectWithString:jsonString error:nil];
     }else{
         NSLog(@"jsonString is EMPTY");
@@ -162,10 +162,10 @@
     
         numItems = [eventObject count];
         //NSLog(@"%@", eventObject); //works
-        NSLog(@"NUM ITEMS IN EVENT OBJECT = %i", numItems); //works
+        //NSLog(@"NUM ITEMS IN EVENT OBJECT = %i", numItems); //works
         eventArray = [[NSMutableArray alloc] init];
         
-    NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
+        NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
     
 //////////////////////////////////////////////////////////
 //  BROKEN - START WORK HERE //
@@ -174,32 +174,26 @@
 // NOTES:  I don't think the data is in key value pairs any more.  Find a way to prove one way or the other.  "KEY" pulls the whole item and it looks like it has key / value pairs inside, but it may be one giant string now. :(
     
     //EXAMPLE KEY PULL
-  /*
-   // description = "Event URL: http://antir.sca.org/Upcoming/?Event_ID=3050\nURL:http://www.lionsgate.antir.sca.org/\n\n\n... Site Information Port Kells Community Centre 18918 - 88 Ave Surrey, BC V4N 5T2";
-    
-   // end = "2012-12-01T00:00:00.000Z";
-    
-   // location = "Lions Gate -> Tir Righ -> An Tir";
-    
-   // params =     ( );
-    
-   // start = "2012-12-01T00:00:00.000Z";
-    
-   // summary = "Baroness's Memorial Tournament";
-    
-   // type = VEVENT;
-    
-   // uid = antir3050;
-    
-   // url = "http://www.lionsgate.antir.sca.org/";
-    */
+                  /*
+                   // description = "Event URL: 
+                            http://antir.sca.org/Upcoming/?Event_ID=3050\nURL:http://www.lionsgate.antir.sca.org/\n\n\n... 
+                            Site Information Port Kells Community Centre 18918 - 88 Ave Surrey, BC V4N 5T2";
+                   // end = "2012-12-01T00:00:00.000Z";
+                   // location = "Lions Gate -> Tir Righ -> An Tir";
+                   // params =     ( );
+                   // start = "2012-12-01T00:00:00.000Z";
+                   // summary = "Baroness's Memorial Tournament";
+                   // type = VEVENT;
+                   // uid = antir3050;
+                   // url = "http://www.lionsgate.antir.sca.org/";
+                    */
     
     
         for (id key in eventObject)
         {
             
             NSString *currentKey = key;
-            //NSLog(@"CURRENT KEY %@", currentKey);
+            NSLog(@"CURRENT KEY %@", currentKey);
             NSDictionary *currentObj = [eventObject objectForKey:currentKey];
             [eventArray addObject:currentObj];
             //NSLog(@"%@", [currentObj description]);

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "eventClass.h"
 
 @interface eventFactory : NSObject
+
++(eventClass*)buildEvent:(NSInteger)eventEnum;
 
 @end

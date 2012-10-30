@@ -18,6 +18,7 @@
 #import "eventClass.h"
 #import "kingEventLVL.h"
 #import "eventClass.h"
+#import "eventFactory.h"
 
 
 
@@ -94,19 +95,6 @@
 }
 
 
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-}
-*/
-
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
-{
-}
-*/
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -136,67 +124,110 @@
 //BUILD DATA//
 /////////////////////////
 
+// NOTES:  The main url pull and factory work for the objects.
 -(void)buildEventData
 {
-    
+    NSLog(@"BUILD EVENT DATA");
     numItems = 0;
-    stuff = [[NSMutableArray alloc] init];
+    //stuff = [[NSMutableArray alloc] init];
     
-    url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/index"];
-    request = [[NSURLRequest alloc] initWithURL:url];
+    // - FILTER  AREA  URL's  HERE  LATER - //
     
-    if (request != nil)
-    {
-        connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        requestedData = [NSMutableData data];
-        //NSLog(@"%@", requestData);
-    }
-    
-    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:nil];
-    
-    // Create SBJSON object to parse JSON
-    SBJSON *parser = [[SBJSON alloc] init];
-    
-    // parse the JSON string into an object - assuming json_string is a NSString of JSON data
-    eventObject = [[NSDictionary alloc] init];
-    eventObject = [parser objectWithString:jsonString error:nil];
-    
-    numItems = [eventObject count];
-    //NSLog(@"%@", eventObject); //works
-    NSLog(@"%i", numItems); //works
-    eventArray = [[NSMutableArray alloc] init];
-    
-    
-    
-    for (id key in eventObject)
-    {
+   // if (singleChoice != nil) {
+        url = [[NSURL alloc] initWithString:/*@"http://scalac.herokuapp.com/Location/Tir%20Righ/Lions%20Gate"*/ @"http://scalac.herokuapp.com"]; //url for all events
+        request = [[NSURLRequest alloc] initWithURL:url];
         
-        NSString *currentKey = key;
-        NSDictionary *currentObj = [eventObject objectForKey:currentKey];
-        [eventArray addObject:currentObj];
-        //NSLog(@"%@", currentObj);
-        //NSLog(@"%@", [currentObj objectForKey:@"summary"]);
-        
-        ////////    FACTORY CALL    /////////////////
-        normEventLVL *newEvent = (normEventLVL*) [eventClass buildEvent:1];
-        [newEvent setEventName: [currentObj objectForKey:@"summary"]];
-        [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
-        [newEvent setEventDescription: [currentObj objectForKey:@"description"]];
-        [newEvent setEventURL: [currentObj objectForKey:@"url"]];
-        [newEvent setStartDate: [currentObj objectForKey:@"start"]];
-        [newEvent setEndDate: [currentObj objectForKey:@"end"]];
-        [newEvent setHost: [currentObj objectForKey:@"location"]];
-        
-        ////// Remove events without names ////
-        if ([currentObj objectForKey:@"summary"] != nil) {
-            [eventClassObjArray addObject:newEvent];
+        if (request != nil)
+        {
+            connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            requestedData = [NSMutableData data];
+            //NSLog(@"%@", requestData);
+            NSLog(@"URL Request is not empty.  Starting Request");
         }
+        
+        NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:nil];
+        
+        // Create SBJSON object to parse JSON
+        SBJSON *parser = [[SBJSON alloc] init];
+        
+        // parse the JSON string into an object - assuming json_string is a NSString of JSON data
+        eventObject = [[NSDictionary alloc] init]; // setup holding area for Event Objects
+    
+    if (jsonString != nil) {
+         NSLog(@"Successful jsonString pull. Starting Parse!");
+        eventObject = [parser objectWithString:jsonString error:nil];
+    }else{
+        NSLog(@"jsonString is EMPTY");
     }
-    NSLog(@"%i", [eventClassObjArray count]);
+    
+        numItems = [eventObject count];
+        //NSLog(@"%@", eventObject); //works
+        NSLog(@"NUM ITEMS IN EVENT OBJECT = %i", numItems); //works
+        eventArray = [[NSMutableArray alloc] init];
+        
+    NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
+    
+//////////////////////////////////////////////////////////
+//  BROKEN - START WORK HERE //
+/////////////////////////////////////////////////////////
+    
+// NOTES:  I don't think the data is in key value pairs any more.  Find a way to prove one way or the other.  "KEY" pulls the whole item and it looks like it has key / value pairs inside, but it may be one giant string now. :(
+    
+    //EXAMPLE KEY PULL
+  /*
+   // description = "Event URL: http://antir.sca.org/Upcoming/?Event_ID=3050\nURL:http://www.lionsgate.antir.sca.org/\n\n\n... Site Information Port Kells Community Centre 18918 - 88 Ave Surrey, BC V4N 5T2";
+    
+   // end = "2012-12-01T00:00:00.000Z";
+    
+   // location = "Lions Gate -> Tir Righ -> An Tir";
+    
+   // params =     ( );
+    
+   // start = "2012-12-01T00:00:00.000Z";
+    
+   // summary = "Baroness's Memorial Tournament";
+    
+   // type = VEVENT;
+    
+   // uid = antir3050;
+    
+   // url = "http://www.lionsgate.antir.sca.org/";
+    */
+    
+    
+        for (id key in eventObject)
+        {
+            
+            NSString *currentKey = key;
+            //NSLog(@"CURRENT KEY %@", currentKey);
+            NSDictionary *currentObj = [eventObject objectForKey:currentKey];
+            [eventArray addObject:currentObj];
+            //NSLog(@"%@", [currentObj description]);
+            NSLog(@"%@", [currentObj objectForKey:@"summary"]);
+            
+            ////////    FACTORY CALL    /////////////////
+            normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];    
+            [newEvent setEventName: [currentObj objectForKey:@"summary"]];
+           // [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
+            //[newEvent setEventDescription: [currentObj objectForKey:@"description"]];
+           // [newEvent setEventURL: [currentObj objectForKey:@"url"]];
+            //[newEvent setStartDate: [currentObj objectForKey:@"start"]];
+           // [newEvent setEndDate: [currentObj objectForKey:@"end"]];
+           // [newEvent setHost: [currentObj objectForKey:@"location"]];
+            
+            ////// Remove events without names ////
+            if ([currentObj objectForKey:@"summary"] != nil) {
+                [eventClassObjArray addObject:newEvent];
+            }
+        }
+        NSLog(@"%i", [eventClassObjArray count]);
+    //}
+    
 }
 
  - (void) hideTabBar:(UITabBarController *) tabbarcontroller
      {
+         NSLog(@"HIDE TAB BAR");
      for(UIView *view in tabbarcontroller.view.subviews)
      {
          if([view isKindOfClass:[UITabBar class]])
@@ -209,6 +240,7 @@
 
      - (void) showTabBar:(UITabBarController *) tabbarcontroller
      {
+         NSLog(@"SHOW TAB BAR");
          [UIView beginAnimations:nil context:NULL];
          [UIView setAnimationDuration:0.5];
          for(UIView *view in tabbarcontroller.view.subviews)

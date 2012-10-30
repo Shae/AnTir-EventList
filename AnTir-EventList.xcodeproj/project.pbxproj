@@ -51,7 +51,6 @@
 		BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62B2163F4A1C0054F566 /* baronyCell.xib */; };
 		BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62BC163F97400054F566 /* AreaListViewController.m */; };
 		BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62BD163F97400054F566 /* AreaListViewController.xib */; };
-		BFEF62C5163FA1020054F566 /* BaronyViewController in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62C4163FA1020054F566 /* BaronyViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,7 +122,6 @@
 		BFEF62BB163F973F0054F566 /* AreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaListViewController.h; sourceTree = "<group>"; };
 		BFEF62BC163F97400054F566 /* AreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaListViewController.m; sourceTree = "<group>"; };
 		BFEF62BD163F97400054F566 /* AreaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaListViewController.xib; sourceTree = "<group>"; };
-		BFEF62C4163FA1020054F566 /* BaronyViewController */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaronyViewController; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +180,6 @@
 				BFEF6269163F2B540054F566 /* EventsViewController.h */,
 				BFEF626A163F2B540054F566 /* EventsViewController.m */,
 				BFEF626B163F2B540054F566 /* EventsViewController.xib */,
-				BFEF62C4163FA1020054F566 /* BaronyViewController */,
 				BFEF627F163F3AC10054F566 /* EventCell.h */,
 				BFEF6280163F3AC10054F566 /* EventCell.m */,
 				BFEF6281163F3AC10054F566 /* EventCell.xib */,
@@ -381,7 +378,6 @@
 				BFEF62A2163F3DEC0054F566 /* kingEventLVL.m in Sources */,
 				BFEF62B1163F49F40054F566 /* baronyCell.m in Sources */,
 				BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */,
-				BFEF62C5163FA1020054F566 /* BaronyViewController in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

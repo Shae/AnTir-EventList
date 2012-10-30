@@ -34,24 +34,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    // Run method from app delegate for JSON pull.
-    [appDelegate buildEventData];
-
-     /*
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.defaultArea == nil) {
-        BaronyViewController* modalTableView = [[BaronyViewController alloc] initWithNibName:nil bundle:nil];
-        [self presentViewController:modalTableView animated:YES completion: nil];
-            }
-     */
     
-    // Sets up custom cell for use
+//////////////////////////
+// RUN BUILD //
+/////////////////////////
+    
+// NOTES: Runs method from app delegate for URL JSON pull.
+    [self loadEventData];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate buildEventData];
+    
+///////////////////////////
+// CELL SET UP//
+//////////////////////////
+  
+// NOTES:  New stype for Cell prep
     [eventTableView registerNib:[UINib nibWithNibName:@"EventCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"EventCell"];
     
+///////////////////////////
+// pLIST STUFF //
+///////////////////////////
     
-#pragma plist stuff
+// NOTES: Building the pList path and prepping for use
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
     NSString *documentsDirectory = [paths objectAtIndex:0]; //2
@@ -67,87 +72,116 @@
         NSLog(@"The plist was located at this path");
     }
     
-    ///// READ pLIST DATA ///////
+////////////////////////////////////
+// READ pLIST DATA //
+///////////////////////////////////
+    
+// NOTES:  This is part of the READ from SAVE feature
     NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     
-    //load from savedStock example int value
     int value;
     value = [[savedStock objectForKey:@"value"] intValue];
     data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    NSLog(@"DATA : %@", data);
-    /*
-     //////////// WRITE pLIST DATA ////////////////
-     //here add elements to data file and write data to file
+    //NSLog(@"DATA : %@", data);
+    
+    
+     
+//////////////////////////////////////
+// WRITE pLIST DATA //
+/////////////////////////////////////
+/*
+ // NOTES:  Skipped this piece for now.  This is part of the SAVE feature
      int savevalue = 5;
      [data setObject:[NSNumber numberWithInt:savevalue] forKey:@"value"];
      [data writeToFile: path atomically:YES];
-     NSLog(@"Write to pList" ); */
+     NSLog(@"Write to pList" );
+*/    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+/////////////////////////////////////////////////
+// TABLE VIEW FUNCTIONS //
+////////////////////////////////////////////////
+
+
+// NOTES:  Will need to add sections to this later.  Split by month / year
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"sections");
     return 0;
 }
 
+
+// NOTES: Max row in the table length
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return [appDelegate.eventClassObjArray count];
-    NSLog(@"data count = %i", [data count]);
+    
+    NSLog(@"MAX ROWS = %i", [appDelegate.eventClassObjArray count]);
 }
 
+
+// NOTES:  What goes in each row (I went ninja here and sliced and diced to get the data bits.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    static NSString *CellIdentifier = @"EventCell";  //remember: Need to match registerNib name!!!!
+    static NSString *CellIdentifier = @"EventCell";  //REMEMBER: Need to match registerNib name!!!!
     EventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell != nil)
     {
+        // NOTE: Slicing for Norm Events only.  Will need to add Kingdom if data gets added to calendars
         normEventLVL*myItem = [appDelegate.eventClassObjArray objectAtIndex:indexPath.row];
-        /////////////// EVENT Location ///////////////////
+        
+        /////////////// EVENT - Location ///////////////////
         NSString *hostALL = (NSString*)myItem.getHost;
         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
         //NSArray* host2 = [host1 objectAtIndex: 0];
         NSString *host3 = [host1 objectAtIndex: 0];
-        
         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
-        ///////////// EVENT Start Date ///////////
+        
+        ///////////// EVENT - Start Date ///////////
         NSString *startdate = (NSString*)myItem.getStartDate;
         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString* start3 = [start2 objectAtIndex: 1];
-        NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@", [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
+        NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
+                                  [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
         
-        ////////// EVENT End Date ////////////
+        ////////// EVENT - End Date ////////////
         NSString *enddate = (NSString*)myItem.getEndDate;
         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString *end3 = [end2 objectAtIndex: 1];
+        NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",
+                                [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
         
-        NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",[self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
-        
+        ////////// CELL - Assign Label Data  ////////////
         cell.mainLabel.text = myItem.getEventName;
         cell.subLabel.text = hostCut;
         cell.startDate.text = cutStartDate;
         
-        //Check to see if end date and start date are the same day
+       ////////// CELL - Date or Date range check ////////////
         if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
             cell.endDate.text = [ NSString stringWithFormat:@"to    %@", cutEndDate];
         }else{
             cell.endDate.text = nil;
         }
-    }    
+    }
+    
     return cell;
 }
 
+//////////////////////////////////////////////////////////
+// CONVERT MONTH FUNCTIONS //
+/////////////////////////////////////////////////////////
+
+// NOTES: Sloppy but it does the trick.  No Errors.  Find better answer later.
 -(NSString*)dateConvert: (NSString*)dateIn
 {
     if (dateIn != nil) {
@@ -189,11 +223,17 @@
         }
     }
     if (dateIn == nil) {
-        return @"NIL";
+        return @"No Data in dateIN for convert MONTH function";
     }
-    return @"error";
+    return @"error in dateIN for convert MONTH function";
 }
 
+
+////////////////////////////////////////////////////
+// CONVERT DAY FUNCTIONS //
+////////////////////////////////////////////////////
+
+// NOTES: Sloppy but it does the trick.  No Errors.  Find better answer later.
 -(NSString*)dayConvert: (NSString*)dateIn
 {
     if (dateIn != nil) {
@@ -258,7 +298,7 @@
             return @"20th";
         }
         if ([dateIn isEqualToString:@"21"]) {
-            return @"20st";
+            return @"21st";
         }
         if ([dateIn isEqualToString:@"22"]) {
             return @"22nd";
@@ -292,24 +332,33 @@
         }
     }
     if (dateIn == nil) {
-        return @"NIL";
+        return @"No Data in dateIN for convert DAY function";
     }
-    return @"error";
+    return @"error in dateIN for convert DAY function";
 }
 
+
+/////////////////////////////////
+// START SPINNER //
+////////////////////////////////
+
+//NOTES:  Start spinner here.  Stops under code for load complete.
 -(void)loadEventData
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    areaName.text = appDelegate.defaultArea;
-    
-    
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    areaName.text = appDelegate.defaultArea;  // for the area label on the load screen
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+               UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 210);
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
     [spinner startAnimating];
 }
 
+
+///////////////////////////////////////////////////
+// LOADING SPLASH SCREEN //
+///////////////////////////////////////////////////
 
 
 @end

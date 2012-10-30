@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
     __weak NSString *defaultArea;
-    __strong NSMutableArray *eventArray;
+    NSMutableArray *eventArray;
     
     BOOL autoUpdate;
     float tabBarStartCoords;
@@ -25,7 +25,7 @@
     NSMutableData *requestedData;
     NSInteger numItems;
     NSDictionary *eventObject;
-    NSMutableArray *stuff;
+    //NSMutableArray *stuff;
     UITabBarController *tabBarController;
     __weak NSString *singleChoice;
 

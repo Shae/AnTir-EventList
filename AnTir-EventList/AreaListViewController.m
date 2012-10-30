@@ -71,7 +71,7 @@
     if (cell != nil)
     {
         cell.baronyLabel.text = [areaArray2 objectAtIndex:indexPath.row];
-        NSLog(@"%@", [areaArray2 objectAtIndex:indexPath.row]);
+        //NSLog(@"%@", [areaArray2 objectAtIndex:indexPath.row]);  // NSLog the areas
     }
     return cell;
 

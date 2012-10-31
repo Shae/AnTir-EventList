@@ -23,7 +23,7 @@
 
 
 @implementation AppDelegate
-@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice;
+@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -151,7 +151,7 @@
         SBJSON *parser = [[SBJSON alloc] init];
         
         // parse the JSON string into an object - assuming json_string is a NSString of JSON data
-        eventObject = [[NSDictionary alloc] init]; // setup holding area for Event Objects
+        eventObject = [[NSArray alloc] init]; // setup holding area for Event Objects
     
     if (jsonString != nil) {
          NSLog(@"Successful jsonString pull. STARTING PARSE");
@@ -189,30 +189,32 @@
                     */
     
     
-        for (id key in eventObject)
-        {
-            
-            NSString *currentKey = key;
-            NSLog(@"CURRENT KEY %@", currentKey);
-            NSDictionary *currentObj = [eventObject objectForKey:currentKey];
-            [eventArray addObject:currentObj];
-            //NSLog(@"%@", [currentObj description]);
-            NSLog(@"%@", [currentObj objectForKey:@"summary"]);
-            
-            ////////    FACTORY CALL    /////////////////
-            normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];    
-            [newEvent setEventName: [currentObj objectForKey:@"summary"]];
-           // [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
-            //[newEvent setEventDescription: [currentObj objectForKey:@"description"]];
-           // [newEvent setEventURL: [currentObj objectForKey:@"url"]];
-            //[newEvent setStartDate: [currentObj objectForKey:@"start"]];
-           // [newEvent setEndDate: [currentObj objectForKey:@"end"]];
-           // [newEvent setHost: [currentObj objectForKey:@"location"]];
-            
-            ////// Remove events without names ////
-            if ([currentObj objectForKey:@"summary"] != nil) {
-                [eventClassObjArray addObject:newEvent];
+
+            for (int i=0; i<[eventObject count]; i++)
+            {
+
+               // NSLog(@"CURRENT KEY %@", currentKey);
+                NSDictionary *currentObj = [eventObject objectAtIndex:i];
+                [eventArray addObject:currentObj];  //NSMutableArray
+                //NSLog(@"%@", [currentObj description]);
+                NSLog(@"%@", [currentObj objectForKey:@"summary"]);
+                
+                ////////    FACTORY CALL    /////////////////
+                normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];    
+                [newEvent setEventName: [currentObj objectForKey:@"summary"]];
+                [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
+                [newEvent setEventDescription: [currentObj objectForKey:@"description"]];
+                [newEvent setEventURL: [currentObj objectForKey:@"url"]];
+                [newEvent setStartDate: [currentObj objectForKey:@"start"]];
+                [newEvent setEndDate: [currentObj objectForKey:@"end"]];
+                [newEvent setHost: [currentObj objectForKey:@"location"]];
+                
+                ////// Remove events without names ////
+                if (newEvent != nil) {
+                    [eventClassObjArray addObject:newEvent];
+                    //NSLog(@"newEvent Obj added to eventClassObjArray");
             }
+            
         }
         NSLog(@"%i", [eventClassObjArray count]);
     //}

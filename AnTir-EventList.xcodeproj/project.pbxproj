@@ -51,6 +51,8 @@
 		BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62B2163F4A1C0054F566 /* baronyCell.xib */; };
 		BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF62BC163F97400054F566 /* AreaListViewController.m */; };
 		BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62BD163F97400054F566 /* AreaListViewController.xib */; };
+		BFEF62E01640899C0054F566 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF62DF1640899B0054F566 /* EventKit.framework */; };
+		BFEF62E61640C2500054F566 /* twitOutline.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF62E51640C2500054F566 /* twitOutline.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +124,8 @@
 		BFEF62BB163F973F0054F566 /* AreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaListViewController.h; sourceTree = "<group>"; };
 		BFEF62BC163F97400054F566 /* AreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaListViewController.m; sourceTree = "<group>"; };
 		BFEF62BD163F97400054F566 /* AreaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AreaListViewController.xib; sourceTree = "<group>"; };
+		BFEF62DF1640899B0054F566 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		BFEF62E51640C2500054F566 /* twitOutline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitOutline.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEF62E01640899C0054F566 /* EventKit.framework in Frameworks */,
 				BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */,
 				BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */,
 				BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */,
@@ -158,6 +163,7 @@
 		BFEF620D163EFE6D0054F566 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFEF62DF1640899B0054F566 /* EventKit.framework */,
 				BFEF620E163EFE6D0054F566 /* UIKit.framework */,
 				BFEF6210163EFE6D0054F566 /* Foundation.framework */,
 				BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */,
@@ -225,6 +231,7 @@
 		BFEF6245163F00D10054F566 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BFEF62E51640C2500054F566 /* twitOutline.png */,
 				BFEF6252163F0C9C0054F566 /* NewANTIRlogo.png */,
 				BFEF6250163F01000054F566 /* SCA-LRG-Image.png */,
 				BFEF624E163F00FB0054F566 /* map.png */,
@@ -350,6 +357,7 @@
 				BFEF62A4163F3EFA0054F566 /* data.plist in Resources */,
 				BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */,
 				BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */,
+				BFEF62E61640C2500054F566 /* twitOutline.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +493,7 @@
 				BFEF623E163EFE6D0054F566 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -48,7 +48,7 @@
 // CELL SET UP//
 //////////////////////////
   
-// NOTES:  New stype for Cell prep
+// NOTES:  New type for Cell prep
     [eventTableView registerNib:[UINib nibWithNibName:@"EventCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"EventCell"];
     

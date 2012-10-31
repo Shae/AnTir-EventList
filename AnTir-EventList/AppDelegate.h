@@ -24,9 +24,10 @@
     NSData *myData;
     NSMutableData *requestedData;
     NSInteger numItems;
-    NSDictionary *eventObject;
+    NSArray *eventObject;
     //NSMutableArray *stuff;
     UITabBarController *tabBarController;
+    __weak NSString *calendarChoice;
     __weak NSString *singleChoice;
 
 }
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) UIViewController *viewController;
 @property (weak, nonatomic) NSString *defaultArea;
 @property (weak, nonatomic) NSString *singleChoice;
+@property (weak, nonatomic) NSString *calendarChoice;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSMutableArray *eventClassObjArray;
 @property (nonatomic) BOOL autoUpdate;

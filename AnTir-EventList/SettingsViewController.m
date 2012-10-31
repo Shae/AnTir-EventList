@@ -7,12 +7,16 @@
 //
 
 #import "SettingsViewController.h"
+#import "AppDelegate.h"
+#import <EventKit/EventKit.h>
+
 
 @interface SettingsViewController ()
 
 @end
 
 @implementation SettingsViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,14 +30,120 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //arrayNo = [[NSMutableArray alloc] init];
+    eventStore = [[EKEventStore alloc] init];
+    calendarList = [[NSMutableArray alloc]init];
+    [UIView beginAnimations:nil context:nil];
+    calView.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    [UIView commitAnimations];
+    
+    
+    NSLog(@"EVENT STORE DATA = %@", eventStore);
+    if (eventStore != nil)
+    {
+        NSLog(@"CALENDAR STORE HAS DATA");
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+         {
+             if (granted)
+             {
+                 NSLog(@"CALENDAR ACCESS HAS BEEN GRANTED");
+                 calendars = [eventStore calendarsForEntityType:EKEntityTypeEvent];
+                 if (calendars != nil)
+                 {
+                     NSLog(@"NUMBER OF CALENDARS = %i", [calendars count]);
+                     for (int i=0; i<[calendars count]; i++)
+                     {
+                         NSLog(@"for loop in calendar");
+                         EKCalendar *calendar2 = [calendars objectAtIndex:i];
+                         NSLog(@"%@", calendar2.title);
+                         //NSLog(@"%@", calendar2.description);
+                         NSString *name = calendar2.title;
+                         
+                         [calendarList addObject:name];
+                         NSLog(@"build count = %i", [calendarList count]);
+                         [pickerView reloadAllComponents];  // reloads all picker components
+                      }
+                }
+             }
+         }];
+     //[pickerView selectRow:1 inComponent:0 animated:NO];
+    }
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+{
+    NSLog(@"ROWS in CALENDAR ROW Function = %i", [calendarList count]);
+    return [calendarList count];
+}
+
+-(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSLog(@"ROW %i", row);
+    return [calendarList objectAtIndex:row];
+}
+
+
+- (NSInteger)selectedRowInComponent:(NSInteger)component
+{
+    //NSLog(@"%i", component);
+    return 1;
+}
+
+
+- (void)pickerView:(UIPickerView *)pV didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    //setting the appDelegate for settings choice
+    appDelegate.calendarChoice = [calendars objectAtIndex:row];
+    
+    
+}
+
+
+
+-(IBAction)segmentbutton:(id)sender {
+    
+    if (segmentController.selectedSegmentIndex == 0) {
+        NSLog(@"Button 1 Was Selected");
+        [UIView beginAnimations:nil context:nil];
+        calView.frame = CGRectMake(0.0f, 100.0f, calView.frame.size.width, calView.frame.size.height);
+        [UIView commitAnimations];
+    }
+    if (segmentController.selectedSegmentIndex == 1) {
+        NSLog(@"Button 2 Was Selected");
+    }
+    if (segmentController.selectedSegmentIndex == 2) {
+        NSLog(@"Button 3 Was Selected");
+    }
+    if (segmentController.selectedSegmentIndex == 3) {
+        NSLog(@"Button 4 Was Selected");
+    }
+    if (segmentController.selectedSegmentIndex == 4) {
+        NSLog(@"Button 5 Was Selected");
+    }    
+}
+
+
 
 @end

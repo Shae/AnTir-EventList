@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF14B0211641D33200BD9E50 /* CustomEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B0201641D33200BD9E50 /* CustomEventCell.m */; };
+		BF14B0231641D34900BD9E50 /* CustomEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0221641D34900BD9E50 /* CustomEventCell.xib */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
@@ -56,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF14B01F1641D33200BD9E50 /* CustomEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomEventCell.h; path = ../CustomEventCell.h; sourceTree = "<group>"; };
+		BF14B0201641D33200BD9E50 /* CustomEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomEventCell.m; path = ../CustomEventCell.m; sourceTree = "<group>"; };
+		BF14B0221641D34900BD9E50 /* CustomEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomEventCell.xib; path = ../CustomEventCell.xib; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,9 +98,6 @@
 		BFEF6279163F2E2F0054F566 /* MemoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoriesViewController.m; sourceTree = "<group>"; };
 		BFEF627A163F2E2F0054F566 /* MemoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoriesViewController.xib; sourceTree = "<group>"; };
 		BFEF627D163F2ED00054F566 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		BFEF627F163F3AC10054F566 /* EventCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
-		BFEF6280163F3AC10054F566 /* EventCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
-		BFEF6281163F3AC10054F566 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		BFEF6283163F3BC70054F566 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		BFEF6284163F3BC70054F566 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		BFEF6285163F3BC70054F566 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -143,6 +145,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF14B0191641D1FA00BD9E50 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +183,7 @@
 		BFEF6214163EFE6D0054F566 /* AnTir-EventList */ = {
 			isa = PBXGroup;
 			children = (
+				BF14B0191641D1FA00BD9E50 /* New Group */,
 				BFEF621D163EFE6D0054F566 /* AppDelegate.h */,
 				BFEF621E163EFE6D0054F566 /* AppDelegate.m */,
 				BFEF6240163F00840054F566 /* HomepageViewController.h */,
@@ -185,9 +195,9 @@
 				BFEF6269163F2B540054F566 /* EventsViewController.h */,
 				BFEF626A163F2B540054F566 /* EventsViewController.m */,
 				BFEF626B163F2B540054F566 /* EventsViewController.xib */,
-				BFEF627F163F3AC10054F566 /* EventCell.h */,
-				BFEF6280163F3AC10054F566 /* EventCell.m */,
-				BFEF6281163F3AC10054F566 /* EventCell.xib */,
+				BF14B01F1641D33200BD9E50 /* CustomEventCell.h */,
+				BF14B0201641D33200BD9E50 /* CustomEventCell.m */,
+				BF14B0221641D34900BD9E50 /* CustomEventCell.xib */,
 				BFEF6273163F2E140054F566 /* SettingsViewController.h */,
 				BFEF6274163F2E140054F566 /* SettingsViewController.m */,
 				BFEF6275163F2E140054F566 /* SettingsViewController.xib */,
@@ -358,6 +368,7 @@
 				BFEF62B3163F4A1C0054F566 /* baronyCell.xib in Resources */,
 				BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */,
 				BFEF62E61640C2500054F566 /* twitOutline.png in Resources */,
+				BF14B0231641D34900BD9E50 /* CustomEventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +397,7 @@
 				BFEF62A2163F3DEC0054F566 /* kingEventLVL.m in Sources */,
 				BFEF62B1163F49F40054F566 /* baronyCell.m in Sources */,
 				BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */,
+				BF14B0211641D33200BD9E50 /* CustomEventCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

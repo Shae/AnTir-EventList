@@ -59,6 +59,8 @@
         [UIView commitAnimations];
         splashActive = FALSE;
         [appDelegate showTabBar:self.tabBarController];
+        
+        
     }
 
 }

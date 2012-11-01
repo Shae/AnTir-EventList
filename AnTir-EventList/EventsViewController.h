@@ -13,17 +13,15 @@
     NSMutableDictionary *data;
     NSString *path;
     UIActivityIndicatorView *spinner;
-    
+    __weak IBOutlet UILabel *areaLabel;
     __weak IBOutlet UITableView *eventTableView;
-    __weak IBOutlet UILabel *areaName;
-
-    IBOutlet UIView *loadView;
     IBOutlet UIView *eventView;
 
+    __weak IBOutlet UIImageView *BGArt;
+    __weak IBOutlet UIView *loadView;
 }
 -(NSString*)dateConvert: (NSString*)dateIn;
 -(NSString*)dayConvert: (NSString*)dateIn;
--(void)loadEventData;
 
 
 @end

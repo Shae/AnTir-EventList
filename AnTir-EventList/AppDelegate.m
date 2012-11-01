@@ -23,7 +23,7 @@
 
 
 @implementation AppDelegate
-@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice;
+@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,6 +43,8 @@
     [self.window makeKeyAndVisible];
     [self hideTabBar:tabBarController];
     
+    newDictionary = [[NSDictionary alloc] init];
+    eventClassObjArray = [[NSMutableArray alloc]init];
     ////// Retrieving Saved Settings ////////
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -105,7 +107,7 @@
     [prefs setObject:askAgain forKey:@"askAgainSAVE"];
     
     [prefs setBool: 1 /*autoUpdate*/ forKey:@"autoUpdateSAVE"];
-    eventClassObjArray = nil;
+    //eventClassObjArray = nil;
     
     // Trying to save an NSMutable array as a data object using NSKeyedArchiver
     if (favEvents != nil)
@@ -127,8 +129,32 @@
 // NOTES:  The main url pull and factory work for the objects.
 -(void)buildEventData
 {
+    
+    ///////////////////////////
+    // pLIST STUFF //
+    ///////////////////////////
+    
+    // NOTES: Building the pList path and prepping for use
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
+    path = [documentsDirectory stringByAppendingPathComponent:@"data.plist"]; //3
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path]) //4
+    {
+        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];  //5
+        [fileManager  copyItemAtPath:bundle toPath:path error:&error]; //6
+        
+        
+        
+    }else{
+        NSLog(@"The plist was located at this path");
+    }
     NSLog(@"BUILD EVENT DATA");
     numItems = 0;
+    
     //stuff = [[NSMutableArray alloc] init];
     
     // - FILTER  AREA  URL's  HERE  LATER - //
@@ -167,28 +193,6 @@
         
         NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
     
-//////////////////////////////////////////////////////////
-//  BROKEN - START WORK HERE //
-/////////////////////////////////////////////////////////
-    
-// NOTES:  I don't think the data is in key value pairs any more.  Find a way to prove one way or the other.  "KEY" pulls the whole item and it looks like it has key / value pairs inside, but it may be one giant string now. :(
-    
-    //EXAMPLE KEY PULL
-                  /*
-                   // description = "Event URL: 
-                            http://antir.sca.org/Upcoming/?Event_ID=3050\nURL:http://www.lionsgate.antir.sca.org/\n\n\n... 
-                            Site Information Port Kells Community Centre 18918 - 88 Ave Surrey, BC V4N 5T2";
-                   // end = "2012-12-01T00:00:00.000Z";
-                   // location = "Lions Gate -> Tir Righ -> An Tir";
-                   // params =     ( );
-                   // start = "2012-12-01T00:00:00.000Z";
-                   // summary = "Baroness's Memorial Tournament";
-                   // type = VEVENT;
-                   // uid = antir3050;
-                   // url = "http://www.lionsgate.antir.sca.org/";
-                    */
-    
-    
 
             for (int i=0; i<[eventObject count]; i++)
             {
@@ -197,7 +201,7 @@
                 NSDictionary *currentObj = [eventObject objectAtIndex:i];
                 [eventArray addObject:currentObj];  //NSMutableArray
                 //NSLog(@"%@", [currentObj description]);
-                NSLog(@"%@", [currentObj objectForKey:@"summary"]);
+               // NSLog(@"%@", [currentObj objectForKey:@"summary"]);
                 
                 ////////    FACTORY CALL    /////////////////
                 normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];    
@@ -209,14 +213,33 @@
                 [newEvent setEndDate: [currentObj objectForKey:@"end"]];
                 [newEvent setHost: [currentObj objectForKey:@"location"]];
                 
-                ////// Remove events without names ////
-                if (newEvent != nil) {
-                    [eventClassObjArray addObject:newEvent];
-                    //NSLog(@"newEvent Obj added to eventClassObjArray");
-            }
+                NSLog(@"NEW EVENT = %@", [newEvent getEventName]);
+                
+
+    //////////////////////////////////////////////////////////////////////////
+    //  ADD OBJECT TO ARRAY NOT WORKING //
+    //////////////////////////////////////////////////////////////////////////
+                if ([currentObj objectForKey:@"summary"] != nil) {
+                  //  [eventClassObjArray addObject:  newEvent];
+                   // NSLog(@"%i", [eventClassObjArray count]);
+                }
+                
             
+                //////////////////////////////////////
+                // WRITE pLIST DATA //
+                /////////////////////////////////////
+                
+                ////NOT WORKING
+                
+                 // NOTES:  Skipped this piece for now.  This is part of the SAVE feature
+                 
+                [data setObject:newEvent forKey:(id) [newEvent getEventCode]];
+                 NSLog(@"%i", [data count]);
+                 [data writeToFile: path atomically:YES];
+                 NSLog(@"Write to pList" );
+                 
         }
-        NSLog(@"%i", [eventClassObjArray count]);
+        NSLog(@"Event obj count again %i", [eventClassObjArray count]);
     //}
     
 }

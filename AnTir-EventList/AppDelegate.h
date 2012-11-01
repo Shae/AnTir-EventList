@@ -25,10 +25,15 @@
     NSMutableData *requestedData;
     NSInteger numItems;
     NSArray *eventObject;
+    __weak NSString *areaSelection;
     //NSMutableArray *stuff;
     UITabBarController *tabBarController;
     __weak NSString *calendarChoice;
     __weak NSString *singleChoice;
+    NSMutableArray *eventClassObjArray;
+    NSMutableDictionary *data;
+    NSString *path;
+    NSDictionary *newDictionary;
 
 }
 @property (strong, nonatomic) UIWindow *window;
@@ -37,6 +42,7 @@
 @property (strong, nonatomic) UIViewController *viewController;
 @property (weak, nonatomic) NSString *defaultArea;
 @property (weak, nonatomic) NSString *singleChoice;
+@property (weak, nonatomic) NSString *areaSelection;
 @property (weak, nonatomic) NSString *calendarChoice;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSMutableArray *eventClassObjArray;

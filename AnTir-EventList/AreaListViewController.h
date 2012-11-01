@@ -13,7 +13,10 @@
     NSMutableArray *areaArray2;
     IBOutlet UITableView *AreaTableView;
     NSString *selection;
+
+
 }
+
 
 
 @end

@@ -1,15 +1,16 @@
 //
-//  EventCell.m
+//  CustomEventCell.m
 //  AnTir-EventList
 //
-//  Created by Shae Klusman on 10/29/12.
+//  Created by Shae Klusman on 10/31/12.
 //  Copyright (c) 2012 Shae Klusman. All rights reserved.
 //
 
-#import "EventCell.h"
+#import "CustomEventCell.h"
 
-@implementation EventCell
+@implementation CustomEventCell
 @synthesize mainLabel, subLabel, startDate, endDate;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

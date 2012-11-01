@@ -7,7 +7,7 @@
 //
 
 #import "EventsViewController.h"
-#import "EventCell.h"
+#import "CustomEventCell.h"
 #import "AppDelegate.h"
 #import "normEventLVL.h"
 #import "kingEventLVL.h"
@@ -35,23 +35,37 @@
 {
     [super viewDidLoad];
     
-//////////////////////////
-// RUN BUILD //
-/////////////////////////
-    
-// NOTES: Runs method from app delegate for URL JSON pull.
-    [self loadEventData];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate buildEventData];
+    areaLabel.text = appDelegate.areaSelection;
+    
+    
+    /////////////////////
+    // SPINNER //
+    ////////////////////
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+               UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 210);
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    
+    
+    ///////////////////
+    // BG ART //
+    //////////////////
+    if ([appDelegate.areaSelection isEqualToString:@"-ALL  AREAS-"])
+    {
+        BGArt.image = [UIImage imageNamed:@"SCA-LRG-Image.png"];
+    }
     
 ///////////////////////////
 // CELL SET UP//
 //////////////////////////
   
 // NOTES:  New type for Cell prep
-    [eventTableView registerNib:[UINib nibWithNibName:@"EventCell" bundle:[NSBundle mainBundle]]
-         forCellReuseIdentifier:@"EventCell"];
-    
+    [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:@"CustomEventCell"];
+ /*
 ///////////////////////////
 // pLIST STUFF //
 ///////////////////////////
@@ -71,7 +85,8 @@
     }else{
         NSLog(@"The plist was located at this path");
     }
-    
+  */
+  /*
 ////////////////////////////////////
 // READ pLIST DATA //
 ///////////////////////////////////
@@ -83,7 +98,7 @@
     value = [[savedStock objectForKey:@"value"] intValue];
     data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     //NSLog(@"DATA : %@", data);
-    
+    */
     
      
 //////////////////////////////////////
@@ -98,6 +113,23 @@
 */    
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    //////////////////////////
+    // RUN BUILD //
+    /////////////////////////
+ 
+    // NOTES: Runs method from app delegate for URL JSON pull.
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+  [appDelegate buildEventData];
+  
+   [eventTableView reloadData];
+    [UIView beginAnimations:nil context:nil];
+    loadView.frame = CGRectMake(0.0f, 460.0f, loadView.frame.size.width, loadView.frame.size.height);
+    [UIView commitAnimations];
+
+      [spinner stopAnimating];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -112,7 +144,7 @@
 // NOTES:  Will need to add sections to this later.  Split by month / year
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 
@@ -120,8 +152,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    return [appDelegate.eventClassObjArray count];
-    
+    //return [appDelegate.eventClassObjArray count];
+    return  [appDelegate.eventArray count];
     NSLog(@"MAX ROWS = %i", [appDelegate.eventClassObjArray count]);
 }
 
@@ -130,23 +162,64 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    static NSString *CellIdentifier = @"EventCell";  //REMEMBER: Need to match registerNib name!!!!
-    EventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //NSLog(@"Event objects seen in the cell builder = %i", [appDelegate.eventClassObjArray count]);
+    //NSLog(@"Event ARRAY objects SEEN in the cell builder = %i", [appDelegate.eventArray count]);
+    static NSString *CellIdentifier = @"CustomEventCell";  //REMEMBER: Need to match registerNib name!!!!
+    CustomEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     
     if (cell != nil)
     {
-        // NOTE: Slicing for Norm Events only.  Will need to add Kingdom if data gets added to calendars
-        normEventLVL*myItem = [appDelegate.eventClassObjArray objectAtIndex:indexPath.row];
+        // select array item and turn it back into a dictionary object
+        NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
+        /*
+         normEventLVL*myItem = [appDelegate.eventClassObjArray objectAtIndex:indexPath.row];
+         
+///  commented out data for custom class feed//////////////
+         /////////////// EVENT - Location ///////////////////
+         NSString *hostALL = (NSString*)myItem.getHost;
+         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
+         //NSArray* host2 = [host1 objectAtIndex: 0];
+         NSString *host3 = [host1 objectAtIndex: 0];
+         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
+         
+         ///////////// EVENT - Start Date ///////////
+         NSString *startdate = (NSString*)myItem.getStartDate;
+         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
+         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+         NSString* start3 = [start2 objectAtIndex: 1];
+         NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
+         [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
+         
+         ////////// EVENT - End Date ////////////
+         NSString *enddate = (NSString*)myItem.getEndDate;
+         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
+         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+         NSString *end3 = [end2 objectAtIndex: 1];
+         NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",
+         [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
+         
+         ////////// CELL - Assign Label Data  ////////////
+         cell.mainLabel.text = myItem.getEventName;
+         cell.subLabel.text = hostCut;
+         cell.startDate.text = cutStartDate;
+         
+         ////////// CELL - Date or Date range check ////////////
+         if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
+         cell.endDate.text = [ NSString stringWithFormat:@"to    %@", cutEndDate];
+         }else{
+         cell.endDate.text = nil;
+         } */
         
         /////////////// EVENT - Location ///////////////////
-        NSString *hostALL = (NSString*)myItem.getHost;
+        NSString *hostALL = [testDict objectForKey:@"location"];
         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
         //NSArray* host2 = [host1 objectAtIndex: 0];
         NSString *host3 = [host1 objectAtIndex: 0];
         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
         
         ///////////// EVENT - Start Date ///////////
-        NSString *startdate = (NSString*)myItem.getStartDate;
+        NSString *startdate = [testDict objectForKey:@"start"];
         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString* start3 = [start2 objectAtIndex: 1];
@@ -154,7 +227,7 @@
                                   [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
         
         ////////// EVENT - End Date ////////////
-        NSString *enddate = (NSString*)myItem.getEndDate;
+        NSString *enddate = [testDict objectForKey:@"end"];
         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString *end3 = [end2 objectAtIndex: 1];
@@ -162,21 +235,21 @@
                                 [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
         
         ////////// CELL - Assign Label Data  ////////////
-        cell.mainLabel.text = myItem.getEventName;
+        cell.mainLabel.text = [testDict objectForKey:@"summary"];
         cell.subLabel.text = hostCut;
         cell.startDate.text = cutStartDate;
         
-       ////////// CELL - Date or Date range check ////////////
+        ////////// CELL - Date or Date range check ////////////
         if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
             cell.endDate.text = [ NSString stringWithFormat:@"to    %@", cutEndDate];
         }else{
             cell.endDate.text = nil;
-        }
+        } 
+
     }
     
     return cell;
 }
-
 //////////////////////////////////////////////////////////
 // CONVERT MONTH FUNCTIONS //
 /////////////////////////////////////////////////////////
@@ -338,27 +411,6 @@
 }
 
 
-/////////////////////////////////
-// START SPINNER //
-////////////////////////////////
-
-//NOTES:  Start spinner here.  Stops under code for load complete.
--(void)loadEventData
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    areaName.text = appDelegate.defaultArea;  // for the area label on the load screen
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
-               UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 210);
-    spinner.hidesWhenStopped = YES;
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
-}
-
-
-///////////////////////////////////////////////////
-// LOADING SPLASH SCREEN //
-///////////////////////////////////////////////////
 
 
 @end

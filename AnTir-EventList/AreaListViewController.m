@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "EventsViewController.h"
 
+
+
 @interface AreaListViewController ()
 
 @end
@@ -31,6 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.eventClassObjArray = nil;
+    //
     
     [AreaTableView registerNib:[UINib nibWithNibName:@"baronyCell" bundle:[NSBundle mainBundle]]
       forCellReuseIdentifier:@"baronyCell"];
@@ -74,53 +79,64 @@
         //NSLog(@"%@", [areaArray2 objectAtIndex:indexPath.row]);  // NSLog the areas
     }
     return cell;
-
 }
 
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.areaSelection = [areaArray2 objectAtIndex:indexPath.row];  //send selection to delegate
     
-    selection = [areaArray2 objectAtIndex:indexPath.row];
-    
-   /* if (appDelegate.defaultArea == nil)
-    {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Save Location Choice to Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Save to Settings", @"Not Now", nil];
-        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-        [actionSheet showInView:self.view];
-    }else{
-        NSLog(@"%@", selection);  //NSLog selection, sets "selection" it in the actionSheet.
-    }*/
-    
-    EventsViewController * myEventList = [[EventsViewController alloc] init];
-    [self.navigationController pushViewController:myEventList animated:YES];
+        NSLog(@" area selected = %@", [areaArray2 objectAtIndex:indexPath.row]);
+    //[appDelegate buildEventData];
+    EventsViewController * newScreen = [[EventsViewController alloc] init];
+    [self.navigationController pushViewController:newScreen animated:YES];
 }
 
+
+/////////////////////////////////////
+// CODE LEFTOVERS //
+/////////////////////////////////////
+
+//ACTIONSHEET
+
+//AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+/* if (appDelegate.defaultArea == nil)
+ {
+ UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Save Location Choice to Settings?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Save to Settings", @"Not Now", nil];
+ actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+ [actionSheet showInView:self.view];
+ }else{
+ NSLog(@"%@", selection);  //NSLog selection, sets "selection" it in the actionSheet.
+ }*/
+
+//ACTIONSHEET
 
 /*
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];  NSLog(@"clickedButtonAtIndex");
-    if  (buttonIndex == 0)
-    {
-        NSLog(@" Index 0");
-        appDelegate.defaultArea = selection;
-        appDelegate.singleChoice = selection;
-        EventsViewController * myEventList = [[EventsViewController alloc] initWithNibName:@"EventsViewController" bundle:nil];
-        [myEventList setModalTransitionStyle: UIModalTransitionStyleCrossDissolve];
-        
-    }
-    if (buttonIndex == 1)
-    {
-        NSLog(@" Index 1");
-        appDelegate.singleChoice = selection;
-        
-    }
-    if (buttonIndex == 2)
-    {
-        NSLog(@" Default kingdom save, Canceled");
-    }
-}
-*/
+ -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+ {
+ AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];  NSLog(@"clickedButtonAtIndex");
+ if  (buttonIndex == 0)
+ {
+ NSLog(@" Index 0");
+ appDelegate.defaultArea = selection;
+ appDelegate.singleChoice = selection;
+ EventsViewController * myEventList = [[EventsViewController alloc] initWithNibName:@"EventsViewController" bundle:nil];
+ [myEventList setModalTransitionStyle: UIModalTransitionStyleCrossDissolve];
+ 
+ }
+ if (buttonIndex == 1)
+ {
+ NSLog(@" Index 1");
+ appDelegate.singleChoice = selection;
+ 
+ }
+ if (buttonIndex == 2)
+ {
+ NSLog(@" Default kingdom save, Canceled");
+ }
+ }
+ */
+
+
 @end

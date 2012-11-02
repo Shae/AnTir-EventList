@@ -1,34 +1,32 @@
 //
-//  EventsViewController.m
+//  FavoritesViewController.m
 //  AnTir-EventList
 //
-//  Created by Shae Klusman on 10/29/12.
+//  Created by Shae Klusman on 11/1/12.
 //  Copyright (c) 2012 Shae Klusman. All rights reserved.
 //
 
-#import "EventsViewController.h"
-#import "CustomEventCell.h"
+#import "FavoritesViewController.h"
 #import "AppDelegate.h"
-#import "normEventLVL.h"
-#import "kingEventLVL.h"
-#import "eventClass.h"
-#import "EventInfoViewController.h"
+#import "CustomEventCell.h"
+#import "FavEventInfoViewController.h"
 
 
-
-@interface EventsViewController ()
+@interface FavoritesViewController ()
 
 @end
 
-@implementation EventsViewController
+@implementation FavoritesViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Events", @"Events");
-        self.tabBarItem.image = [UIImage imageNamed:@"list"];
+        self.title = NSLocalizedString(@"Favorites", @"Favorites");
+        self.tabBarItem.image = [UIImage imageNamed:@"star"];
+        //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+      //  appDelegate.favEventCal = 1;
     }
     return self;
 }
@@ -36,12 +34,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+    ///////////////////////////
+    // CELL SET UP//
+    //////////////////////////
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    areaLabel.text = appDelegate.areaSelection;
-    appDelegate.favEventCal = 0;
-    
-    
+    // NOTES:  New type for Cell prep
+    [favTable registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:@"CustomEventCell"];
+    }
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
     /////////////////////
     // SPINNER //
     ////////////////////
@@ -52,94 +59,23 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
-    
-    ///////////////////
-    // BG ART //
-    //////////////////
-    if ([appDelegate.areaSelection isEqualToString:@"-ALL  AREAS-"])
-    {
-        BGArt.image = [UIImage imageNamed:@"SCA-LRG-Image.png"];
-    }
-    
-///////////////////////////
-// CELL SET UP//
-//////////////////////////
-  
-// NOTES:  New type for Cell prep
-    [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
-         forCellReuseIdentifier:@"CustomEventCell"];
- /*
-///////////////////////////
-// pLIST STUFF //
-///////////////////////////
-    
-// NOTES: Building the pList path and prepping for use
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-    path = [documentsDirectory stringByAppendingPathComponent:@"data.plist"]; //3
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) //4
-    {
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];  //5
-        [fileManager  copyItemAtPath:bundle toPath:path error:&error]; //6
-    }else{
-        NSLog(@"The plist was located at this path");
-    }
-  */
-  /*
-////////////////////////////////////
-// READ pLIST DATA //
-///////////////////////////////////
-    
-// NOTES:  This is part of the READ from SAVE feature
-    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    
-    int value;
-    value = [[savedStock objectForKey:@"value"] intValue];
-    data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    //NSLog(@"DATA : %@", data);
-    */
-    
-     
-//////////////////////////////////////
-// WRITE pLIST DATA //
-/////////////////////////////////////
-/*
- // NOTES:  Skipped this piece for now.  This is part of the SAVE feature
-     int savevalue = 5;
-     [data setObject:[NSNumber numberWithInt:savevalue] forKey:@"value"];
-     [data writeToFile: path atomically:YES];
-     NSLog(@"Write to pList" );
-*/    
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
     //////////////////////////
     // RUN BUILD //
     /////////////////////////
- 
     // NOTES: Runs method from app delegate for URL JSON pull.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate.eventArray == nil) {
-          [appDelegate buildEventData];
-            NSLog(@"Building new data for Event list");
+  //will need to add a default location when filters start
+        [appDelegate buildEventData];
+        [spinner stopAnimating];
     }else{
         NSLog(@"Using existing data");
+        [spinner stopAnimating];
     }
-
-  
-   [eventTableView reloadData];
-    [UIView beginAnimations:nil context:nil];
-    loadView.frame = CGRectMake(0.0f, 460.0f, loadView.frame.size.width, loadView.frame.size.height);
-    [UIView commitAnimations];
-
-      [spinner stopAnimating];
+    
+    
+    [favTable reloadData];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -173,6 +109,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
+    
     static NSString *CellIdentifier = @"CustomEventCell";  //REMEMBER: Need to match registerNib name!!!!
     CustomEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -181,45 +118,7 @@
     {
         // select array item and turn it back into a dictionary object
         NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
-        /*
-         normEventLVL*myItem = [appDelegate.eventClassObjArray objectAtIndex:indexPath.row];
-         
-///  commented out data for custom class feed//////////////
-         /////////////// EVENT - Location ///////////////////
-         NSString *hostALL = (NSString*)myItem.getHost;
-         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
-         //NSArray* host2 = [host1 objectAtIndex: 0];
-         NSString *host3 = [host1 objectAtIndex: 0];
-         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
-         
-         ///////////// EVENT - Start Date ///////////
-         NSString *startdate = (NSString*)myItem.getStartDate;
-         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
-         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
-         NSString* start3 = [start2 objectAtIndex: 1];
-         NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
-         [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
-         
-         ////////// EVENT - End Date ////////////
-         NSString *enddate = (NSString*)myItem.getEndDate;
-         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
-         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
-         NSString *end3 = [end2 objectAtIndex: 1];
-         NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",
-         [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
-         
-         ////////// CELL - Assign Label Data  ////////////
-         cell.mainLabel.text = myItem.getEventName;
-         cell.subLabel.text = hostCut;
-         cell.startDate.text = cutStartDate;
-         
-         ////////// CELL - Date or Date range check ////////////
-         if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
-         cell.endDate.text = [ NSString stringWithFormat:@"to    %@", cutEndDate];
-         }else{
-         cell.endDate.text = nil;
-         } */
-        
+            
         /////////////// EVENT - Location ///////////////////
         NSString *hostALL = [testDict objectForKey:@"location"];
         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
@@ -250,26 +149,27 @@
             NSString *newDateBuild = [NSString stringWithFormat:@"%@", cutStartDate];
             cell.startDate.text = newDateBuild;
         }
-
+        
         ////////// CELL - Assign Label Data  ////////////
         cell.mainLabel.text = [testDict objectForKey:@"summary"];
         cell.subLabel.text = hostCut;
-        //cell.startDate.text = cutStartDate;
-        
+
 
     }
-
+    
     return cell;
 }
+
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-      /// save selected data in delegate
+    /// save selected data in delegate
     appDelegate.selectedEvent = [appDelegate.eventArray objectAtIndex:indexPath.row];
     
-    EventInfoViewController * newScreen = [[EventInfoViewController alloc] init];
+    FavEventInfoViewController * newScreen = [[FavEventInfoViewController alloc] init];
     [self.navigationController pushViewController:newScreen animated:YES];
+    
 }
 //////////////////////////////////////////////////////////
 // CONVERT MONTH FUNCTIONS //
@@ -430,8 +330,4 @@
     }
     return @"error in dateIN for convert DAY function";
 }
-
-
-
-
 @end

@@ -9,6 +9,26 @@
 /* Begin PBXBuildFile section */
 		BF14B0211641D33200BD9E50 /* CustomEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B0201641D33200BD9E50 /* CustomEventCell.m */; };
 		BF14B0231641D34900BD9E50 /* CustomEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0221641D34900BD9E50 /* CustomEventCell.xib */; };
+		BF14B04016425CDF00BD9E50 /* FavEventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B03E16425CDF00BD9E50 /* FavEventInfoViewController.m */; };
+		BF14B04116425CDF00BD9E50 /* FavEventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B03F16425CDF00BD9E50 /* FavEventInfoViewController.xib */; };
+		BF14B04D1642729400BD9E50 /* HostModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B04B1642729300BD9E50 /* HostModalViewController.m */; };
+		BF14B04E1642729400BD9E50 /* HostModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B04C1642729400BD9E50 /* HostModalViewController.xib */; };
+		BF14B0521642F42000BD9E50 /* Twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0511642F41F00BD9E50 /* Twitter-icon.png */; };
+		BF14B0541642F49F00BD9E50 /* facebook-icon-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0531642F49E00BD9E50 /* facebook-icon-1.png */; };
+		BF14B0561642F52100BD9E50 /* Cam.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0551642F52100BD9E50 /* Cam.png */; };
+		BF14B0581642F52800BD9E50 /* vCam.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0571642F52800BD9E50 /* vCam.png */; };
+		BF14B05A1642F53600BD9E50 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0591642F53600BD9E50 /* cancel.png */; };
+		BF14B05C1642F53D00BD9E50 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B05B1642F53D00BD9E50 /* save.png */; };
+		BF14B05E1642F8B300BD9E50 /* Sidebar-Movies-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B05D1642F8B300BD9E50 /* Sidebar-Movies-icon.png */; };
+		BF14B0601642F8BC00BD9E50 /* Sidebar-Pictures-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B05F1642F8BC00BD9E50 /* Sidebar-Pictures-icon.png */; };
+		BF14B0641642F9FC00BD9E50 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B0621642F9FB00BD9E50 /* FavoritesViewController.m */; };
+		BF14B0651642F9FC00BD9E50 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0631642F9FC00BD9E50 /* FavoritesViewController.xib */; };
+		BF14B06916430BC800BD9E50 /* littleCamIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B06816430BC800BD9E50 /* littleCamIcon.png */; };
+		BF14B06E16434F9700BD9E50 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */; };
+		BF14B07016434FA400BD9E50 /* EventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */; };
+		BF14B0721643588D00BD9E50 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0711643588C00BD9E50 /* Default@2x.png */; };
+		BF14B0741643589A00BD9E50 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0731643589900BD9E50 /* Default.png */; };
+		BF14B0761643645700BD9E50 /* duh.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0751643645400BD9E50 /* duh.png */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
@@ -61,6 +81,30 @@
 		BF14B01F1641D33200BD9E50 /* CustomEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomEventCell.h; path = ../CustomEventCell.h; sourceTree = "<group>"; };
 		BF14B0201641D33200BD9E50 /* CustomEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomEventCell.m; path = ../CustomEventCell.m; sourceTree = "<group>"; };
 		BF14B0221641D34900BD9E50 /* CustomEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomEventCell.xib; path = ../CustomEventCell.xib; sourceTree = "<group>"; };
+		BF14B03D16425CDF00BD9E50 /* FavEventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavEventInfoViewController.h; sourceTree = "<group>"; };
+		BF14B03E16425CDF00BD9E50 /* FavEventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavEventInfoViewController.m; sourceTree = "<group>"; };
+		BF14B03F16425CDF00BD9E50 /* FavEventInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavEventInfoViewController.xib; sourceTree = "<group>"; };
+		BF14B04A1642729300BD9E50 /* HostModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostModalViewController.h; sourceTree = "<group>"; };
+		BF14B04B1642729300BD9E50 /* HostModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostModalViewController.m; sourceTree = "<group>"; };
+		BF14B04C1642729400BD9E50 /* HostModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostModalViewController.xib; sourceTree = "<group>"; };
+		BF14B0511642F41F00BD9E50 /* Twitter-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Twitter-icon.png"; path = "../../../../../Downloads/Twitter-icon.png"; sourceTree = "<group>"; };
+		BF14B0531642F49E00BD9E50 /* facebook-icon-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facebook-icon-1.png"; path = "../../../../../Downloads/facebook-icon-1.png"; sourceTree = "<group>"; };
+		BF14B0551642F52100BD9E50 /* Cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cam.png; path = ../../../MDF2/Cam.png; sourceTree = "<group>"; };
+		BF14B0571642F52800BD9E50 /* vCam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vCam.png; path = ../../../MDF2/vCam.png; sourceTree = "<group>"; };
+		BF14B0591642F53600BD9E50 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel.png; path = ../../../MDF2/cancel.png; sourceTree = "<group>"; };
+		BF14B05B1642F53D00BD9E50 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = ../../../MDF2/save.png; sourceTree = "<group>"; };
+		BF14B05D1642F8B300BD9E50 /* Sidebar-Movies-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sidebar-Movies-icon.png"; path = "../../../../../Downloads/Sidebar-Movies-icon.png"; sourceTree = "<group>"; };
+		BF14B05F1642F8BC00BD9E50 /* Sidebar-Pictures-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sidebar-Pictures-icon.png"; path = "../../../../../Downloads/Sidebar-Pictures-icon.png"; sourceTree = "<group>"; };
+		BF14B0611642F9FA00BD9E50 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		BF14B0621642F9FB00BD9E50 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		BF14B0631642F9FC00BD9E50 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		BF14B06816430BC800BD9E50 /* littleCamIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = littleCamIcon.png; sourceTree = "<group>"; };
+		BF14B06C16434F8500BD9E50 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
+		BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
+		BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInfoViewController.xib; sourceTree = "<group>"; };
+		BF14B0711643588C00BD9E50 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BF14B0731643589900BD9E50 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BF14B0751643645400BD9E50 /* duh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duh.png; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +199,9 @@
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
+				BF14B0751643645400BD9E50 /* duh.png */,
+				BF14B0731643589900BD9E50 /* Default.png */,
+				BF14B0711643588C00BD9E50 /* Default@2x.png */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
 				BFEF620D163EFE6D0054F566 /* Frameworks */,
 				BFEF620B163EFE6D0054F566 /* Products */,
@@ -198,6 +245,15 @@
 				BF14B01F1641D33200BD9E50 /* CustomEventCell.h */,
 				BF14B0201641D33200BD9E50 /* CustomEventCell.m */,
 				BF14B0221641D34900BD9E50 /* CustomEventCell.xib */,
+				BF14B06C16434F8500BD9E50 /* EventInfoViewController.h */,
+				BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */,
+				BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */,
+				BF14B03D16425CDF00BD9E50 /* FavEventInfoViewController.h */,
+				BF14B03E16425CDF00BD9E50 /* FavEventInfoViewController.m */,
+				BF14B03F16425CDF00BD9E50 /* FavEventInfoViewController.xib */,
+				BF14B04A1642729300BD9E50 /* HostModalViewController.h */,
+				BF14B04B1642729300BD9E50 /* HostModalViewController.m */,
+				BF14B04C1642729400BD9E50 /* HostModalViewController.xib */,
 				BFEF6273163F2E140054F566 /* SettingsViewController.h */,
 				BFEF6274163F2E140054F566 /* SettingsViewController.m */,
 				BFEF6275163F2E140054F566 /* SettingsViewController.xib */,
@@ -207,10 +263,12 @@
 				BFEF62AF163F49F30054F566 /* baronyCell.h */,
 				BFEF62B0163F49F30054F566 /* baronyCell.m */,
 				BFEF62B2163F4A1C0054F566 /* baronyCell.xib */,
+				BF14B0611642F9FA00BD9E50 /* FavoritesViewController.h */,
+				BF14B0621642F9FB00BD9E50 /* FavoritesViewController.m */,
+				BF14B0631642F9FC00BD9E50 /* FavoritesViewController.xib */,
 				BFEF6296163F3DCC0054F566 /* Class */,
 				BFEF6282163F3BAC0054F566 /* SBJSON */,
 				BFEF6245163F00D10054F566 /* Images */,
-				BFEF623F163F00480054F566 /* OldFiles */,
 				BFEF6215163EFE6D0054F566 /* Supporting Files */,
 			);
 			path = "AnTir-EventList";
@@ -231,16 +289,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BFEF623F163F00480054F566 /* OldFiles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = OldFiles;
-			sourceTree = "<group>";
-		};
 		BFEF6245163F00D10054F566 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BF14B05F1642F8BC00BD9E50 /* Sidebar-Pictures-icon.png */,
+				BF14B05D1642F8B300BD9E50 /* Sidebar-Movies-icon.png */,
+				BF14B0511642F41F00BD9E50 /* Twitter-icon.png */,
+				BF14B05B1642F53D00BD9E50 /* save.png */,
+				BF14B0591642F53600BD9E50 /* cancel.png */,
+				BF14B0571642F52800BD9E50 /* vCam.png */,
+				BF14B06816430BC800BD9E50 /* littleCamIcon.png */,
+				BF14B0551642F52100BD9E50 /* Cam.png */,
+				BF14B0531642F49E00BD9E50 /* facebook-icon-1.png */,
 				BFEF62E51640C2500054F566 /* twitOutline.png */,
 				BFEF6252163F0C9C0054F566 /* NewANTIRlogo.png */,
 				BFEF6250163F01000054F566 /* SCA-LRG-Image.png */,
@@ -369,6 +429,22 @@
 				BFEF62BF163F97410054F566 /* AreaListViewController.xib in Resources */,
 				BFEF62E61640C2500054F566 /* twitOutline.png in Resources */,
 				BF14B0231641D34900BD9E50 /* CustomEventCell.xib in Resources */,
+				BF14B04116425CDF00BD9E50 /* FavEventInfoViewController.xib in Resources */,
+				BF14B04E1642729400BD9E50 /* HostModalViewController.xib in Resources */,
+				BF14B0521642F42000BD9E50 /* Twitter-icon.png in Resources */,
+				BF14B0541642F49F00BD9E50 /* facebook-icon-1.png in Resources */,
+				BF14B0561642F52100BD9E50 /* Cam.png in Resources */,
+				BF14B0581642F52800BD9E50 /* vCam.png in Resources */,
+				BF14B05A1642F53600BD9E50 /* cancel.png in Resources */,
+				BF14B05C1642F53D00BD9E50 /* save.png in Resources */,
+				BF14B05E1642F8B300BD9E50 /* Sidebar-Movies-icon.png in Resources */,
+				BF14B0601642F8BC00BD9E50 /* Sidebar-Pictures-icon.png in Resources */,
+				BF14B0651642F9FC00BD9E50 /* FavoritesViewController.xib in Resources */,
+				BF14B06916430BC800BD9E50 /* littleCamIcon.png in Resources */,
+				BF14B07016434FA400BD9E50 /* EventInfoViewController.xib in Resources */,
+				BF14B0721643588D00BD9E50 /* Default@2x.png in Resources */,
+				BF14B0741643589A00BD9E50 /* Default.png in Resources */,
+				BF14B0761643645700BD9E50 /* duh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +474,10 @@
 				BFEF62B1163F49F40054F566 /* baronyCell.m in Sources */,
 				BFEF62BE163F97410054F566 /* AreaListViewController.m in Sources */,
 				BF14B0211641D33200BD9E50 /* CustomEventCell.m in Sources */,
+				BF14B04016425CDF00BD9E50 /* FavEventInfoViewController.m in Sources */,
+				BF14B04D1642729400BD9E50 /* HostModalViewController.m in Sources */,
+				BF14B0641642F9FC00BD9E50 /* FavoritesViewController.m in Sources */,
+				BF14B06E16434F9700BD9E50 /* EventInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

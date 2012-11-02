@@ -13,11 +13,11 @@
     __weak IBOutlet UILabel *mainLabel;
     __weak IBOutlet UILabel *subLabel;
     __weak IBOutlet UILabel *startDate;
-    __weak IBOutlet UILabel *endDate;
+
     
 }
 @property (weak, nonatomic) UILabel *mainLabel;
 @property (weak, nonatomic) UILabel *subLabel;
 @property (weak, nonatomic) UILabel *startDate;
-@property (weak, nonatomic) UILabel *endDate;
+
 @end

@@ -34,8 +34,10 @@
     NSMutableDictionary *data;
     NSString *path;
     NSDictionary *newDictionary;
-
+    __weak NSDictionary *selectedEvent;
+    BOOL favEventCal;
 }
+
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) UINavigationController *navControl;
@@ -47,8 +49,10 @@
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSMutableArray *eventClassObjArray;
 @property (nonatomic) BOOL autoUpdate;
+@property (nonatomic) BOOL favEventCal;
+@property(weak, nonatomic) NSDictionary *selectedEvent;
 
--(void)buildEventData;
+- (void) buildEventData;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;
 - (void) hideTabBar:(UITabBarController *) tabbarcontroller;
 

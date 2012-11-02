@@ -35,6 +35,7 @@
     [super viewDidLoad];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.eventClassObjArray = nil;
+    appDelegate.favEventCal = FALSE;
     //
     
     [AreaTableView registerNib:[UINib nibWithNibName:@"baronyCell" bundle:[NSBundle mainBundle]]

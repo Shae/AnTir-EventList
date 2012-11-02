@@ -11,6 +11,8 @@
 
 @interface SettingsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 {
+    IBOutlet UIView *TwitterSet;
+    IBOutlet UIView *FBset;
     NSMutableArray *calNameArray;
     NSMutableArray *calFullArray;
     EKEventStore *eventStore;
@@ -27,7 +29,7 @@
     
 }
 
-
+-(IBAction)onClickDone:(id)sender;
 
 -(IBAction)segmentbutton:(id)sender;
 

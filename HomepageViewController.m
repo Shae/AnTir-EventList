@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.favEventCal = FALSE;
     // Do any additional setup after loading the view from its nib.
     
     UISwipeGestureRecognizer *oneFingerSwipeLeft =
@@ -43,11 +45,13 @@
     [[self view] addGestureRecognizer:oneFingerSwipeRight];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void)oneFingerSwipeLeft:(UISwipeGestureRecognizer *)recognizer
 {
@@ -59,11 +63,9 @@
         [UIView commitAnimations];
         splashActive = FALSE;
         [appDelegate showTabBar:self.tabBarController];
-        
-        
     }
-
 }
+
 
 - (void)oneFingerSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {

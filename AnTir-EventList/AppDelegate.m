@@ -19,11 +19,12 @@
 #import "kingEventLVL.h"
 #import "eventClass.h"
 #import "eventFactory.h"
+#import "FavoritesViewController.h"
 
 
 
 @implementation AppDelegate
-@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection;
+@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection, selectedEvent, favEventCal;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,14 +33,17 @@
     // Override point for customization after application launch.
     UIViewController *viewController1 = [[HomepageViewController alloc] initWithNibName:@"HomepageViewController" bundle:nil];
     UIViewController *viewController2 = [[AreaListViewController alloc] initWithNibName:@"AreaListViewController" bundle:nil];
-    UIViewController *viewController3 = [[EventsViewController alloc] initWithNibName:@"EventsViewController" bundle:nil];
+    UIViewController *viewController3 = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
     UIViewController *viewController4 = [[MemoriesViewController alloc] initWithNibName:@"MemoriesViewController" bundle:nil];
     UIViewController *viewController5 = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController2];
+    UINavigationController *navControllerFav = [[UINavigationController alloc] initWithRootViewController:viewController3];
 
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[viewController1, navController, viewController3, viewController4,viewController5];
+    self.tabBarController.viewControllers = @[viewController1, navController, navControllerFav, viewController4,viewController5];
+
     self.window.rootViewController = self.tabBarController;
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [self.window makeKeyAndVisible];
     [self hideTabBar:tabBarController];
     
@@ -63,16 +67,13 @@
             favEvents = [[NSMutableArray alloc] init];
     }
     
-    
     ////////////////////////////////////////////////////
     
     eventClassObjArray = [[NSMutableArray alloc] init];
-
-    
-    
-    
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -129,7 +130,7 @@
 // NOTES:  The main url pull and factory work for the objects.
 -(void)buildEventData
 {
-    
+   /*
     ///////////////////////////
     // pLIST STUFF //
     ///////////////////////////
@@ -152,6 +153,8 @@
     }else{
         NSLog(@"The plist was located at this path");
     }
+    
+    */
     NSLog(@"BUILD EVENT DATA");
     numItems = 0;
     
@@ -168,7 +171,7 @@
             connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             requestedData = [NSMutableData data];
             //NSLog(@"%@", requestData);
-            NSLog(@"URL Request is not empty.  Starting Request");
+            NSLog(@"URL String Accepted.  Starting Data Request");
         }
         
         NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSStringEncodingConversionAllowLossy error:nil];
@@ -213,7 +216,7 @@
                 [newEvent setEndDate: [currentObj objectForKey:@"end"]];
                 [newEvent setHost: [currentObj objectForKey:@"location"]];
                 
-                NSLog(@"NEW EVENT = %@", [newEvent getEventName]);
+                //NSLog(@"NEW EVENT = %@", [newEvent getEventName]);
                 
 
     //////////////////////////////////////////////////////////////////////////
@@ -224,7 +227,7 @@
                    // NSLog(@"%i", [eventClassObjArray count]);
                 }
                 
-            
+            /*
                 //////////////////////////////////////
                 // WRITE pLIST DATA //
                 /////////////////////////////////////
@@ -237,9 +240,9 @@
                  NSLog(@"%i", [data count]);
                  [data writeToFile: path atomically:YES];
                  NSLog(@"Write to pList" );
-                 
+                 */
         }
-        NSLog(@"Event obj count again %i", [eventClassObjArray count]);
+       
     //}
     
 }

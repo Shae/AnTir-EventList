@@ -9,7 +9,7 @@
 #import "CustomEventCell.h"
 
 @implementation CustomEventCell
-@synthesize mainLabel, subLabel, startDate, endDate;
+@synthesize mainLabel, subLabel, startDate;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

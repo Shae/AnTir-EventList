@@ -37,9 +37,11 @@
     //arrayNo = [[NSMutableArray alloc] init];
     eventStore = [[EKEventStore alloc] init];
     calendarList = [[NSMutableArray alloc]init];
-    [UIView beginAnimations:nil context:nil];
+    
     calView.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
-    [UIView commitAnimations];
+    TwitterSet.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    FBset.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    
     
     
     NSLog(@"EVENT STORE DATA = %@", eventStore);
@@ -116,8 +118,6 @@
 
     //setting the appDelegate for settings choice
     appDelegate.calendarChoice = [calendars objectAtIndex:row];
-    
-    
 }
 
 
@@ -126,24 +126,34 @@
     
     if (segmentController.selectedSegmentIndex == 0) {
         NSLog(@"Button 1 Was Selected");
+        [pickerView reloadAllComponents];  // reloads all picker components
         [UIView beginAnimations:nil context:nil];
         calView.frame = CGRectMake(0.0f, 100.0f, calView.frame.size.width, calView.frame.size.height);
         [UIView commitAnimations];
     }
     if (segmentController.selectedSegmentIndex == 1) {
         NSLog(@"Button 2 Was Selected");
+        [UIView beginAnimations:nil context:nil];
+        TwitterSet.frame = CGRectMake(0.0f, 100.0f, TwitterSet.frame.size.width, TwitterSet.frame.size.height);
+        [UIView commitAnimations];
     }
     if (segmentController.selectedSegmentIndex == 2) {
         NSLog(@"Button 3 Was Selected");
+        [UIView beginAnimations:nil context:nil];
+        FBset.frame = CGRectMake(0.0f, 100.0f, FBset.frame.size.width, FBset.frame.size.height);
+        [UIView commitAnimations];
     }
-    if (segmentController.selectedSegmentIndex == 3) {
-        NSLog(@"Button 4 Was Selected");
-    }
-    if (segmentController.selectedSegmentIndex == 4) {
-        NSLog(@"Button 5 Was Selected");
-    }    
+ 
 }
 
+-(IBAction)onClickDone:(id)sender
+{
+    [UIView beginAnimations:nil context:nil];
+    calView.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    TwitterSet.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    FBset.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    [UIView commitAnimations];
+}
 
 
 @end

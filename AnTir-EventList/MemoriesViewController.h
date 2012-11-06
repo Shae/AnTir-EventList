@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
-@interface MemoriesViewController : UIViewController
-
+@interface MemoriesViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+{
+    UIImagePickerController *camera;
+    UIImagePickerController *vid;
+     NSDictionary *mediaInfo;
+    SLComposeViewController *mySLComposerSheet;
+    
+}
 @end

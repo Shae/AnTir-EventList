@@ -26,18 +26,21 @@
 		BF14B06916430BC800BD9E50 /* littleCamIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B06816430BC800BD9E50 /* littleCamIcon.png */; };
 		BF14B06E16434F9700BD9E50 /* EventInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */; };
 		BF14B07016434FA400BD9E50 /* EventInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */; };
-		BF14B0721643588D00BD9E50 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0711643588C00BD9E50 /* Default@2x.png */; };
-		BF14B0741643589A00BD9E50 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0731643589900BD9E50 /* Default.png */; };
 		BF14B0761643645700BD9E50 /* duh.png in Resources */ = {isa = PBXBuildFile; fileRef = BF14B0751643645400BD9E50 /* duh.png */; };
+		BF4F055916487B7100CC7AFE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F055816487B7100CC7AFE /* MobileCoreServices.framework */; };
+		BF4F055C164885CD00CC7AFE /* AnTirLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F055B164885CD00CC7AFE /* AnTirLaunch.png */; };
+		BF4F055D1648865200CC7AFE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6220163EFE6D0054F566 /* Default.png */; };
+		BF4F055F1648871700CC7AFE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6222163EFE6D0054F566 /* Default@2x.png */; };
+		BF4F05611648872400CC7AFE /* AnTirLaunch@2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F05601648872400CC7AFE /* AnTirLaunch@2.png */; };
+		BF4F056B164899A100CC7AFE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056A164899A100CC7AFE /* Accounts.framework */; };
+		BF4F056D16490A6900CC7AFE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056C16490A6900CC7AFE /* Twitter.framework */; };
+		BF4F056F16490C6200CC7AFE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056E16490C6200CC7AFE /* Social.framework */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
 		BFEF6219163EFE6D0054F566 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6217163EFE6D0054F566 /* InfoPlist.strings */; };
 		BFEF621B163EFE6D0054F566 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF621A163EFE6D0054F566 /* main.m */; };
 		BFEF621F163EFE6D0054F566 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEF621E163EFE6D0054F566 /* AppDelegate.m */; };
-		BFEF6221163EFE6D0054F566 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6220163EFE6D0054F566 /* Default.png */; };
-		BFEF6223163EFE6D0054F566 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6222163EFE6D0054F566 /* Default@2x.png */; };
-		BFEF6225163EFE6D0054F566 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6224163EFE6D0054F566 /* Default-568h@2x.png */; };
 		BFEF622A163EFE6D0054F566 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6229163EFE6D0054F566 /* first.png */; };
 		BFEF622C163EFE6D0054F566 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF622B163EFE6D0054F566 /* first@2x.png */; };
 		BFEF6231163EFE6D0054F566 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF6230163EFE6D0054F566 /* second.png */; };
@@ -102,9 +105,13 @@
 		BF14B06C16434F8500BD9E50 /* EventInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoViewController.h; sourceTree = "<group>"; };
 		BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoViewController.m; sourceTree = "<group>"; };
 		BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventInfoViewController.xib; sourceTree = "<group>"; };
-		BF14B0711643588C00BD9E50 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		BF14B0731643589900BD9E50 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BF14B0751643645400BD9E50 /* duh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duh.png; sourceTree = "<group>"; };
+		BF14B0751643645400BD9E50 /* duh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = duh.png; path = ../duh.png; sourceTree = "<group>"; };
+		BF4F055816487B7100CC7AFE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BF4F055B164885CD00CC7AFE /* AnTirLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnTirLaunch.png; sourceTree = "<group>"; };
+		BF4F05601648872400CC7AFE /* AnTirLaunch@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AnTirLaunch@2.png"; sourceTree = "<group>"; };
+		BF4F056A164899A100CC7AFE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BF4F056C16490A6900CC7AFE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		BF4F056E16490C6200CC7AFE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +186,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4F056F16490C6200CC7AFE /* Social.framework in Frameworks */,
+				BF4F056D16490A6900CC7AFE /* Twitter.framework in Frameworks */,
+				BF4F056B164899A100CC7AFE /* Accounts.framework in Frameworks */,
+				BF4F055916487B7100CC7AFE /* MobileCoreServices.framework in Frameworks */,
 				BFEF62E01640899C0054F566 /* EventKit.framework in Frameworks */,
 				BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */,
 				BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */,
@@ -199,9 +210,7 @@
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
-				BF14B0751643645400BD9E50 /* duh.png */,
-				BF14B0731643589900BD9E50 /* Default.png */,
-				BF14B0711643588C00BD9E50 /* Default@2x.png */,
+				BF4F056E16490C6200CC7AFE /* Social.framework */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
 				BFEF620D163EFE6D0054F566 /* Frameworks */,
 				BFEF620B163EFE6D0054F566 /* Products */,
@@ -219,6 +228,9 @@
 		BFEF620D163EFE6D0054F566 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF4F056C16490A6900CC7AFE /* Twitter.framework */,
+				BF4F056A164899A100CC7AFE /* Accounts.framework */,
+				BF4F055816487B7100CC7AFE /* MobileCoreServices.framework */,
 				BFEF62DF1640899B0054F566 /* EventKit.framework */,
 				BFEF620E163EFE6D0054F566 /* UIKit.framework */,
 				BFEF6210163EFE6D0054F566 /* Foundation.framework */,
@@ -292,6 +304,9 @@
 		BFEF6245163F00D10054F566 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BF14B0751643645400BD9E50 /* duh.png */,
+				BF4F055B164885CD00CC7AFE /* AnTirLaunch.png */,
+				BF4F05601648872400CC7AFE /* AnTirLaunch@2.png */,
 				BF14B05F1642F8BC00BD9E50 /* Sidebar-Pictures-icon.png */,
 				BF14B05D1642F8B300BD9E50 /* Sidebar-Movies-icon.png */,
 				BF14B0511642F41F00BD9E50 /* Twitter-icon.png */,
@@ -405,9 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFEF6219163EFE6D0054F566 /* InfoPlist.strings in Resources */,
-				BFEF6221163EFE6D0054F566 /* Default.png in Resources */,
-				BFEF6223163EFE6D0054F566 /* Default@2x.png in Resources */,
-				BFEF6225163EFE6D0054F566 /* Default-568h@2x.png in Resources */,
 				BFEF622A163EFE6D0054F566 /* first.png in Resources */,
 				BFEF622C163EFE6D0054F566 /* first@2x.png in Resources */,
 				BFEF6231163EFE6D0054F566 /* second.png in Resources */,
@@ -442,9 +454,11 @@
 				BF14B0651642F9FC00BD9E50 /* FavoritesViewController.xib in Resources */,
 				BF14B06916430BC800BD9E50 /* littleCamIcon.png in Resources */,
 				BF14B07016434FA400BD9E50 /* EventInfoViewController.xib in Resources */,
-				BF14B0721643588D00BD9E50 /* Default@2x.png in Resources */,
-				BF14B0741643589A00BD9E50 /* Default.png in Resources */,
 				BF14B0761643645700BD9E50 /* duh.png in Resources */,
+				BF4F055C164885CD00CC7AFE /* AnTirLaunch.png in Resources */,
+				BF4F055D1648865200CC7AFE /* Default.png in Resources */,
+				BF4F055F1648871700CC7AFE /* Default@2x.png in Resources */,
+				BF4F05611648872400CC7AFE /* AnTirLaunch@2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

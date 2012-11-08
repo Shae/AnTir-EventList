@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "CustomEventCell.h"
 #import "FavEventInfoViewController.h"
+#import "normEventLVL.h"
 
 
 @interface FavoritesViewController ()
@@ -64,7 +65,7 @@
     /////////////////////////
     // NOTES: Runs method from app delegate for URL JSON pull.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.eventArray == nil) {
+    if (appDelegate.eventKeyArray == nil) {
   //will need to add a default location when filters start
         [appDelegate buildEventData];
         [spinner stopAnimating];
@@ -73,7 +74,7 @@
         [spinner stopAnimating];
     }
     
-    
+    // RELOAD TABLE //
     [favTable reloadData];
 }
 
@@ -99,8 +100,8 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //return [appDelegate.eventClassObjArray count];
-    return  [appDelegate.eventArray count];
-    NSLog(@"MAX ROWS = %i", [appDelegate.eventClassObjArray count]);
+    return  [appDelegate.eventKeyArray count];
+    NSLog(@"MAX ROWS = %i", [appDelegate.eventKeyArray count]);
 }
 
 
@@ -117,17 +118,22 @@
     if (cell != nil)
     {
         // select array item and turn it back into a dictionary object
-        NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
-            
+        
+        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
+        //NSDictionary *objectPulled = [appDelegate.fullEventDictionary objectForKey:myKey];
+        normEventLVL*myItem = [appDelegate.fullEventDictionary objectForKey:myKey];
+        
+        
+        
         /////////////// EVENT - Location ///////////////////
-        NSString *hostALL = [testDict objectForKey:@"location"];
+        NSString *hostALL = [myItem getHost];
         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
         //NSArray* host2 = [host1 objectAtIndex: 0];
         NSString *host3 = [host1 objectAtIndex: 0];
         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
         
         ///////////// EVENT - Start Date ///////////
-        NSString *startdate = [testDict objectForKey:@"start"];
+        NSString *startdate = (NSString*)[myItem getStartDate];
         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString* start3 = [start2 objectAtIndex: 1];
@@ -135,7 +141,7 @@
                                   [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
         
         ////////// EVENT - End Date ////////////
-        NSString *enddate = [testDict objectForKey:@"end"];
+        NSString *enddate = (NSString*)[myItem getEndDate];
         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString *end3 = [end2 objectAtIndex: 1];
@@ -151,13 +157,15 @@
         }
         
         ////////// CELL - Assign Label Data  ////////////
-        cell.mainLabel.text = [testDict objectForKey:@"summary"];
+        cell.mainLabel.text = [myItem getEventName];
         cell.subLabel.text = hostCut;
-
-
+        //cell.startDate.text = cutStartDate;
+        
+        
     }
     
     return cell;
+    
 }
 
 

@@ -163,8 +163,8 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //return [appDelegate.eventClassObjArray count];
-    return  [appDelegate.eventArray count];
-    NSLog(@"MAX ROWS = %i", [appDelegate.eventClassObjArray count]);
+    return  [appDelegate.eventKeyArray count];
+    NSLog(@"MAX ROWS = %i", [appDelegate.eventKeyArray count]);
 }
 
 
@@ -175,60 +175,28 @@
 
     static NSString *CellIdentifier = @"CustomEventCell";  //REMEMBER: Need to match registerNib name!!!!
     CustomEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+
     
     if (cell != nil)
     {
         // select array item and turn it back into a dictionary object
-        NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
-        /*
-         normEventLVL*myItem = [appDelegate.eventClassObjArray objectAtIndex:indexPath.row];
-         
-///  commented out data for custom class feed//////////////
-         /////////////// EVENT - Location ///////////////////
-         NSString *hostALL = (NSString*)myItem.getHost;
-         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
-         //NSArray* host2 = [host1 objectAtIndex: 0];
-         NSString *host3 = [host1 objectAtIndex: 0];
-         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
-         
-         ///////////// EVENT - Start Date ///////////
-         NSString *startdate = (NSString*)myItem.getStartDate;
-         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
-         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
-         NSString* start3 = [start2 objectAtIndex: 1];
-         NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
-         [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
-         
-         ////////// EVENT - End Date ////////////
-         NSString *enddate = (NSString*)myItem.getEndDate;
-         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
-         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
-         NSString *end3 = [end2 objectAtIndex: 1];
-         NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",
-         [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
-         
-         ////////// CELL - Assign Label Data  ////////////
-         cell.mainLabel.text = myItem.getEventName;
-         cell.subLabel.text = hostCut;
-         cell.startDate.text = cutStartDate;
-         
-         ////////// CELL - Date or Date range check ////////////
-         if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
-         cell.endDate.text = [ NSString stringWithFormat:@"to    %@", cutEndDate];
-         }else{
-         cell.endDate.text = nil;
-         } */
+        
+        //NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
+        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
+        //NSDictionary *objectPulled = [appDelegate.fullEventDictionary objectForKey:myKey];
+        normEventLVL*myItem = [appDelegate.fullEventDictionary objectForKey:myKey];
+        
+
         
         /////////////// EVENT - Location ///////////////////
-        NSString *hostALL = [testDict objectForKey:@"location"];
+        NSString *hostALL = [myItem getHost];
         NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
         //NSArray* host2 = [host1 objectAtIndex: 0];
         NSString *host3 = [host1 objectAtIndex: 0];
         NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
         
         ///////////// EVENT - Start Date ///////////
-        NSString *startdate = [testDict objectForKey:@"start"];
+        NSString *startdate = (NSString*)[myItem getStartDate];
         NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
         NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString* start3 = [start2 objectAtIndex: 1];
@@ -236,7 +204,7 @@
                                   [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
         
         ////////// EVENT - End Date ////////////
-        NSString *enddate = [testDict objectForKey:@"end"];
+        NSString *enddate = (NSString*)[myItem getEndDate];
         NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
         NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
         NSString *end3 = [end2 objectAtIndex: 1];
@@ -252,10 +220,11 @@
         }
 
         ////////// CELL - Assign Label Data  ////////////
-        cell.mainLabel.text = [testDict objectForKey:@"summary"];
+        cell.mainLabel.text = [myItem getEventName];
         cell.subLabel.text = hostCut;
         //cell.startDate.text = cutStartDate;
         
+        NSLog(@"%i", [myItem getEventFilterDate]);
 
     }
 
@@ -266,7 +235,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
       /// save selected data in delegate
-    appDelegate.selectedEvent = [appDelegate.eventArray objectAtIndex:indexPath.row];
+    appDelegate.selectedEvent = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
     
     EventInfoViewController * newScreen = [[EventInfoViewController alloc] init];
     [self.navigationController pushViewController:newScreen animated:YES];

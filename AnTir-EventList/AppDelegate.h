@@ -36,6 +36,9 @@
     NSDictionary *newDictionary;
     __weak NSDictionary *selectedEvent;
     BOOL favEventCal;
+    NSMutableDictionary *fullEventDictionary;
+    NSMutableArray *eventMash;
+    NSMutableArray *mutDict;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -47,10 +50,14 @@
 @property (weak, nonatomic) NSString *areaSelection;
 @property (weak, nonatomic) NSString *calendarChoice;
 @property (strong, nonatomic) NSMutableArray *eventArray;
+@property (strong, nonatomic) NSMutableArray *eventKeyArray;
 @property (strong, nonatomic) NSMutableArray *eventClassObjArray;
+@property (strong, nonatomic) NSMutableDictionary *fullEventDictionary;
+@property (strong, nonatomic) NSMutableArray *mutDict;
 @property (nonatomic) BOOL autoUpdate;
 @property (nonatomic) BOOL favEventCal;
 @property(weak, nonatomic) NSDictionary *selectedEvent;
+
 
 - (void) buildEventData;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;

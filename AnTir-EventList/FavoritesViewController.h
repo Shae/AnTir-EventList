@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FavoritesViewController : UIViewController
+@interface FavoritesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 {
     __weak IBOutlet UITableView *favTable;
     IBOutlet UIView *mainFavView;
-        UIActivityIndicatorView *spinner;
+    UIActivityIndicatorView *spinner;
 }
 @end

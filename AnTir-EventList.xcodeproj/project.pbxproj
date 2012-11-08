@@ -35,6 +35,7 @@
 		BF4F056B164899A100CC7AFE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056A164899A100CC7AFE /* Accounts.framework */; };
 		BF4F056D16490A6900CC7AFE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056C16490A6900CC7AFE /* Twitter.framework */; };
 		BF4F056F16490C6200CC7AFE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056E16490C6200CC7AFE /* Social.framework */; };
+		BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF4F0580164B0BE100CC7AFE /* SmashDate.plist */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
@@ -112,6 +113,7 @@
 		BF4F056A164899A100CC7AFE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BF4F056C16490A6900CC7AFE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BF4F056E16490C6200CC7AFE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		BF4F0580164B0BE100CC7AFE /* SmashDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SmashDate.plist; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,7 +212,6 @@
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
-				BF4F056E16490C6200CC7AFE /* Social.framework */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
 				BFEF620D163EFE6D0054F566 /* Frameworks */,
 				BFEF620B163EFE6D0054F566 /* Products */,
@@ -228,6 +229,7 @@
 		BFEF620D163EFE6D0054F566 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF4F056E16490C6200CC7AFE /* Social.framework */,
 				BF4F056C16490A6900CC7AFE /* Twitter.framework */,
 				BF4F056A164899A100CC7AFE /* Accounts.framework */,
 				BF4F055816487B7100CC7AFE /* MobileCoreServices.framework */,
@@ -260,6 +262,9 @@
 				BF14B06C16434F8500BD9E50 /* EventInfoViewController.h */,
 				BF14B06D16434F9600BD9E50 /* EventInfoViewController.m */,
 				BF14B06F16434FA300BD9E50 /* EventInfoViewController.xib */,
+				BF14B0611642F9FA00BD9E50 /* FavoritesViewController.h */,
+				BF14B0621642F9FB00BD9E50 /* FavoritesViewController.m */,
+				BF14B0631642F9FC00BD9E50 /* FavoritesViewController.xib */,
 				BF14B03D16425CDF00BD9E50 /* FavEventInfoViewController.h */,
 				BF14B03E16425CDF00BD9E50 /* FavEventInfoViewController.m */,
 				BF14B03F16425CDF00BD9E50 /* FavEventInfoViewController.xib */,
@@ -275,13 +280,11 @@
 				BFEF62AF163F49F30054F566 /* baronyCell.h */,
 				BFEF62B0163F49F30054F566 /* baronyCell.m */,
 				BFEF62B2163F4A1C0054F566 /* baronyCell.xib */,
-				BF14B0611642F9FA00BD9E50 /* FavoritesViewController.h */,
-				BF14B0621642F9FB00BD9E50 /* FavoritesViewController.m */,
-				BF14B0631642F9FC00BD9E50 /* FavoritesViewController.xib */,
 				BFEF6296163F3DCC0054F566 /* Class */,
 				BFEF6282163F3BAC0054F566 /* SBJSON */,
 				BFEF6245163F00D10054F566 /* Images */,
 				BFEF6215163EFE6D0054F566 /* Supporting Files */,
+				BF4F0580164B0BE100CC7AFE /* SmashDate.plist */,
 			);
 			path = "AnTir-EventList";
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				BF4F055D1648865200CC7AFE /* Default.png in Resources */,
 				BF4F055F1648871700CC7AFE /* Default@2x.png in Resources */,
 				BF4F05611648872400CC7AFE /* AnTirLaunch@2.png in Resources */,
+				BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

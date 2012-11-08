@@ -37,6 +37,7 @@ typedef enum
 -(NSString*)getEventURL;
 -(NSString*)getHost;
 
+-(int)getEventFilterDate;
 -(void)setEventName:(NSString*)newEventName;
 -(void)setEventCode:(NSString*)newEventCode;
 -(void)setEventDescription:(NSString*)newEventDescription;

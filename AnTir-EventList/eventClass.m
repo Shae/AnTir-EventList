@@ -49,54 +49,77 @@
     return hostingBarony;
 }
 
+- (int)getEventFilterDate
+{
+    NSString *startdate = (NSString*)[self getStartDate];
+    NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
+    NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+    // makes the year/month smashed value
+    NSString * numString = [NSString stringWithFormat: @" %@%@",[start2 objectAtIndex: 0],  [start2 objectAtIndex: 1]];
+
+
+    NSLog(@"%d", [numString intValue]);
+    //NSDate *currentYear = [NSDate date];
+    
+    return [numString intValue];
+}
 
 ///////////////  SET   //////////////
 
 -(void)setEventName:(NSString*)newEventName
 {
-    eventName = newEventName;
+    eventName = [NSString stringWithString: newEventName];
 }
+
 
 -(void)setEventCode:(NSString*)newEventCode
 {
-    eventCode = newEventCode;
+    eventCode = [NSString stringWithString: newEventCode];
     //NSLog(@"%@", eventCode);
 }
 
+
 -(void)setEventDescription:(NSString*)newEventDescription
 {
-    description = newEventDescription;
+    description = [NSString stringWithString: newEventDescription];
 }
+
 
 -(void)setStartDate:(NSDate*)newStartDate
 {
     eventStartDate = newStartDate;
 }
 
+
 -(void)setEndDate:(NSDate*)newEndDate
 {
     eventEndDate = newEndDate;
 }
 
+
 -(void)setEventURL:(NSString*)newEventURL
 {
-    eventURL = newEventURL;
+    eventURL = [NSString stringWithString:newEventURL];
 }
+
 
 -(void)setHost:(NSString*)newHost
 {
-    hostingBarony = newHost;
+    hostingBarony = [NSString stringWithString: newHost];
 }
+
 
 -(void)setFavTRUE:(BOOL)newSetting
 {
     fav = 1;
 }
 
+
 -(void)setFavFALSE:(BOOL)newSetting
 {
     fav = 0;
 }
+
 
 +(eventClass*)buildEvent : (NSInteger)eventEnum
 {

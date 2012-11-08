@@ -24,7 +24,7 @@
 
 
 @implementation AppDelegate
-@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection, selectedEvent, favEventCal;
+@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection, selectedEvent, favEventCal, fullEventDictionary, eventKeyArray, mutDict;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -119,9 +119,18 @@
     
     
     
-    
     ///////////////////////////////////////////////////////////
 }
+
+-(void)buildArrays
+{
+
+
+}
+
+
+
+
 
 //////////////////////////
 //BUILD DATA//
@@ -130,31 +139,66 @@
 // NOTES:  The main url pull and factory work for the objects.
 -(void)buildEventData
 {
-   /*
-    ///////////////////////////
-    // pLIST STUFF //
-    ///////////////////////////
+    eventMash = [[NSMutableArray alloc] init];
+
+    mutDict = [[NSMutableArray alloc]init];
     
-    // NOTES: Building the pList path and prepping for use
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-    path = [documentsDirectory stringByAppendingPathComponent:@"data.plist"]; //3
+    NSMutableArray *SCA201211 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201211];
+    NSMutableArray *SCA201212 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201212];
+    NSMutableArray *SCA201301 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201301];
+    NSMutableArray *SCA201302 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201302];
+    NSMutableArray *SCA201303 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201303];
+    NSMutableArray *SCA201304 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201304];
+    NSMutableArray *SCA201305 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201305];
+    NSMutableArray *SCA201306 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201306];
+    NSMutableArray *SCA201307 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201307];
+    NSMutableArray *SCA201308 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201308];
+    NSMutableArray *SCA201309 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201309];
+    NSMutableArray *SCA201310 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201310];
+    NSMutableArray *SCA201311 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201311];
+    NSMutableArray *SCA201312 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201312];
+    NSMutableArray *SCA201401 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201401];
+    NSMutableArray *SCA201402 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201402];
+    NSMutableArray *SCA201403 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201403];
+    NSMutableArray *SCA201404 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201404];
+    NSMutableArray *SCA201405 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201405];
+    NSMutableArray *SCA201406 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201406];
+    NSMutableArray *SCA201407 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201407];
+    NSMutableArray *SCA201408 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201408];
+    NSMutableArray *SCA201409 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201409];
+    NSMutableArray *SCA201410 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201410];
+    NSMutableArray *SCA201411 = [[NSMutableArray alloc] init];
+   // [ mutDict addObject:SCA201411];
+    NSMutableArray *SCA201412 = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA201412];
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) //4
-    {
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];  //5
-        [fileManager  copyItemAtPath:bundle toPath:path error:&error]; //6
-        
-        
-        
-    }else{
-        NSLog(@"The plist was located at this path");
-    }
-    
-    */
+    fullEventDictionary =  [[NSMutableDictionary alloc]init];
+    eventKeyArray = [[NSMutableArray alloc] init];
+
     NSLog(@"BUILD EVENT DATA");
     numItems = 0;
     
@@ -162,13 +206,14 @@
     
     // - FILTER  AREA  URL's  HERE  LATER - //
     
-   // if (singleChoice != nil) {
+    // if (singleChoice != nil) {
         url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com"]; //url for all events
         request = [[NSURLRequest alloc] initWithURL:url];
         
         if (request != nil)
         {
-            connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            //connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+            connection  = [NSURLConnection connectionWithRequest:request delegate:self];
             requestedData = [NSMutableData data];
             //NSLog(@"%@", requestData);
             NSLog(@"URL String Accepted.  Starting Data Request");
@@ -183,49 +228,162 @@
         eventObject = [[NSArray alloc] init]; // setup holding area for Event Objects
     
     if (jsonString != nil) {
+        
          NSLog(@"Successful jsonString pull. STARTING PARSE");
         eventObject = [parser objectWithString:jsonString error:nil];
+        
     }else{
+        
         NSLog(@"jsonString is EMPTY");
+        
     }
     
         numItems = [eventObject count];
-        //NSLog(@"%@", eventObject); //works
-        //NSLog(@"NUM ITEMS IN EVENT OBJECT = %i", numItems); //works
+
         eventArray = [[NSMutableArray alloc] init];
         
-        NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
+        //NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
     
 
             for (int i=0; i<[eventObject count]; i++)
             {
-
-               // NSLog(@"CURRENT KEY %@", currentKey);
+            
                 NSDictionary *currentObj = [eventObject objectAtIndex:i];
-                [eventArray addObject:currentObj];  //NSMutableArray
-                //NSLog(@"%@", [currentObj description]);
-               // NSLog(@"%@", [currentObj objectForKey:@"summary"]);
-                
+                         
                 ////////    FACTORY CALL    /////////////////
-                normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];    
-                [newEvent setEventName: [currentObj objectForKey:@"summary"]];
-                [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
-                [newEvent setEventDescription: [currentObj objectForKey:@"description"]];
-                [newEvent setEventURL: [currentObj objectForKey:@"url"]];
-                [newEvent setStartDate: [currentObj objectForKey:@"start"]];
-                [newEvent setEndDate: [currentObj objectForKey:@"end"]];
-                [newEvent setHost: [currentObj objectForKey:@"location"]];
+                normEventLVL *newEvent = (normEventLVL*) [eventFactory buildEvent:1];
                 
-                //NSLog(@"NEW EVENT = %@", [newEvent getEventName]);
+               if ([currentObj objectForKey:@"uid"] != nil){
+                    [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
+                   
+                   if ([currentObj objectForKey:@"summary"] != nil) {
+                       [newEvent setEventName: [currentObj objectForKey:@"summary"]];
+                   }else {[newEvent setEventName: @"Error: No Name Found"];}
+                   
+                   if ([currentObj objectForKey:@"description"] != nil) {
+                       [newEvent setEventDescription: [currentObj objectForKey:@"description"]];
+                   }else {[newEvent setEventDescription: @"Error: No Event Description Found"];}
                 
+                   if ([currentObj objectForKey:@"location"] != nil) {
+                       [newEvent setHost: [currentObj objectForKey:@"location"]];
+                   }else { [newEvent setHost: @"Not Listed"]; }
+                
+                   [newEvent setStartDate: [currentObj objectForKey:@"start"]];
+                   [newEvent setEndDate: [currentObj objectForKey:@"end"]];
+                   [newEvent setEventURL: [currentObj objectForKey:@"url"]];
+                   
+                   [fullEventDictionary setObject: newEvent forKey: [newEvent getEventCode]];
+                   [eventKeyArray addObject:[newEvent getEventCode]];
+                   
+                   NSString *mashDate =  [NSString stringWithFormat:@"SCA%d", [newEvent getEventFilterDate] ];
+                   // NSLog(@" Full Event Dict Key List Item = %@", [currentObj objectForKey:@"uid"]);
+                   
+                   if (newEvent != nil)
+                   {
+                    
+                       if([mashDate isEqualToString:@"SCA201211"]){
+                           [SCA201211 addObject:newEvent];
+                           NSLog(@"added item to 11");
+                       }
+                       if([mashDate isEqualToString:@"SCA201212"]){
+                           [SCA201212 addObject:newEvent];
+                           NSLog(@"added item to 12");
+                       }
+                       if([mashDate isEqualToString:@"SCA201301"]){
+                           [SCA201301 addObject:newEvent];
+                           NSLog(@"added item to 1");
+                       }
+                       if([mashDate isEqualToString:@"SCA201302"]){
+                           [SCA201302 addObject:newEvent];
+                           NSLog(@"added item to 2");
+                       }
+                       if([mashDate isEqualToString:@"SCA201303"]){
+                           [SCA201303 addObject:newEvent];
+                           NSLog(@"added item to 3");
+                       }
+                       if([mashDate isEqualToString:@"SCA201304"]){
+                           [SCA201304 addObject:newEvent];
+                           NSLog(@"added item to 4");
+                       }
+                       if([mashDate isEqualToString:@"SCA201305"]){
+                           [SCA201305 addObject:newEvent];
+                           NSLog(@"added item to 5");
+                       }
+                       if([mashDate isEqualToString:@"SCA201306"]){
+                           [SCA201306 addObject:newEvent];
+                           NSLog(@"added item to 6");
+                       }
+                       if([mashDate isEqualToString:@"SCA201307"]){
+                           [SCA201307 addObject:newEvent];
+                           NSLog(@"added item to 7");
+                       }
+                       if([mashDate isEqualToString:@"SCA201308"]){
+                           [SCA201308 addObject:newEvent];
+                           NSLog(@"added item to 8");
+                       }
+                       if([mashDate isEqualToString:@"SCA201309"]){
+                           [SCA201309 addObject:newEvent];
+                           NSLog(@"added item to 9");
+                       }
+                       if([mashDate isEqualToString:@"SCA201310"]){
+                           [SCA201310 addObject:newEvent];
+                           NSLog(@"added item to 10");
+                       }
+                       if([mashDate isEqualToString:@"SCA201311"]){
+                           [SCA201311 addObject:newEvent];
+                           NSLog(@"added item to 11");
+                       }
+                       if([mashDate isEqualToString:@"SCA201312"]){
+                           [SCA201312 addObject:newEvent];
+                           NSLog(@"added item to 12");
+                       }
+                       if([mashDate isEqualToString:@"SCA201401"]){
+                           [SCA201401 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201402"]){
+                           [SCA201402 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201403"]){
+                           [SCA201403 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201404"]){
+                           [SCA201404 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201405"]){
+                           [SCA201405 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201406"]){
+                           [SCA201406 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201407"]){
+                           [SCA201407 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201408"]){
+                           [SCA201408 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201409"]){
+                           [SCA201409 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201410"]){
+                           [SCA201410 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201411"]){
+                           [SCA201411 addObject:newEvent];
+                       }
+                       if([mashDate isEqualToString:@"SCA201412"]){
+                           [SCA201412 addObject:newEvent];
+                       }
+                       
+                   }
+               }
+
+            
+              
 
     //////////////////////////////////////////////////////////////////////////
     //  ADD OBJECT TO ARRAY NOT WORKING //
     //////////////////////////////////////////////////////////////////////////
-                if ([currentObj objectForKey:@"summary"] != nil) {
-                  //  [eventClassObjArray addObject:  newEvent];
-                   // NSLog(@"%i", [eventClassObjArray count]);
-                }
+            
                 
             /*
                 //////////////////////////////////////
@@ -242,10 +400,88 @@
                  NSLog(@"Write to pList" );
                  */
         }
-       
-    //}
+            // test pull from dictionary after factory
+            //normEventLVL *quickPull = (normEventLVL*) [fullEventDictionary objectForKey:@"antir2497"];
+           // NSLog(@" QUICK PULL TEST %@", [quickPull getEventName]);
     
+    /*
+     //////////////////////////////////////////////////////////////
+     ////// LOOPING through the Dictionary/////
+     /////////////////////////////////////////////////////////////
+     
+    for(id key in fullEventDictionary)
+    {
+        NSLog(@"key=%@ value=%@", key, [fullEventDictionary objectForKey:key]);
+        [eventKeyArray addObject: key];
+        
+    };
+     */
+    
+    NSLog(@"eventKeyArray Count = %i", [ eventKeyArray count]);
+    
+    /*
+    ////  now YEAR ////
+    NSDate *today = [NSDate date];
+    NSString *stringToday = [NSString stringWithFormat:@"%@", today];
+    NSString *substring = [stringToday substringWithRange:NSMakeRange(0, 4)];
+    //NSLog(@"%@", substring);
+    //////////////////////////////////////
+    */
+
+    [ mutDict addObject:SCA201211];
+
+    [ mutDict addObject:SCA201212];
+
+    [ mutDict addObject:SCA201301];
+
+    [ mutDict addObject:SCA201302];
+
+    [ mutDict addObject:SCA201303];
+
+    [ mutDict addObject:SCA201304];
+
+    [ mutDict addObject:SCA201305];
+
+    [ mutDict addObject:SCA201306];
+
+    [ mutDict addObject:SCA201307];
+
+    [ mutDict addObject:SCA201308];
+
+    [ mutDict addObject:SCA201309];
+
+    [ mutDict addObject:SCA201310];
+
+    [ mutDict addObject:SCA201311];
+
+    [ mutDict addObject:SCA201312];
+
+    [ mutDict addObject:SCA201401];
+
+    [ mutDict addObject:SCA201402];
+
+    [ mutDict addObject:SCA201403];
+
+    [ mutDict addObject:SCA201404];
+
+    [ mutDict addObject:SCA201405];
+
+    [ mutDict addObject:SCA201406];
+
+    [ mutDict addObject:SCA201407];
+
+    [ mutDict addObject:SCA201408];
+
+    [ mutDict addObject:SCA201409];
+
+    [ mutDict addObject:SCA201410];
+
+    [ mutDict addObject:SCA201411];
+
+    [ mutDict addObject:SCA201412];
+    NSLog(@"mutDict count = %i", [mutDict count]);
 }
+
 
  - (void) hideTabBar:(UITabBarController *) tabbarcontroller
      {
@@ -257,10 +493,10 @@
          [view setFrame:CGRectMake(view.frame.origin.x, 480.0f, view.frame.size.width, view.frame.size.height)];
          }
      }
-     }
+}
 
 
-     - (void) showTabBar:(UITabBarController *) tabbarcontroller
+- (void) showTabBar:(UITabBarController *) tabbarcontroller
      {
          NSLog(@"SHOW TAB BAR");
          [UIView beginAnimations:nil context:NULL];
@@ -272,9 +508,9 @@
              {
                  [view setFrame:CGRectMake(view.frame.origin.x, 431.0f, view.frame.size.width, view.frame.size.height)];
              }
-         }
+        }
          [UIView commitAnimations];
-     }
+}
 
 
 

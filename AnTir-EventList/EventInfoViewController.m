@@ -9,6 +9,7 @@
 #import "EventInfoViewController.h"
 #import "AppDelegate.h"
 #import "HostModalViewController.h"
+#import "normEventLVL.h"
 
 @interface EventInfoViewController ()
 
@@ -48,27 +49,20 @@
        //     self.title = @"Event Info - Favorite";
     //}
 
-    selectedItemPull = appDelegate.selectedEvent;
+   // selectedItemPull = appDelegate.selectedEvent;
+    normEventLVL *selectedItem = [appDelegate.fullEventDictionary objectForKey:appDelegate.selectedEvent];
+    
     // Do any additional setup after loading the view from its nib.
     
     /////////////// EVENT - Location ///////////////////
-    NSString *hostALL = [selectedItemPull objectForKey:@"location"];
+    NSString *hostALL = [selectedItem getHost];
     NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
     //NSArray* host2 = [host1 objectAtIndex: 0];
     NSString *host3 = [host1 objectAtIndex: 0];
     NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
-    /*
-    /////////////// EVENT - Info ///////////////////
-    NSString *infoAll = [selectedItemPull objectForKey:@"description"];
-    NSArray* info1 = [infoAll componentsSeparatedByString: @"->"];
-    //NSArray* host2 = [host1 objectAtIndex: 0];
-    NSString *info2 = [info1 objectAtIndex: 0];
-    NSString* infoCut = [[NSString alloc] initWithFormat:@"%@", info2];
-     // Needs work. no idea how to cut the eventURL off of the front.
-     */
     
     ///////////// EVENT - Start Date ///////////
-    NSString *startdate = [selectedItemPull objectForKey:@"start"];
+    NSString *startdate = (NSString*)[selectedItem getStartDate];
     NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
     NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
     NSString* start3 = [start2 objectAtIndex: 1];
@@ -76,35 +70,38 @@
                               [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
     
     ////////// EVENT - End Date ////////////
-    NSString *enddate = [selectedItemPull objectForKey:@"end"];
+    NSString *enddate = (NSString*)[selectedItem getEndDate];
     NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
     NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
     NSString *end3 = [end2 objectAtIndex: 1];
     NSString* cutEndDate = [[NSString alloc] initWithFormat:@"%@ %@",
                             [self dateConvert:end3], [self dayConvert:[end2 objectAtIndex:2]]];
-
-    ////////// Label - Date or Date range check ////////////
+    
     if (![[end2 objectAtIndex: 2] isEqualToString:[start2 objectAtIndex:2]]) {
         NSString *newDateBuild = [NSString stringWithFormat:@"%@  to  %@", cutStartDate, cutEndDate];
-        eventDate.text = newDateBuild;
+        eventDate.text= newDateBuild;
     }else{
         NSString *newDateBuild = [NSString stringWithFormat:@"%@", cutStartDate];
         eventDate.text = newDateBuild;
     }
-
     
     
+    //cell.startDate.text = cutStartDate;
     eventHost.text = hostCut;
-    testView.text = [selectedItemPull objectForKey:@"description"];
+    testView.text = [selectedItem getEventDescription];
     //eventInfo.text = [selectedItemPull objectForKey:@"description"];
-    eventName.text = [selectedItemPull objectForKey:@"summary"];
+    eventName.text = [selectedItem getEventName];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 //////////////////////////////////////////////////////////
 // CONVERT MONTH FUNCTIONS //

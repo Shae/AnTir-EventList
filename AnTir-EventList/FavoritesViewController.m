@@ -49,7 +49,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-
+/*
     /////////////////////
     // SPINNER //
     ////////////////////
@@ -72,7 +72,7 @@
     }else{
         NSLog(@"Using existing data");
         [spinner stopAnimating];
-    }
+    } */
     
     // RELOAD TABLE //
     [favTable reloadData];
@@ -100,8 +100,8 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //return [appDelegate.eventClassObjArray count];
-    return  [appDelegate.eventKeyArray count];
-    NSLog(@"MAX ROWS = %i", [appDelegate.eventKeyArray count]);
+    return  [appDelegate.favEvents count];
+    NSLog(@"MAX ROWS = %i", [appDelegate.favEvents count]);
 }
 
 
@@ -119,10 +119,10 @@
     {
         // select array item and turn it back into a dictionary object
         
-        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
+        //NSString * myKey = [appDelegate.favEvents objectAtIndex:indexPath.row];
         //NSDictionary *objectPulled = [appDelegate.fullEventDictionary objectForKey:myKey];
-        normEventLVL*myItem = [appDelegate.fullEventDictionary objectForKey:myKey];
-        
+        //normEventLVL*myItem = [appDelegate.fullEventDictionary objectForKey:myKey];
+        myItem = [appDelegate.favEvents objectAtIndex:indexPath.row];
         
         
         /////////////// EVENT - Location ///////////////////
@@ -173,7 +173,7 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     /// save selected data in delegate
-    appDelegate.selectedEvent = [appDelegate.eventArray objectAtIndex:indexPath.row];
+    appDelegate.selectedEvent = [appDelegate.favEvents objectAtIndex:indexPath.row];
     
     FavEventInfoViewController * newScreen = [[FavEventInfoViewController alloc] init];
     [self.navigationController pushViewController:newScreen animated:YES];

@@ -36,6 +36,7 @@
 		BF4F056D16490A6900CC7AFE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056C16490A6900CC7AFE /* Twitter.framework */; };
 		BF4F056F16490C6200CC7AFE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056E16490C6200CC7AFE /* Social.framework */; };
 		BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF4F0580164B0BE100CC7AFE /* SmashDate.plist */; };
+		BF4F058C164CB0C700CC7AFE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
@@ -114,6 +115,7 @@
 		BF4F056C16490A6900CC7AFE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BF4F056E16490C6200CC7AFE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BF4F0580164B0BE100CC7AFE /* SmashDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SmashDate.plist; sourceTree = "<group>"; };
+		BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,6 +214,7 @@
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
+				BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
 				BFEF620D163EFE6D0054F566 /* Frameworks */,
 				BFEF620B163EFE6D0054F566 /* Products */,
@@ -463,6 +466,7 @@
 				BF4F055F1648871700CC7AFE /* Default@2x.png in Resources */,
 				BF4F05611648872400CC7AFE /* AnTirLaunch@2.png in Resources */,
 				BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */,
+				BF4F058C164CB0C700CC7AFE /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

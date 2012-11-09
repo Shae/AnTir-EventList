@@ -50,8 +50,8 @@
     //}
 
    // selectedItemPull = appDelegate.selectedEvent;
-    normEventLVL *selectedItem = [appDelegate.fullEventDictionary objectForKey:appDelegate.selectedEvent];
-    
+    selectedItem = [appDelegate.fullEventDictionary objectForKey:appDelegate.selectedEvent];
+    appDelegate.currentEvent = selectedItem;
     // Do any additional setup after loading the view from its nib.
     
     /////////////// EVENT - Location ///////////////////
@@ -295,13 +295,15 @@
                 if (buttonIndex == 1)
                 {
                     NSLog(@"Button SAVE");
+                    [appDelegate.favEvents addObject:selectedItem];
+                    NSLog(@" favEvents Count = %i", [appDelegate.favEvents count]);
                 }
             }
     
         if (appDelegate.favEventCal == 1){
                 if (buttonIndex == 1)
                 {
-                    NSLog(@"Button SAVE");
+                    NSLog(@"Button Remove");
                 }
             }
 }

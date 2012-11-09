@@ -38,13 +38,15 @@
     [super viewDidLoad];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSLog(@"Whats in this 4 ? %@", appDelegate.areaSelection);
     areaLabel.text = appDelegate.areaSelection;
     appDelegate.favEventCal = 0;
+    //appDelegate.areaSelection = nil;
     
+/////////////////////
+// SPINNER //
+////////////////////
     
-    /////////////////////
-    // SPINNER //
-    ////////////////////
     spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
                UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 210);
@@ -53,9 +55,10 @@
     [spinner startAnimating];
     
     
-    ///////////////////
-    // BG ART //
-    //////////////////
+///////////////////
+// BG ART //
+//////////////////
+    
     if ([appDelegate.areaSelection isEqualToString:@"-ALL  AREAS-"])
     {
         BGArt.image = [UIImage imageNamed:@"SCA-LRG-Image.png"];
@@ -65,7 +68,7 @@
 // CELL SET UP//
 //////////////////////////
   
-// NOTES:  New type for Cell prep
+    // NOTES:  New type for Cell prep
     [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"CustomEventCell"];
  /*
@@ -73,7 +76,7 @@
 // pLIST STUFF //
 ///////////////////////////
     
-// NOTES: Building the pList path and prepping for use
+    // NOTES: Building the pList path and prepping for use
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
     NSString *documentsDirectory = [paths objectAtIndex:0]; //2
@@ -94,7 +97,7 @@
 // READ pLIST DATA //
 ///////////////////////////////////
     
-// NOTES:  This is part of the READ from SAVE feature
+   // NOTES:  This is part of the READ from SAVE feature
     NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     
     int value;
@@ -124,12 +127,16 @@
  
     // NOTES: Runs method from app delegate for URL JSON pull.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.eventArray == nil) {
+        //appDelegate.mutDict = nil;
+
+    [appDelegate buildEventData];
+
+  /*  if (appDelegate.eventArray == nil) {
           [appDelegate buildEventData];
             NSLog(@"Building new data for Event list");
     }else{
         NSLog(@"Using existing data");
-    }
+    }*/
 
   
    [eventTableView reloadData];
@@ -154,6 +161,8 @@
 // NOTES:  Will need to add sections to this later.  Split by month / year
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+   // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //return [appDelegate.mutDict count];
     return 1;
 }
 
@@ -163,6 +172,8 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //return [appDelegate.eventClassObjArray count];
+    //NSDictionary *step1 = [appDelegate.mutDict objectAtIndex:section];
+    //return [step1 count];
     return  [appDelegate.eventKeyArray count];
     NSLog(@"MAX ROWS = %i", [appDelegate.eventKeyArray count]);
 }
@@ -182,10 +193,15 @@
         // select array item and turn it back into a dictionary object
         
         //NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
-        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
-        //NSDictionary *objectPulled = [appDelegate.fullEventDictionary objectForKey:myKey];
-        normEventLVL*myItem = [appDelegate.fullEventDictionary objectForKey:myKey];
         
+        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
+       // NSArray *key = [appDelegate.mutDict objectAtIndex:indexPath.row];
+        //NSArray *key2 = [key objectAtIndex:indexPath.row];
+        //NSLog(@"%@", key2);
+        //NSString * eventCode = [appDelegate.mutDict objectAtIndex:indexPath.row];
+        //NSLog(@"MY KEY IS %@", myKey);
+        normEventLVL*myItem = (normEventLVL* ) [appDelegate.fullEventDictionary objectForKey:myKey];
+        //normEventLVL*myItem = (normEventLVL* ) key;
 
         
         /////////////// EVENT - Location ///////////////////
@@ -219,12 +235,13 @@
             cell.startDate.text = newDateBuild;
         }
 
+        
         ////////// CELL - Assign Label Data  ////////////
         cell.mainLabel.text = [myItem getEventName];
         cell.subLabel.text = hostCut;
         //cell.startDate.text = cutStartDate;
-        
-        NSLog(@"%i", [myItem getEventFilterDate]);
+
+        //NSLog(@"%i", [myItem getEventFilterDate]);
 
     }
 
@@ -240,6 +257,123 @@
     EventInfoViewController * newScreen = [[EventInfoViewController alloc] init];
     [self.navigationController pushViewController:newScreen animated:YES];
 }
+
+/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+    {
+        return @"November 2012";
+    }
+    if(section == 1)
+    {
+        return @"December 2012";
+    }
+    if(section == 2)
+    {
+        return @"January 2013";
+    }
+    if(section == 3)
+    {
+        return @"February 2013";
+    }
+    if(section == 4)
+    {
+        return @"March 2013";
+    }
+    if(section == 5)
+    {
+        return @"April 2013";
+    }
+    if(section == 6)
+    {
+        return @"May 2013";
+    }
+    if(section == 7)
+    {
+        return @"June 2013";
+    }
+    if(section == 8)
+    {
+        return @"July 2013";
+    }
+    if(section == 9)
+    {
+        return @"August 2013";
+    }
+    if(section == 10)
+    {
+        return @"September 2013";
+    }
+    if(section == 11)
+    {
+        return @"October 2013";
+    }
+    if(section == 12)
+    {
+        return @"November 2013";
+    }
+    if(section == 13)
+    {
+        return @"December 2013";
+    }
+    if(section == 14)
+    {
+        return @"January 2014";
+    }
+    if(section == 15)
+    {
+        return @"February 2014";
+    }
+    if(section == 16)
+    {
+        return @"March 2014";
+    }
+    if(section == 17)
+    {
+        return @"April 2014";
+    }
+    if(section == 18)
+    {
+        return @"May 2014";
+    }
+    if(section == 19)
+    {
+        return @"June 2014";
+    }
+    if(section == 20)
+    {
+        return @"July 2014";
+    }
+    if(section == 21)
+    {
+        return @"August 2014";
+    }
+    if(section == 22)
+    {
+        return @"September 2014";
+    }
+    if(section == 23)
+    {
+        return @"October 2014";
+    }
+    if(section == 24)
+    {
+        return @"November 2014";
+    }
+    if(section == 25)
+    {
+        return @"December 2014";
+    }
+    
+    if (section >= 25) {
+          return @"Other";
+    }
+          return @"Other";
+}
+
+*/
+
 //////////////////////////////////////////////////////////
 // CONVERT MONTH FUNCTIONS //
 /////////////////////////////////////////////////////////

@@ -28,6 +28,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     
@@ -41,9 +42,13 @@
     calView.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
     TwitterSet.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
     FBset.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
-    
-    
-    
+    /*
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //////////  NOT WORKING  ////////////////
+    autoRefresh = appDelegate.autoRefresh;
+    AutoCal = appDelegate.autoSave;
+    fullSearches = appDelegate.fullSearches;
+    */
     NSLog(@"EVENT STORE DATA = %@", eventStore);
     if (eventStore != nil)
     {
@@ -155,5 +160,12 @@
     [UIView commitAnimations];
 }
 
+-(IBAction)onChange:(id)sender{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.autoRefresh = autoRefresh.state ;
+    appDelegate.autoSave = AutoCal.state;
+    appDelegate.fullSearches = fullSearches.state;
+    
+}
 
 @end

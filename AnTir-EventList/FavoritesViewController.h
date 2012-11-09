@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "normEventLVL.h"
 
 @interface FavoritesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -14,5 +15,7 @@
     __weak IBOutlet UITableView *favTable;
     IBOutlet UIView *mainFavView;
     UIActivityIndicatorView *spinner;
+    normEventLVL*myItem;
+    
 }
 @end

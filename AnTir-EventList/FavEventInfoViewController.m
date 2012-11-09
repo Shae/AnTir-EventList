@@ -40,7 +40,7 @@
     //testView.dataDetectorTypes = UIDataDetectorTypeAddress;
     
      AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
   //  if (appDelegate.favEventCal == 1) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(eventSaveBtn)];
             self.title = @"Fav Event Info ";
@@ -49,15 +49,22 @@
        //     self.title = @"Event Info - Favorite";
     //}
 
-    selectedItemPull = appDelegate.selectedEvent;
+    selectedItemPull = (normEventLVL*) appDelegate.selectedEvent;
     // Do any additional setup after loading the view from its nib.
-    
+  /*
     /////////////// EVENT - Location ///////////////////
     NSString *hostALL = [selectedItemPull objectForKey:@"location"];
     NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
     //NSArray* host2 = [host1 objectAtIndex: 0];
     NSString *host3 = [host1 objectAtIndex: 0];
     NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
+    */
+    NSString *hostALL = [selectedItemPull getHost];
+    NSArray* host1 = [hostALL componentsSeparatedByString: @"->"];
+    //NSArray* host2 = [host1 objectAtIndex: 0];
+    NSString *host3 = [host1 objectAtIndex: 0];
+    NSString* hostCut = [[NSString alloc] initWithFormat:@"%@", host3];
+    
     /*
     /////////////// EVENT - Info ///////////////////
     NSString *infoAll = [selectedItemPull objectForKey:@"description"];
@@ -69,15 +76,18 @@
      */
     
     ///////////// EVENT - Start Date ///////////
-    NSString *startdate = [selectedItemPull objectForKey:@"start"];
+    //NSString *startdate = [selectedItemPull objectForKey:@"start"];
+    NSString *startdate = (NSString*)[selectedItemPull getStartDate];
     NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
+    
     NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
     NSString* start3 = [start2 objectAtIndex: 1];
     NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
                               [self dateConvert:start3], [self dayConvert:[start2 objectAtIndex:2]]];
     
     ////////// EVENT - End Date ////////////
-    NSString *enddate = [selectedItemPull objectForKey:@"end"];
+    //NSString *enddate = [selectedItemPull objectForKey:@"end"];
+    NSString *enddate = (NSString*)[selectedItemPull getEndDate];
     NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
     NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
     NSString *end3 = [end2 objectAtIndex: 1];
@@ -96,9 +106,9 @@
     
     
     eventHost.text = hostCut;
-    testView.text = [selectedItemPull objectForKey:@"description"];
+    testView.text = [selectedItemPull getEventDescription];
     //eventInfo.text = [selectedItemPull objectForKey:@"description"];
-    eventName.text = [selectedItemPull objectForKey:@"summary"];
+    eventName.text = [selectedItemPull getEventName];
 }
 
 - (void)didReceiveMemoryWarning
@@ -296,6 +306,7 @@
                 }
             
 }
+
 
 
 - (IBAction) onClickHost:(id)sender

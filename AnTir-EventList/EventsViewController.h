@@ -20,6 +20,7 @@
     __weak IBOutlet UIImageView *BGArt;
     __weak IBOutlet UIView *loadView;
 }
+
 -(NSString*)dateConvert: (NSString*)dateIn;
 -(NSString*)dayConvert: (NSString*)dateIn;
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "normEventLVL.h"
 
 @interface EventInfoViewController : UIViewController <UIScrollViewAccessibilityDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 {
@@ -19,6 +20,7 @@
     
     __weak IBOutlet UITextView *testView;
     IBOutlet UIScrollView *scrollView;
+    normEventLVL *selectedItem;
 }
 
 @property (weak, nonatomic) UILabel *eventName;

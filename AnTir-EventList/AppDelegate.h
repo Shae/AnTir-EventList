@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "normEventLVL.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
@@ -25,7 +26,7 @@
     NSMutableData *requestedData;
     NSInteger numItems;
     NSArray *eventObject;
-    __weak NSString *areaSelection;
+    NSString *areaSelection;
     //NSMutableArray *stuff;
     UITabBarController *tabBarController;
     __weak NSString *calendarChoice;
@@ -39,6 +40,8 @@
     NSMutableDictionary *fullEventDictionary;
     NSMutableArray *eventMash;
     NSMutableArray *mutDict;
+    
+    
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -47,7 +50,7 @@
 @property (strong, nonatomic) UIViewController *viewController;
 @property (weak, nonatomic) NSString *defaultArea;
 @property (weak, nonatomic) NSString *singleChoice;
-@property (weak, nonatomic) NSString *areaSelection;
+@property (strong, nonatomic) NSString *areaSelection;
 @property (weak, nonatomic) NSString *calendarChoice;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSMutableArray *eventKeyArray;
@@ -57,7 +60,13 @@
 @property (nonatomic) BOOL autoUpdate;
 @property (nonatomic) BOOL favEventCal;
 @property(weak, nonatomic) NSDictionary *selectedEvent;
+@property (strong, nonatomic) NSMutableArray *favEvents;
+@property (strong, nonatomic) normEventLVL *currentEvent;
 
+@property (nonatomic) BOOL fullSearches;
+@property (nonatomic) BOOL autoRefresh;
+@property (nonatomic) BOOL autoSave;
+@property (nonatomic) int calSave;
 
 - (void) buildEventData;
 - (void) showTabBar:(UITabBarController *) tabbarcontroller;

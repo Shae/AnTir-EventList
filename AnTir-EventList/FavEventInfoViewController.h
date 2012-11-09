@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "normEventLVL.h"
 
 @interface FavEventInfoViewController : UIViewController <UIScrollViewAccessibilityDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 {
@@ -14,7 +15,7 @@
     __weak IBOutlet UILabel *eventHost;
     __weak IBOutlet UILabel *eventDate;
    // __weak IBOutlet UILabel *eventInfo;
-    NSDictionary *selectedItemPull;
+    normEventLVL *selectedItemPull;
     __weak IBOutlet UIButton *hostBTN;
     
     __weak IBOutlet UITextView *testView;

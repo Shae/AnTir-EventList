@@ -22,18 +22,24 @@
     __weak IBOutlet UIPickerView *pickerView;IBOutlet UILabel *label;
     __weak IBOutlet UIButton *saveBtn;
     __weak IBOutlet UIButton *cancelBtn;
-    __weak IBOutlet UISwitch *fullSearches;
     
+    __weak IBOutlet UISwitch *fullSearches;
     __weak IBOutlet UISwitch *AutoCal;
     __weak IBOutlet UISwitch *autoRefresh;
+    
     IBOutlet UIView *settingsView;
     __weak IBOutlet UIView *calView;
     IBOutlet UISegmentedControl*segmentController;
     
+    NSString *dataFilePath;
+    
 }
 
--(IBAction)onClickDone:(id)sender;
 
+-(IBAction)onClickDone:(id)sender;
 -(IBAction)segmentbutton:(id)sender;
--(IBAction)onChange:(id)sender;
+-(IBAction)onChange:(id)sender;  
+
+
+
 @end

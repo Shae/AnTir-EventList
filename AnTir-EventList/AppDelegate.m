@@ -243,7 +243,7 @@
             url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Wealdsmere"]; //url for all events
         }
          
-       // url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com"]; //url for all events
+       
     }else{
         NSLog(@"areaSelection is nil");
     }
@@ -251,7 +251,7 @@
         
         if (request != nil)
         {
-            //connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  
             connection  = [NSURLConnection connectionWithRequest:request delegate:self];
             requestedData = [NSMutableData data];
             //NSLog(@"%@", requestData);

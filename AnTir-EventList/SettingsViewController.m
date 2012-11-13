@@ -32,8 +32,61 @@
 - (void)viewDidLoad
 {
     
+    
+    
+    
+    /////////////////////////////
+    // FILE SYSTEM //
+    ////////////////////////////
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    NSArray *dirPaths  = NSSearchPathForDirectoriesInDomains(
+                                                             NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    
+
+    dataFilePath = [[NSString alloc] initWithString: [docsDir
+                                                      stringByAppendingPathComponent: @"data.archive"]];
+    
+    // Check if the file already exists
+    if ([filemgr fileExistsAtPath: dataFilePath])
+    {
+        NSMutableArray *dataArray = [NSKeyedUnarchiver unarchiveObjectWithFile: dataFilePath];
+        // setting autoREfresh
+        if ([[dataArray objectAtIndex:0] isEqualToString:@"1"]) {
+            [autoRefresh setOn:TRUE];
+                 NSLog(@"autoRefresh saved to ON");
+        }else{
+            [autoRefresh setOn:FALSE];
+                 NSLog(@"autoRefresh saved to OFF");
+        }
+
+        // setting AutoCal
+        if ([[dataArray objectAtIndex:1] isEqualToString:@"1"]) {
+            [AutoCal setOn:TRUE];
+                 NSLog(@"AutoCal saved to ON");
+        }else{
+             [AutoCal setOn:FALSE];
+                 NSLog(@"AutoCal saved to OFF");
+        }
+        
+        // Setting fullSearches
+        if ([[dataArray objectAtIndex:2] isEqualToString:@"1"]) {
+            [fullSearches setOn:TRUE];
+                 NSLog(@"fullSearches saved to ON");
+        }else{
+             [fullSearches setOn:FALSE];
+                 NSLog(@"fullSearches saved to OFF");
+        }
+        
+    }
+    /////////////////////////////////////
+    // END FILE SYSTEM //
+    /////////////////////////////////////
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
     
     //arrayNo = [[NSMutableArray alloc] init];
     eventStore = [[EKEventStore alloc] init];
@@ -163,10 +216,22 @@
 }
 
 -(IBAction)onChange:(id)sender{
+    
+    NSMutableArray *contactArray = [[NSMutableArray alloc] init];
+    
+    [contactArray addObject:  [ NSString stringWithFormat:@"%i", autoRefresh.isOn]];
+    NSLog(@"autoRefresh saved to %i", autoRefresh.isOn);
+    [contactArray addObject:  [ NSString stringWithFormat:@"%i", AutoCal.isOn]];
+     NSLog(@"autoRefresh saved to %i", AutoCal.isOn);
+    [contactArray addObject:  [ NSString stringWithFormat:@"%i", fullSearches.isOn]];
+     NSLog(@"autoRefresh saved to %i", fullSearches.isOn);
+    
+    [NSKeyedArchiver archiveRootObject: contactArray toFile:dataFilePath];
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.autoRefresh = autoRefresh.state ;
-    appDelegate.autoSave = AutoCal.state;
-    appDelegate.fullSearches = fullSearches.state;
+    appDelegate.autoRefresh = autoRefresh.isOn ;
+    appDelegate.autoSave = AutoCal.isOn;
+    appDelegate.fullSearches = fullSearches.isOn;
     
 }
 

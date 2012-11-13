@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "normEventLVL.h"
 
-@interface EventInfoViewController : UIViewController <UIScrollViewAccessibilityDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
+@interface EventInfoViewController : UIViewController <UIScrollViewAccessibilityDelegate, UIScrollViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 {
     __weak IBOutlet UILabel *eventName;
     __weak IBOutlet UILabel *eventHost;
@@ -30,5 +30,6 @@
 
 -(NSString*)dayConvert: (NSString*)dateIn;
 -(NSString*)dateConvert: (NSString*)dateIn;
+-(void)push2Cal;
 -(IBAction)onClickHost:(id)sender;
 @end

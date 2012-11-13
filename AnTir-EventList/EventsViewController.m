@@ -43,6 +43,8 @@
     appDelegate.favEventCal = 0;
     //appDelegate.areaSelection = nil;
     
+    
+    
 /////////////////////
 // SPINNER //
 ////////////////////
@@ -71,6 +73,7 @@
     // NOTES:  New type for Cell prep
     [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:@"CustomEventCell"];
+    
  /*
 ///////////////////////////
 // pLIST STUFF //
@@ -118,6 +121,8 @@
      NSLog(@"Write to pList" );
 */    
 }
+
+
 
 -(void)viewDidAppear:(BOOL)animated
 {

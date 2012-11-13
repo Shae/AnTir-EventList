@@ -99,6 +99,7 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 {
+    
     NSLog(@"ROWS in CALENDAR ROW Function = %i", [calendarList count]);
     return [calendarList count];
 }
@@ -112,6 +113,7 @@
 
 - (NSInteger)selectedRowInComponent:(NSInteger)component
 {
+    
     //NSLog(@"%i", component);
     return 1;
 }

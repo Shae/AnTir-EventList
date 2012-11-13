@@ -43,7 +43,7 @@
      AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
   //  if (appDelegate.favEventCal == 1) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(eventSaveBtn)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(saveBTN)];
             self.title = @"Event Info";
    // }else if (appDelegate.favEventCal == 0){
        //     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(eventSaveBtn)];
@@ -264,17 +264,28 @@
     return @"error in dateIN for convert DAY function";
 }
 
-
+-(void)push2Cal;
+{
+    NSLog(@"Button push2Cal");
+    UIAlertView *calPush = [[UIAlertView alloc] initWithTitle:@"Calendar" message:@"Add this event to your calendar?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
+    [calPush show];
+}
+/*
 -(void)eventSaveBtn{
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if (appDelegate.favEventCal == 0){
 
-            NSLog(@"Button SAVE");
-            UIAlertView *favAlert = [[UIAlertView alloc] initWithTitle:@"Favorites" message:@"Save this Event to Favorites?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
-            [favAlert show];
+        NSLog(@"Button SAVE");
+        UIAlertView *favAlert = [[UIAlertView alloc] initWithTitle:@"Favorites" message:@"Save this Event to Favorites?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", @"YES, and push to Calendar!",nil];
+        [favAlert show];
         
+        if (appDelegate.autoRefresh == YES) {
+            [self push2Cal];
+        }
+    
+     
     }
     
     if (appDelegate.favEventCal == 1){
@@ -282,8 +293,11 @@
             NSLog(@"Button REMOVE");
             UIAlertView *favAlert1 = [[UIAlertView alloc] initWithTitle:@"Remove" message:@"Remove this Event from Favorites?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
             [favAlert1 show];
+
         
     }
+    
+    
 }
 
 
@@ -296,6 +310,8 @@
                 if (buttonIndex == 1)
                 {
                     NSLog(@"Button SAVE");
+                    
+
                     [appDelegate.favEvents addObject:selectedItem];
                     NSLog(@" favEvents Count = %i", [appDelegate.favEvents count]);
                 }
@@ -307,33 +323,20 @@
                     NSLog(@"Button Remove");
                 }
             }
+    if (buttonIndex == 2) {
+        [appDelegate.favEvents addObject:selectedItem];
+        if (appDelegate.calendarChoice != nil) {
+            [self push2Cal];
+        }else {
+            
+        }
+        
+        NSLog(@"Button SAVED and PUSHED to CALENDAR");
+    }
 }
 
-//- (void)showModalViewController {
-    
-  //  HostModalViewController * newScreen = [[HostModalViewController alloc] init];
-   // [self.navigationController pushViewController:newScreen animated:YES];
-    
-    
-    //HostModalViewController *host = [[HostModalViewController alloc] initWithNibName: nil/*@"HostModalViewController"*/ bundle:nil];
- /*
-#if DELEGATE
-    host.delegate = self;
-#elif COMPLETION_BLOCK
-    host.completionBlock = ^(NSUInteger result) {
-        self.result = result;
-        // Note: there isn't really any need to reference someViewController in this block
-    };
-#endif */
-  //  [self presentViewController:host animated:YES completion:nil];
-    
-//}
-/*
-#if DELEGATE
-- (void)someViewController:(SomeViewController *)controller pickedResult:(NSUInteger)result {
-    self.result = result;
-}
 */
+
 - (IBAction) onClickHost:(id)sender
 {
     NSLog(@"TAKE OUT TO THE BALL GAME or at least a Web View");
@@ -344,6 +347,68 @@
 
 }
 
+- (void)saveBTN{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+     if (appDelegate.favEventCal == 0){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:@"Confirm Save?"
+                                      delegate:self
+                                      cancelButtonTitle:@"No!"
+                                      destructiveButtonTitle:@"Yes"
+                                      otherButtonTitles:@"Save and Push to Calendar",  nil];
+
+         [actionSheet showFromTabBar:appDelegate.tabBarController.tabBar];
+         
+     }
+    if (appDelegate.favEventCal == 1){
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:@"Remove Event?"
+                                      delegate:self
+                                      cancelButtonTitle:@"No!"
+                                      destructiveButtonTitle:@"Yes"
+                                      otherButtonTitles:  nil];
+        [actionSheet showFromTabBar:appDelegate.tabBarController.tabBar];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.favEventCal == 0){
+        if (buttonIndex == [actionSheet destructiveButtonIndex])
+        {
+            [appDelegate.favEvents addObject:selectedItem];
+            NSLog(@"U PRESSA  DA  BUTTON  DESTRUCT!");
+        }
+        
+        if (buttonIndex == 1)
+        {
+            [appDelegate.favEvents addObject:selectedItem];
+            NSLog(@"U  PRESSA  DA  BUTTON  SAVE  AND  PUSH !");
+            [self push2Cal];
+        }
+        
+        if (buttonIndex == [actionSheet cancelButtonIndex])
+        {
+            NSLog(@"U PRESSA  DA  BUTTON  CANCEL!");
+        }
+    }
+    
+    if (appDelegate.favEventCal == 1){
+        
+        if (buttonIndex == [actionSheet destructiveButtonIndex])
+        {
+            // REMOVE EVENT HERE
+            NSLog(@"Remove event pressed");
+           // [appDelegate showTabBar:self.tabBarController];
+        }
+        
+    }
+
+}
 
 
 @end

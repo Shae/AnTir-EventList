@@ -8,7 +8,7 @@
 
 #import "FavEventInfoViewController.h"
 #import "AppDelegate.h"
-#import "HostModalViewController.h"
+#import "HostViewController.h"
 
 @interface FavEventInfoViewController ()
 
@@ -311,9 +311,9 @@
 
 - (IBAction) onClickHost:(id)sender
 {
-    HostModalViewController * newScreen = [[HostModalViewController alloc] init];
-    [self.navigationController pushViewController:newScreen animated:YES];
     NSLog(@"TAKE OUT TO THE BALL GAME or at least a Web View");
+    HostViewController * newScreen = [[HostViewController alloc] init];
+    [self.navigationController presentViewController:newScreen animated:YES completion:nil];
 }
 
 @end

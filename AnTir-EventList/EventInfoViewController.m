@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "HostModalViewController.h"
 #import "normEventLVL.h"
+#import "HostViewController.h"
 
 @interface EventInfoViewController ()
 
@@ -308,12 +309,41 @@
             }
 }
 
-
+//- (void)showModalViewController {
+    
+  //  HostModalViewController * newScreen = [[HostModalViewController alloc] init];
+   // [self.navigationController pushViewController:newScreen animated:YES];
+    
+    
+    //HostModalViewController *host = [[HostModalViewController alloc] initWithNibName: nil/*@"HostModalViewController"*/ bundle:nil];
+ /*
+#if DELEGATE
+    host.delegate = self;
+#elif COMPLETION_BLOCK
+    host.completionBlock = ^(NSUInteger result) {
+        self.result = result;
+        // Note: there isn't really any need to reference someViewController in this block
+    };
+#endif */
+  //  [self presentViewController:host animated:YES completion:nil];
+    
+//}
+/*
+#if DELEGATE
+- (void)someViewController:(SomeViewController *)controller pickedResult:(NSUInteger)result {
+    self.result = result;
+}
+*/
 - (IBAction) onClickHost:(id)sender
 {
-    HostModalViewController * newScreen = [[HostModalViewController alloc] init];
-    [self.navigationController pushViewController:newScreen animated:YES];
     NSLog(@"TAKE OUT TO THE BALL GAME or at least a Web View");
+   HostViewController * newScreen = [[HostViewController alloc] init];
+    [self.navigationController presentViewController:newScreen animated:YES completion:nil];
+    
+   // [self showModalViewController];
+
 }
+
+
 
 @end

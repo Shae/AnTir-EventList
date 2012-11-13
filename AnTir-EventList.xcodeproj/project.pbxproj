@@ -37,6 +37,8 @@
 		BF4F056F16490C6200CC7AFE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4F056E16490C6200CC7AFE /* Social.framework */; };
 		BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF4F0580164B0BE100CC7AFE /* SmashDate.plist */; };
 		BF4F058C164CB0C700CC7AFE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */; };
+		BF4F06051651C19900CC7AFE /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4F06031651C19800CC7AFE /* HostViewController.m */; };
+		BF4F06061651C19900CC7AFE /* HostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF4F06041651C19900CC7AFE /* HostViewController.xib */; };
 		BFEF620F163EFE6D0054F566 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF620E163EFE6D0054F566 /* UIKit.framework */; };
 		BFEF6211163EFE6D0054F566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6210163EFE6D0054F566 /* Foundation.framework */; };
 		BFEF6213163EFE6D0054F566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEF6212163EFE6D0054F566 /* CoreGraphics.framework */; };
@@ -116,6 +118,9 @@
 		BF4F056E16490C6200CC7AFE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BF4F0580164B0BE100CC7AFE /* SmashDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SmashDate.plist; sourceTree = "<group>"; };
 		BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BF4F06021651C19800CC7AFE /* HostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostViewController.h; sourceTree = "<group>"; };
+		BF4F06031651C19800CC7AFE /* HostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostViewController.m; sourceTree = "<group>"; };
+		BF4F06041651C19900CC7AFE /* HostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostViewController.xib; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -214,6 +219,9 @@
 		BFEF61FF163EFE6D0054F566 = {
 			isa = PBXGroup;
 			children = (
+				BF4F06021651C19800CC7AFE /* HostViewController.h */,
+				BF4F06031651C19800CC7AFE /* HostViewController.m */,
+				BF4F06041651C19900CC7AFE /* HostViewController.xib */,
 				BF4F058B164CB0C700CC7AFE /* Default-568h@2x.png */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
 				BFEF620D163EFE6D0054F566 /* Frameworks */,
@@ -467,6 +475,7 @@
 				BF4F05611648872400CC7AFE /* AnTirLaunch@2.png in Resources */,
 				BF4F0581164B0BE100CC7AFE /* SmashDate.plist in Resources */,
 				BF4F058C164CB0C700CC7AFE /* Default-568h@2x.png in Resources */,
+				BF4F06061651C19900CC7AFE /* HostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +509,7 @@
 				BF14B04D1642729400BD9E50 /* HostModalViewController.m in Sources */,
 				BF14B0641642F9FC00BD9E50 /* FavoritesViewController.m in Sources */,
 				BF14B06E16434F9700BD9E50 /* EventInfoViewController.m in Sources */,
+				BF4F06051651C19900CC7AFE /* HostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -242,130 +242,20 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-   //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
-    //NSString *SectionKey= [[appDelegate.mutDict objectAtIndex:section] valueForKey:@"title"];
-    //NSLog(@"%@", SectionKey);
-    NSString * placeHolder = [NSString stringWithFormat:@"%i", section];
-    return placeHolder;
-    
-
-    
-    
-    
-    /*
-    if(section == 0)
-    {
-        return @"November 2012";
+   AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //NSDictionary* step1 = [appDelegate.mutDict  objectAtIndex:section];
+    //NSString* step2 = [step1 valueForKey:@"title"];
+    NSLog(@"%@", [[[appDelegate.mutDict  objectAtIndex:section] objectAtIndex:0] getStartDate]);
+    ///////////// EVENT - Start Date ///////////
+    NSString *startdate = (NSString*) [[[appDelegate.mutDict  objectAtIndex:section] objectAtIndex:0] getStartDate];
+    NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
+    NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+    NSString* start3 = [start2 objectAtIndex: 1];
+    NSString* cutStartDate = [[NSString alloc] initWithFormat:@"%@ %@",
+                              [self dateConvert:start3], [start2 objectAtIndex:0]];
+    return cutStartDate;
+  
     }
-    if(section == 1)
-    {
-        return @"December 2012";
-    }
-    if(section == 2)
-    {
-        return @"January 2013";
-    }
-    if(section == 3)
-    {
-        return @"February 2013";
-    }
-    if(section == 4)
-    {
-        return @"March 2013";
-    }
-    if(section == 5)
-    {
-        return @"April 2013";
-    }
-    if(section == 6)
-    {
-        return @"May 2013";
-    }
-    if(section == 7)
-    {
-        return @"June 2013";
-    }
-    if(section == 8)
-    {
-        return @"July 2013";
-    }
-    if(section == 9)
-    {
-        return @"August 2013";
-    }
-    if(section == 10)
-    {
-        return @"September 2013";
-    }
-    if(section == 11)
-    {
-        return @"October 2013";
-    }
-    if(section == 12)
-    {
-        return @"November 2013";
-    }
-    if(section == 13)
-    {
-        return @"December 2013";
-    }
-    if(section == 14)
-    {
-        return @"January 2014";
-    }
-    if(section == 15)
-    {
-        return @"February 2014";
-    }
-    if(section == 16)
-    {
-        return @"March 2014";
-    }
-    if(section == 17)
-    {
-        return @"April 2014";
-    }
-    if(section == 18)
-    {
-        return @"May 2014";
-    }
-    if(section == 19)
-    {
-        return @"June 2014";
-    }
-    if(section == 20)
-    {
-        return @"July 2014";
-    }
-    if(section == 21)
-    {
-        return @"August 2014";
-    }
-    if(section == 22)
-    {
-        return @"September 2014";
-    }
-    if(section == 23)
-    {
-        return @"October 2014";
-    }
-    if(section == 24)
-    {
-        return @"November 2014";
-    }
-    if(section == 25)
-    {
-        return @"December 2014";
-    }
-    
-    if (section >= 25) {
-          return @"Other";
-    }
-          return @"Other";
-     */
-}
 
 
 

@@ -9,6 +9,7 @@
 #import "eventClass.h"
 #import "normEventLVL.h"
 #import "kingEventLVL.h"
+#import <EventKit/EventKit.h>
 
 @implementation eventClass
 
@@ -47,6 +48,13 @@
 -(NSString*)getHost
 {
     return hostingBarony;
+}
+
+-(NSString*)getDate{
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    NSString *myDate = [df stringFromDate:eventStartDate];
+    return myDate;
 }
 
 - (int)getEventFilterDate

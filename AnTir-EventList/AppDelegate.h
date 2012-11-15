@@ -25,7 +25,7 @@
     NSData *myData;
     NSMutableData *requestedData;
     NSInteger numItems;
-    NSArray *eventObject;
+    NSArray *eventObjects;
     NSString *areaSelection;
     //NSMutableArray *stuff;
     UITabBarController *tabBarController;
@@ -35,15 +35,16 @@
     NSMutableDictionary *data;
     NSString *path;
     NSDictionary *newDictionary;
-    __weak NSDictionary *selectedEvent;
+    normEventLVL *selectedEvent;
     BOOL favEventCal;
     NSMutableDictionary *fullEventDictionary;
     NSMutableArray *eventMash;
     NSMutableArray *mutDict;
+    NSMutableArray *fullEventMutArray;
     
     
 }
-
+@property (strong, nonatomic) NSArray *eventObjects;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) UINavigationController *navControl;
@@ -56,10 +57,11 @@
 @property (strong, nonatomic) NSMutableArray *eventKeyArray;
 @property (strong, nonatomic) NSMutableArray *eventClassObjArray;
 @property (strong, nonatomic) NSMutableDictionary *fullEventDictionary;
+@property (strong, nonatomic)NSMutableArray *fullEventMutArray;
 @property (strong, nonatomic) NSMutableArray *mutDict;
 @property (nonatomic) BOOL autoUpdate;
 @property (nonatomic) BOOL favEventCal;
-@property(weak, nonatomic) NSDictionary *selectedEvent;
+@property(strong, nonatomic) normEventLVL *selectedEvent;
 @property (strong, nonatomic) NSMutableArray *favEvents;
 @property (strong, nonatomic) normEventLVL *currentEvent;
 

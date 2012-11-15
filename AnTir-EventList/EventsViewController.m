@@ -38,12 +38,10 @@
     [super viewDidLoad];
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSLog(@"Whats in this 4 ? %@", appDelegate.areaSelection);
     areaLabel.text = appDelegate.areaSelection;
     appDelegate.favEventCal = 0;
     //appDelegate.areaSelection = nil;
-    
-    
+
     
 /////////////////////
 // SPINNER //
@@ -71,8 +69,7 @@
 //////////////////////////
   
     // NOTES:  New type for Cell prep
-    [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]]
-         forCellReuseIdentifier:@"CustomEventCell"];
+    [eventTableView registerNib:[UINib nibWithNibName:@"CustomEventCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CustomEventCell"];
     
  /*
 ///////////////////////////
@@ -132,17 +129,7 @@
  
     // NOTES: Runs method from app delegate for URL JSON pull.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        //appDelegate.mutDict = nil;
-
     [appDelegate buildEventData];
-
-  /*  if (appDelegate.eventArray == nil) {
-          [appDelegate buildEventData];
-            NSLog(@"Building new data for Event list");
-    }else{
-        NSLog(@"Using existing data");
-    }*/
-
   
    [eventTableView reloadData];
     [UIView beginAnimations:nil context:nil];
@@ -163,24 +150,26 @@
 ////////////////////////////////////////////////
 
 
-// NOTES:  Will need to add sections to this later.  Split by month / year
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-   // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //return [appDelegate.mutDict count];
-    return 1;
+   AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return [appDelegate.mutDict count];
 }
 
 
-// NOTES: Max row in the table length
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //return [appDelegate.eventClassObjArray count];
-    //NSDictionary *step1 = [appDelegate.mutDict objectAtIndex:section];
-    //return [step1 count];
-    return  [appDelegate.eventKeyArray count];
-    NSLog(@"MAX ROWS = %i", [appDelegate.eventKeyArray count]);
+
+    NSDictionary *step1 = [appDelegate.mutDict objectAtIndex:section];
+     //NSLog(@"Section: %i, Rows %i ", section, [step1 count]);
+    return [step1 count];
+    
+   
+   
+     
 }
 
 
@@ -188,26 +177,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
     static NSString *CellIdentifier = @"CustomEventCell";  //REMEMBER: Need to match registerNib name!!!!
     CustomEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
+    NSArray *sectionData = [appDelegate.mutDict objectAtIndex:indexPath.section];
+    NSArray *sectionItem = [sectionData objectAtIndex:indexPath.row];
+    normEventLVL*myItem = (normEventLVL* ) sectionItem;
     
     if (cell != nil)
     {
-        // select array item and turn it back into a dictionary object
-        
-        //NSDictionary *testDict = [appDelegate.eventArray objectAtIndex:indexPath.row];
-        
-        NSString * myKey = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
-       // NSArray *key = [appDelegate.mutDict objectAtIndex:indexPath.row];
-        //NSArray *key2 = [key objectAtIndex:indexPath.row];
-        //NSLog(@"%@", key2);
-        //NSString * eventCode = [appDelegate.mutDict objectAtIndex:indexPath.row];
-        //NSLog(@"MY KEY IS %@", myKey);
-        normEventLVL*myItem = (normEventLVL* ) [appDelegate.fullEventDictionary objectForKey:myKey];
-        //normEventLVL*myItem = (normEventLVL* ) key;
-
         
         /////////////// EVENT - Location ///////////////////
         NSString *hostALL = [myItem getHost];
@@ -244,28 +222,39 @@
         ////////// CELL - Assign Label Data  ////////////
         cell.mainLabel.text = [myItem getEventName];
         cell.subLabel.text = hostCut;
-        //cell.startDate.text = cutStartDate;
-
-        //NSLog(@"%i", [myItem getEventFilterDate]);
 
     }
-
-    return cell;
+    return cell; 
 }
+
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-      /// save selected data in delegate
-    appDelegate.selectedEvent = [appDelegate.eventKeyArray objectAtIndex:indexPath.row];
+    
+    NSArray *sectionData = [appDelegate.mutDict objectAtIndex:indexPath.section];
+    normEventLVL *sectionItem = [sectionData objectAtIndex:indexPath.row];
+    appDelegate.selectedEvent = sectionItem;
     
     EventInfoViewController * newScreen = [[EventInfoViewController alloc] init];
     [self.navigationController pushViewController:newScreen animated:YES];
 }
 
-/*
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+   //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    
+    //NSString *SectionKey= [[appDelegate.mutDict objectAtIndex:section] valueForKey:@"title"];
+    //NSLog(@"%@", SectionKey);
+    NSString * placeHolder = [NSString stringWithFormat:@"%i", section];
+    return placeHolder;
+    
+
+    
+    
+    
+    /*
     if(section == 0)
     {
         return @"November 2012";
@@ -375,9 +364,10 @@
           return @"Other";
     }
           return @"Other";
+     */
 }
 
-*/
+
 
 //////////////////////////////////////////////////////////
 // CONVERT MONTH FUNCTIONS //
@@ -538,8 +528,6 @@
     }
     return @"error in dateIN for convert DAY function";
 }
-
-
 
 
 @end

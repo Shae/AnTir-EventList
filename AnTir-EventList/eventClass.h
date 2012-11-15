@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <EventKit/EventKit.h>
 
 typedef enum
 {
@@ -36,6 +37,7 @@ typedef enum
 -(NSDate*)getEndDate;
 -(NSString*)getEventURL;
 -(NSString*)getHost;
+-(NSString*)getDate;
 
 -(int)getEventFilterDate;
 -(void)setEventName:(NSString*)newEventName;

@@ -20,11 +20,12 @@
 #import "eventClass.h"
 #import "eventFactory.h"
 #import "FavoritesViewController.h"
+#import <EventKit/EventKit.h>
 
 
 
 @implementation AppDelegate
-@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection, selectedEvent, favEventCal, fullEventDictionary, eventKeyArray, mutDict, favEvents, currentEvent, fullSearches, calSave, autoRefresh, autoSave;
+@synthesize tabBarController, defaultArea, eventArray, eventClassObjArray, autoUpdate, singleChoice, calendarChoice, areaSelection, selectedEvent, favEventCal, fullEventDictionary, eventKeyArray, mutDict, favEvents, currentEvent, fullSearches, calSave, autoRefresh, autoSave, eventObjects, fullEventMutArray;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -50,6 +51,7 @@
     newDictionary = [[NSDictionary alloc] init];
     eventClassObjArray = [[NSMutableArray alloc]init];
     areaSelection = [[NSString alloc]init];
+    fullEventDictionary = [[NSMutableDictionary alloc]init];
     ////// Retrieving Saved Settings ////////
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -118,15 +120,7 @@
         NSData *newSavedArray = [NSKeyedArchiver archivedDataWithRootObject:favEvents];
         [prefs setObject:newSavedArray forKey:@"favEventsSAVE"];
     }
-    
-    
-    
-    ///////////////////////////////////////////////////////////
 }
-
-
-
-
 
 
 //////////////////////////
@@ -136,22 +130,19 @@
 // NOTES:  The main url pull and factory work for the objects.
 -(void)buildEventData
 {
+   
     eventMash = [[NSMutableArray alloc] init];
-    NSLog(@"Whats in this 2 ? %@", areaSelection);
     mutDict = [[NSMutableArray alloc]init];
 
+ 
     
     NSMutableArray *SCA201211 = [[NSMutableArray alloc] init];
-    SCA201211 = nil;
     //[ mutDict addObject:SCA201211];
     NSMutableArray *SCA201212 = [[NSMutableArray alloc] init];
-    SCA201212 = nil;
    // [ mutDict addObject:SCA201212];
     NSMutableArray *SCA201301 = [[NSMutableArray alloc] init];
-    SCA201301 =nil;
    // [ mutDict addObject:SCA201301];
     NSMutableArray *SCA201302 = [[NSMutableArray alloc] init];
-    SCA201302 = nil;
     //[ mutDict addObject:SCA201302];
     NSMutableArray *SCA201303 = [[NSMutableArray alloc] init];
     //[ mutDict addObject:SCA201303];
@@ -197,64 +188,62 @@
    // [ mutDict addObject:SCA201411];
     NSMutableArray *SCA201412 = [[NSMutableArray alloc] init];
     //[ mutDict addObject:SCA201412];
-    
-    fullEventDictionary =  [[NSMutableDictionary alloc]init];
+    NSMutableArray *SCA = [[NSMutableArray alloc] init];
+    //[ mutDict addObject:SCA];
     eventKeyArray = [[NSMutableArray alloc] init];
 
     NSLog(@"BUILD EVENT DATA");
-    numItems = 0;
+    //numItems = 0;
 
-        NSLog(@"Whats in this 3? %@", areaSelection);
-    if (areaSelection != nil) {
+        NSLog(@"Month Objects Prep'd");
+     
+     
     
-        
+    if (areaSelection != nil) {
         if ([areaSelection isEqualToString: @"-ALL  AREAS-"] ) {
             url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com"]; //url for all events
             NSLog(@"ALL AREAS");
         }
         if ([areaSelection isEqualToString: @"Aquaterra"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Aquaterra"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Aquaterra"];
         }
         if ([areaSelection isEqualToString: @"Blatha an Oir"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Central/Wastekeep/Akornebir"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Central/Wastekeep/Akornebir"]; 
         }
         if ([areaSelection isEqualToString: @"Dragon's Laire"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Dragon's%20Laire"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Dragon's%20Laire"]; 
         }
         if ([areaSelection isEqualToString: @"Glymm Mere"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Glymm%20Mere"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Glymm%20Mere"]; 
         }
         if ([areaSelection isEqualToString: @"Madrone"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Madrone"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Madrone"]; 
         }
         if ([areaSelection isEqualToString: @"Seagirt"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Seagirt"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Seagirt"]; 
         }
         if ([areaSelection isEqualToString:  @"StromGard"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Stromgard"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Stromgard"]; 
         }
         if ([areaSelection isEqualToString: @"3 Mountains"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Three%20Mountains"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Three%20Mountains"]; 
         }
         if ([areaSelection isEqualToString: @"Wastekeep" ]) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Central/Wastekeep"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Central/Wastekeep"]; 
         }
         if ([areaSelection isEqualToString: @"Wealdsmere"] ) {
-            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Wealdsmere"]; //url for all events
+            url = [[NSURL alloc] initWithString:@"http://scalac.herokuapp.com/Location/Wealdsmere"]; 
         }
-         
-       
     }else{
-        NSLog(@"areaSelection is nil");
-    }
+        NSLog(@"areaSelection is nil for JSON Pull");
+    }  // end area selection url pull
+    
         request = [[NSURLRequest alloc] initWithURL:url];
         
         if (request != nil)
         {
-  
             connection  = [NSURLConnection connectionWithRequest:request delegate:self];
             requestedData = [NSMutableData data];
-            //NSLog(@"%@", requestData);
             NSLog(@"URL String Accepted.  Starting Data Request");
         }
         
@@ -264,37 +253,29 @@
         SBJSON *parser = [[SBJSON alloc] init];
         
         // parse the JSON string into an object - assuming json_string is a NSString of JSON data
-        eventObject = [[NSArray alloc] init]; // setup holding area for Event Objects
+        eventObjects = [[NSArray alloc] init]; // setup holding area for Event Objects
     
     if (jsonString != nil) {
-        
          NSLog(@"Successful jsonString pull. STARTING PARSE");
-        eventObject = [parser objectWithString:jsonString error:nil];
-        
+        eventObjects = [parser objectWithString:jsonString error:nil];
     }else{
-        
         NSLog(@"jsonString is EMPTY");
-        
     }
-    
-        numItems = [eventObject count];
-
         eventArray = [[NSMutableArray alloc] init];
-        
-        //NSLog(@" EVENT OBJECT COUNT = %i", [eventObject count]);
     
-
-            for (int i=0; i<[eventObject count]; i++)
+            for (int i=0; i<[eventObjects count]; i++)
             {
-            
-                NSDictionary *currentObj = [eventObject objectAtIndex:i];
+   
+                NSDictionary *currentObj = [eventObjects objectAtIndex:i];
                 NSString *mashDate = [[NSString alloc]init];
-                mashDate = nil;
-                ////////    FACTORY CALL    /////////////////
-                normEventLVL *newEvent = [[normEventLVL alloc] init];
-               newEvent = (normEventLVL*) [eventFactory buildEvent:1];
+               mashDate = nil;
                 
-               if ([currentObj objectForKey:@"uid"] != nil){
+                ////////    FACTORY CALL    /////////////////
+                
+                normEventLVL *newEvent = [[normEventLVL alloc] init];
+                newEvent = (normEventLVL*) [eventFactory buildEvent:1];
+                
+                if ([currentObj objectForKey:@"uid"] != nil){
                     [newEvent setEventCode: [currentObj objectForKey:@"uid"]];
                    
                    if ([currentObj objectForKey:@"summary"] != nil) {
@@ -313,73 +294,77 @@
                    [newEvent setEndDate: [currentObj objectForKey:@"end"]];
                    [newEvent setEventURL: [currentObj objectForKey:@"url"]];
                    
-                   [fullEventDictionary setObject: newEvent forKey: [newEvent getEventCode]];
-                   [eventKeyArray addObject:[newEvent getEventCode]];
+                    [fullEventDictionary setObject: newEvent forKey: [newEvent getEventCode]];
+                    [fullEventMutArray addObject:newEvent];
+                    [eventKeyArray addObject:[newEvent getEventCode]];
+
+                    
+                    mashDate =  [NSString stringWithFormat:@"SCA%d", [newEvent getEventFilterDate] ];
+                    NSLog(@"MASH DATE = %@", mashDate);
+                    // NSLog(@" Full Event Dict Key List Item = %@", [currentObj objectForKey:@"uid"]);
+
                    
-                   mashDate =  [NSString stringWithFormat:@"SCA%d", [newEvent getEventFilterDate] ];
-                   // NSLog(@" Full Event Dict Key List Item = %@", [currentObj objectForKey:@"uid"]);
-                   
-                   if ([[newEvent getEventName] isEqualToString: @"Yule Feast"]) {
-                       NSLog(@"YULE FEAST!! %i", [newEvent getEventFilterDate] );
-                   }
-                   if (newEvent != nil)
+    /////////////////////////////////////////////////////
+    //  ADD EVENT to MONTH OBJ  //
+    /////////////////////////////////////////////////////
+                  if (newEvent != nil)
                    {
                     
                        if([mashDate isEqualToString:@"SCA201211"]){
                            [SCA201211 addObject:newEvent];
-                           //NSLog(@"added item to 11");
+                           NSLog(@"added item to 11");
                        }
                        if([mashDate isEqualToString:@"SCA201212"]){
                            [SCA201212 addObject:newEvent];
-                          // NSLog(@"added item to 12");
+                          NSLog(@"added item to 12");
                        }
                        if([mashDate isEqualToString:@"SCA201301"]){
                            [SCA201301 addObject:newEvent];
-                           //NSLog(@"added item to 1");
+                           NSLog(@"added item to 1");
                        }
                        if([mashDate isEqualToString:@"SCA201302"]){
                            [SCA201302 addObject:newEvent];
-                           //NSLog(@"added item to 2");
+                           NSLog(@"added item to 2");
                        }
                        if([mashDate isEqualToString:@"SCA201303"]){
                            [SCA201303 addObject:newEvent];
-                           //NSLog(@"added item to 3");
+                           NSLog(@"added item to 3");
                        }
                        if([mashDate isEqualToString:@"SCA201304"]){
                            [SCA201304 addObject:newEvent];
-                           //NSLog(@"added item to 4");
+                           NSLog(@"added item to 4");
                        }
                        if([mashDate isEqualToString:@"SCA201305"]){
                            [SCA201305 addObject:newEvent];
-                           //NSLog(@"added item to 5");
+                           NSLog(@"added item to 5");
                        }
                        if([mashDate isEqualToString:@"SCA201306"]){
                            [SCA201306 addObject:newEvent];
-                           //NSLog(@"added item to 6");
+                        NSLog(@"added item to 6");
                        }
                        if([mashDate isEqualToString:@"SCA201307"]){
                            [SCA201307 addObject:newEvent];
-                          // NSLog(@"added item to 7");
+                        NSLog(@"added item to 7");
                        }
                        if([mashDate isEqualToString:@"SCA201308"]){
                            [SCA201308 addObject:newEvent];
-                          // NSLog(@"added item to 8");
+                          NSLog(@"added item to 8");
                        }
                        if([mashDate isEqualToString:@"SCA201309"]){
                            [SCA201309 addObject:newEvent];
-                           //NSLog(@"added item to 9");
+                           NSLog(@"added item to 9");
                        }
                        if([mashDate isEqualToString:@"SCA201310"]){
                            [SCA201310 addObject:newEvent];
-                           //NSLog(@"added item to 10");
+                           NSLog(@"added item to 10");
                        }
                        if([mashDate isEqualToString:@"SCA201311"]){
                            [SCA201311 addObject:newEvent];
-                           //NSLog(@"added item to 11");
+                           NSLog(@"added item to 11");
                        }
                        if([mashDate isEqualToString:@"SCA201312"]){
                            [SCA201312 addObject:newEvent];
-                           //NSLog(@"added item to 12");
+                           NSLog(@"added item to 12");
                        }
                        if([mashDate isEqualToString:@"SCA201401"]){
                            [SCA201401 addObject:newEvent];
@@ -422,12 +407,6 @@
                }
 
             
-              
-
-    //////////////////////////////////////////////////////////////////////////
-    //  ADD OBJECT TO ARRAY NOT WORKING //
-    //////////////////////////////////////////////////////////////////////////
-            
                 
             /*
                 //////////////////////////////////////
@@ -444,140 +423,115 @@
                  NSLog(@"Write to pList" );
                  */
         }
-            // test pull from dictionary after factory
-            //normEventLVL *quickPull = (normEventLVL*) [fullEventDictionary objectForKey:@"antir2497"];
-           // NSLog(@" QUICK PULL TEST %@", [quickPull getEventName]);
-    
-    /*
-     //////////////////////////////////////////////////////////////
-     ////// LOOPING through the Dictionary/////
-     /////////////////////////////////////////////////////////////
-     
-    for(id key in fullEventDictionary)
-    {
-        NSLog(@"key=%@ value=%@", key, [fullEventDictionary objectForKey:key]);
-        [eventKeyArray addObject: key];
-        
-    };
-     */
 
     
-    /*
-    ////  now YEAR ////
-    NSDate *today = [NSDate date];
-    NSString *stringToday = [NSString stringWithFormat:@"%@", today];
-    NSString *substring = [stringToday substringWithRange:NSMakeRange(0, 4)];
-    //NSLog(@"%@", substring);
-    //////////////////////////////////////
-    */
-    if ( SCA201211 != nil) {
-        [ mutDict addObject:SCA201211];
-        NSLog(@" SCA201211 NOT EMPTY = %@", SCA201211);
-    }else{
-        NSLog(@" SCA201211 EMPTY = %@", SCA201211);
-    }
-    if (SCA201211 != nil) {
+    if ( [SCA201211 count] != 0) {
         [ mutDict addObject:SCA201211];
     }
-    if (SCA201212 != nil) {
+     
+    if ([SCA201212 count] != 0) {
         [ mutDict addObject:SCA201212];
     }
-    if (SCA201301 != nil) {
+     
+    if ([SCA201301 count] != 0) {
         [ mutDict addObject:SCA201301];
     }
-
-    if (SCA201302 != nil) {
+     
+    if ([SCA201302 count] != 0) {
         [ mutDict addObject:SCA201302];
     }
 
-    if (SCA201303 != nil) {
+    if ([SCA201303 count] != 0) {
         [ mutDict addObject:SCA201303];
     }
 
-    if (SCA201304 != nil) {
+    if ([SCA201304 count] != 0 ){
         [ mutDict addObject:SCA201304];
     }
 
-    if (SCA201305 != nil) {
+    if ([SCA201305 count] != 0) {
         [mutDict addObject:SCA201305];
     }
 
-    if (SCA201306 != nil) {
+    if ([SCA201306 count] != 0) {
         [ mutDict addObject:SCA201306];
     }
 
-    if (SCA201307 != nil) {
+    if ([SCA201307 count] != 0) {
         [ mutDict addObject:SCA201307];
     }
 
-    if (SCA201308 != nil) {
+    if ([SCA201308 count] != 0) {
         [ mutDict addObject:SCA201308];
     }
 
-    if (SCA201309 != nil) {
+    if ([SCA201309 count] != 0) {
         [ mutDict addObject:SCA201309];
     }
     
-    if (SCA201310 != nil) {
+    if ([SCA201310 count] != 0) {
         [ mutDict addObject:SCA201310];
     }
 
-    if (SCA201311 != nil) {
+    if ([SCA201311 count] != 0) {
         [ mutDict addObject:SCA201311];
     }
 
-    if (SCA201312 != nil) {
+    if ([SCA201312 count] != 0l) {
         [ mutDict addObject:SCA201312];
     }
   
-    if (SCA201401 != nil) {
+    if ([SCA201401 count] != 0) {
         [ mutDict addObject:SCA201401];
     }
 
-    if (SCA201402 != nil) {
+    if ([SCA201402 count] != 0) {
         [mutDict addObject:SCA201402];
     }
 
-    if (SCA201403 != nil) {
+    if ([SCA201403 count] != 0) {
         [ mutDict addObject:SCA201403];
     }
 
-    if (SCA201404 != nil) {
+    if ([SCA201404 count] != 0) {
         [ mutDict addObject:SCA201404];
     }
 
-    if (SCA201405 != nil) {
+    if ([SCA201405 count] != 0) {
          [ mutDict addObject:SCA201405];
     }
    
-    if (SCA201406 != nil) {
+    if ([SCA201406 count] != 0) {
         [ mutDict addObject:SCA201406];
     }
 
-    if (SCA201407 != nil) {
+    if ([SCA201407 count] != 0) {
         [ mutDict addObject:SCA201407];
     }
 
-    if (SCA201408 != nil) {
+    if ([SCA201408 count] != 0l) {
         [ mutDict addObject:SCA201408];
     }
 
-    if (SCA201409 != nil) {
+    if ([SCA201409 count] != 0) {
         [ mutDict addObject:SCA201409];
     }
 
-    if (SCA201410 != nil) {
+    if ([SCA201410 count] != 0) {
         [ mutDict addObject:SCA201410];
     }
 
-    if (SCA201411 != nil) {
+    if ([SCA201411 count] != 0) {
         [ mutDict addObject:SCA201411];
     }
 
-    if (SCA201412 != nil) {
+    if ([SCA201412 count] != 0) {
         [ mutDict addObject:SCA201412];
     }
-
+    if ([SCA count] != 0) {
+        [ mutDict addObject:SCA];
+    }
+    NSLog(@"fullEventDictionary count = %i", [fullEventDictionary count]);
     NSLog(@"mutDict count = %i", [mutDict count]);
 }
 

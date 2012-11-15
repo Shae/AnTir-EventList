@@ -42,18 +42,12 @@
     
      AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-  //  if (appDelegate.favEventCal == 1) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(saveBTN)];
             self.title = @"Event Info";
-   // }else if (appDelegate.favEventCal == 0){
-       //     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Remove", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(eventSaveBtn)];
-       //     self.title = @"Event Info - Favorite";
-    //}
+  
+   
+    selectedItem = appDelegate.selectedEvent;
 
-   // selectedItemPull = appDelegate.selectedEvent;
-    selectedItem = [appDelegate.fullEventDictionary objectForKey:appDelegate.selectedEvent];
-    appDelegate.currentEvent = selectedItem;
-    // Do any additional setup after loading the view from its nib.
     
     /////////////// EVENT - Location ///////////////////
     NSString *hostALL = [selectedItem getHost];

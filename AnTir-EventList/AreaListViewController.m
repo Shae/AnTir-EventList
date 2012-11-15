@@ -87,7 +87,6 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     appDelegate.areaSelection = [areaArray2 objectAtIndex:indexPath.row];  //send selection to delegate
-    NSLog(@"Whats in this 1 ? %@", appDelegate.areaSelection);
         NSLog(@" area selected = %@", [areaArray2 objectAtIndex:indexPath.row]);
 
     

@@ -11,6 +11,7 @@
 #import "HostModalViewController.h"
 #import "normEventLVL.h"
 #import "HostViewController.h"
+#import  <EventKit/EventKit.h>
 
 @interface EventInfoViewController ()
 
@@ -294,7 +295,7 @@
     
 }
 
-
+*/
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -304,10 +305,66 @@
                 if (buttonIndex == 1)
                 {
                     NSLog(@"Button SAVE");
+                    EKEventStore *store = [[EKEventStore alloc] init];
                     
+                    EKEvent *event = [EKEvent eventWithEventStore:store];
 
-                    [appDelegate.favEvents addObject:selectedItem];
-                    NSLog(@" favEvents Count = %i", [appDelegate.favEvents count]);
+                    
+                    
+                    NSString *startdate = (NSString*)[selectedItem getStartDate];
+                    NSArray* start1 = [startdate componentsSeparatedByString: @"T"];
+                    NSArray* start2 = [[start1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+
+                    NSDateComponents *comps = [[NSDateComponents alloc] init];
+                    [comps setDay: [[start2 objectAtIndex: 2] integerValue]];
+                    [comps setMonth:[[start2 objectAtIndex: 1]integerValue]];
+                    [comps setYear:[[start2 objectAtIndex: 0]integerValue]];
+                    NSCalendar *gregorian = [[NSCalendar alloc]
+                                             initWithCalendarIdentifier:NSGregorianCalendar];
+                    NSDate *date = [gregorian dateFromComponents:comps];
+
+                    NSDate* Sdate = date;
+                    ////////////////////
+                    
+                    NSString *enddate = (NSString*)[selectedItem getEndDate];
+                    NSArray* end1 = [enddate componentsSeparatedByString: @"T"];
+                    NSArray* end2 = [[end1 objectAtIndex: 0] componentsSeparatedByString:@"-"];
+                    
+                    NSDateComponents *comps2 = [[NSDateComponents alloc] init];
+                    [comps2 setDay: [[end2 objectAtIndex: 2] integerValue]];
+                    [comps2 setMonth:[[end2 objectAtIndex: 1]integerValue]];
+                    [comps2 setYear:[[end2 objectAtIndex: 0]integerValue]];
+                    NSCalendar *gregorian2 = [[NSCalendar alloc]
+                                             initWithCalendarIdentifier:NSGregorianCalendar];
+                    NSDate *date2 = [gregorian2 dateFromComponents:comps2];
+                    
+                    NSDate *Edate = date2;
+                                             
+                  // NSDate *newSdate = [start1 objectAtIndex: 0];
+                    NSLog(@"NEW S DATE :%@", date);
+                    
+                    
+                    
+                    
+                    
+                    
+                    event.title =  [selectedItem getEventName];
+                    event.startDate = Sdate;
+                    if ([Edate isEqualToDate: Sdate] ) {
+                        //[event isAllDay];
+                        [event setAllDay:TRUE];
+                    }else{
+                        event.endDate = Edate;
+                    }
+                    
+                    // CANT Figure out how to use the selected calendar chosen from settings
+                    event.calendar = store.defaultCalendarForNewEvents;
+
+                    
+                    NSError *err;
+                    //[store saveEvent:event span:EKSpanThisEvent error:&err];
+                    [store saveEvent:event span:EKSpanThisEvent commit:TRUE error:&err];
+                    NSLog(@"Button SAVED and PUSHED to CALENDAR");
                 }
             }
     
@@ -329,7 +386,7 @@
     }
 }
 
-*/
+
 
 - (IBAction) onClickHost:(id)sender
 {
@@ -404,5 +461,9 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 
 }
 
+-(void)saveToCal
+{
+
+}
 
 @end

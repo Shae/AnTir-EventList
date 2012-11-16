@@ -30,12 +30,13 @@
     IBOutlet UIView *settingsView;
     __weak IBOutlet UIView *calView;
     IBOutlet UISegmentedControl*segmentController;
-    
+    NSString* calChoice;
+    NSString* myCal;
     NSString *dataFilePath;
     
 }
 
-
+-(IBAction)calSave:(id)sender;
 -(IBAction)onClickDone:(id)sender;
 -(IBAction)segmentbutton:(id)sender;
 -(IBAction)onChange:(id)sender;  

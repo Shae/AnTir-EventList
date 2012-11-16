@@ -108,11 +108,8 @@
     
     ////////////  SAVE Settings  ////////////////////////
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:defaultArea forKey:@"kingdomSAVE"];
-    [prefs setObject:askAgain forKey:@"askAgainSAVE"];
-    
-    [prefs setBool: 1 /*autoUpdate*/ forKey:@"autoUpdateSAVE"];
-    //eventClassObjArray = nil;
+    [prefs setObject:calendarChoice forKey:@"savedCal"];
+
     
     // Trying to save an NSMutable array as a data object using NSKeyedArchiver
     if (favEvents != nil)

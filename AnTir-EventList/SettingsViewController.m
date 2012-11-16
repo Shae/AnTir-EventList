@@ -31,8 +31,11 @@
 
 - (void)viewDidLoad
 {
+    ///////////////////////////////////////
+    //  NSUSER DEFAULTS //
+    ///////////////////////////////////////
     
-    
+    myCal = [[NSUserDefaults standardUserDefaults]objectForKey:@"MyCal"];
     
     
     /////////////////////////////
@@ -87,7 +90,7 @@
     
     [super viewDidLoad];
 
-    
+
     //arrayNo = [[NSMutableArray alloc] init];
     eventStore = [[EKEventStore alloc] init];
     calendarList = [[NSMutableArray alloc]init];
@@ -120,7 +123,6 @@
                          NSLog(@"for loop in calendar");
                          EKCalendar *calendar2 = [calendars objectAtIndex:i];
                          NSLog(@"%@", calendar2.title);
-                         //NSLog(@"%@", calendar2.description);
                          NSString *name = calendar2.title;
                          
                          [calendarList addObject:name];
@@ -130,7 +132,8 @@
                 }
              }
          }];
-     //[pickerView selectRow:1 inComponent:0 animated:NO];
+
+    
     }
 }
 
@@ -157,6 +160,7 @@
     return [calendarList count];
 }
 
+
 -(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSLog(@"ROW %i", row);
@@ -178,8 +182,26 @@
 
     //setting the appDelegate for settings choice
     appDelegate.calendarChoice = [calendars objectAtIndex:row];
+    calChoice =  [NSString stringWithFormat:@"%i", row ];
+
+    
 }
 
+
+-(IBAction)calSave:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setObject:calChoice forKey:@"MyCal"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    int myInt = [calChoice integerValue];
+    NSLog(@"SAVE calendar choice %i", myInt);
+    
+    [UIView beginAnimations:nil context:nil];
+    calView.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    TwitterSet.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    FBset.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
+    [UIView commitAnimations];
+    [segmentController setSelectedSegmentIndex:UISegmentedControlNoSegment];
+}
 
 
 -(IBAction)segmentbutton:(id)sender {
@@ -190,6 +212,11 @@
         [UIView beginAnimations:nil context:nil];
         calView.frame = CGRectMake(0.0f, 100.0f, calView.frame.size.width, calView.frame.size.height);
         [UIView commitAnimations];
+        if (myCal != nil) {
+            int choice = [myCal integerValue];
+            NSLog(@"set cal to choice %i", choice);
+            [pickerView selectRow:choice inComponent:0 animated:NO];
+        }
     }
     if (segmentController.selectedSegmentIndex == 1) {
         NSLog(@"Button 2 Was Selected");
@@ -213,6 +240,7 @@
     TwitterSet.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
     FBset.frame = CGRectMake(0.0f, 460.0f, calView.frame.size.width, calView.frame.size.height);
     [UIView commitAnimations];
+     [segmentController setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
 -(IBAction)onChange:(id)sender{

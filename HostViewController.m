@@ -27,14 +27,14 @@
 - (void)viewDidLoad
 {
     
-    NSString* website = @"http://www.google.com";
+    NSString* website = @"http://www.sca.org";
     NSURL *url = [NSURL URLWithString:website];
     NSURLRequest *requestURL = [NSURLRequest requestWithURL:url];
     allowsInlineMediaPlayback = YES;
     canGoBack = YES;
     canGoForward = YES;
     keyboardDisplayRequiresUserAction = YES;
-    scalesPageToFit = YES;
+    //scalesPageToFit = YES;
     
     [webView loadRequest:requestURL ];
     

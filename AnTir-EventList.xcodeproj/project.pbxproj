@@ -122,9 +122,9 @@
 		BF4F056C16490A6900CC7AFE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BF4F056E16490C6200CC7AFE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BF4F0580164B0BE100CC7AFE /* SmashDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SmashDate.plist; sourceTree = "<group>"; };
-		BF4F06021651C19800CC7AFE /* HostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostViewController.h; sourceTree = "<group>"; };
-		BF4F06031651C19800CC7AFE /* HostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostViewController.m; sourceTree = "<group>"; };
-		BF4F06041651C19900CC7AFE /* HostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostViewController.xib; sourceTree = "<group>"; };
+		BF4F06021651C19800CC7AFE /* HostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HostViewController.h; path = ../HostViewController.h; sourceTree = "<group>"; };
+		BF4F06031651C19800CC7AFE /* HostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HostViewController.m; path = ../HostViewController.m; sourceTree = "<group>"; };
+		BF4F06041651C19900CC7AFE /* HostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HostViewController.xib; path = ../HostViewController.xib; sourceTree = "<group>"; };
 		BFEF620A163EFE6D0054F566 /* AnTir-EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnTir-EventList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEF620E163EFE6D0054F566 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFEF6210163EFE6D0054F566 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,9 +225,6 @@
 				BF14B0751643645400BD9E50 /* icon.png */,
 				BF2DEEA61655CF120059CD53 /* Default@2x.png */,
 				BF2DEEA41655CF070059CD53 /* Default.png */,
-				BF4F06021651C19800CC7AFE /* HostViewController.h */,
-				BF4F06031651C19800CC7AFE /* HostViewController.m */,
-				BF4F06041651C19900CC7AFE /* HostViewController.xib */,
 				BF4F055B164885CD00CC7AFE /* Launch.png */,
 				BF4F05601648872400CC7AFE /* Launch@2.png */,
 				BFEF6214163EFE6D0054F566 /* AnTir-EventList */,
@@ -274,6 +271,9 @@
 				BFEF6269163F2B540054F566 /* EventsViewController.h */,
 				BFEF626A163F2B540054F566 /* EventsViewController.m */,
 				BFEF626B163F2B540054F566 /* EventsViewController.xib */,
+				BF4F06021651C19800CC7AFE /* HostViewController.h */,
+				BF4F06031651C19800CC7AFE /* HostViewController.m */,
+				BF4F06041651C19900CC7AFE /* HostViewController.xib */,
 				BF14B01F1641D33200BD9E50 /* CustomEventCell.h */,
 				BF14B0201641D33200BD9E50 /* CustomEventCell.m */,
 				BF14B0221641D34900BD9E50 /* CustomEventCell.xib */,
